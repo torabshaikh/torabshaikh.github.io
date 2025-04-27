@@ -10,12 +10,9 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* --- Base & Layout Styles --- */
-        :root {
-            --background: #111115; --foreground: #e8e8e8; --accent: #8b5cf6; --accent-light: #a78bfa; --accent-glow: rgba(139, 92, 246, 0.5); --muted: #888888; --card-bg: #1f1f23; --nav-bg: #1a1a1e; --border-color: #333337;
-             /* Suggestion: Consider a secondary accent, e.g., a teal/blue */
-             /* --secondary-accent: #2dd4bf; */
-        }
+        /* --- CSS Styles (Keep Previous Version) --- */
+         /* Base & Layout Styles */
+        :root { --background: #111115; --foreground: #e8e8e8; --accent: #8b5cf6; --accent-light: #a78bfa; --accent-glow: rgba(139, 92, 246, 0.5); --muted: #888888; --card-bg: #1f1f23; --nav-bg: #1a1a1e; --border-color: #333337; }
         ::selection { background-color: var(--accent); color: white; }
         body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: var(--background); color: var(--foreground); padding-top: 70px; overflow-x: hidden; }
         header { text-align: center; padding: 4rem 1rem 3rem 1rem; background: linear-gradient(145deg, #1a1a1e, var(--background)); margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); }
@@ -23,12 +20,12 @@
         h2 { color: var(--accent-light); margin-bottom: 0.5rem; font-size: 2rem; font-weight: 700; }
         h3 { color: var(--accent-light); font-weight: 600; margin-top: 0; margin-bottom: 0.8rem;}
         header p { color: var(--muted); font-size: 1.2rem; max-width: 600px; margin: 0 auto; line-height: 1.5; }
-        nav { position: fixed; top: 0; left: 0; width: 100%; background-color: rgba(26, 26, 30, 0.85); /* Slightly transparent */ backdrop-filter: blur(10px); /* Glassmorphism */ padding: 1rem 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); display: flex; justify-content: center; gap: 1.5rem; border-bottom: 1px solid var(--border-color); }
+        nav { position: fixed; top: 0; left: 0; width: 100%; background-color: rgba(26, 26, 30, 0.85); backdrop-filter: blur(10px); padding: 1rem 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); display: flex; justify-content: center; gap: 1.5rem; border-bottom: 1px solid var(--border-color); }
         nav a { color: var(--foreground); text-decoration: none; padding: 0.6rem 1.3rem; border-radius: 20px; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; }
         nav a:hover { background-color: var(--accent); color: white; transform: translateY(-2px); box-shadow: 0 0 10px var(--accent-glow);}
         nav a.active { background-color: var(--accent); color: white; box-shadow: 0 0 10px var(--accent-glow); }
         section { max-width: 1000px; margin: 4rem auto; padding: 2.5rem; background: var(--card-bg); border-radius: 16px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); border: 1px solid var(--border-color); }
-        section h2 { border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 0.7rem; margin-bottom: 2.5rem; /* Increased spacing */ text-align: center; width: 100%; }
+        section h2 { border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 0.7rem; margin-bottom: 2.5rem; text-align: center; width: 100%; }
         #about { display: flex; align-items: center; gap: 2rem; }
         .about-content { flex: 1; }
         .profile-image-placeholder { width: 180px; height: 180px; background-color: #333; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: var(--muted); font-size: 1rem; font-weight: bold; flex-shrink: 0; border: 3px solid var(--accent-light); box-shadow: 0 0 15px var(--accent-glow); text-align: center; animation: pulse-border 2s infinite ease-in-out; }
@@ -51,7 +48,7 @@
         .badge.skill-badge.active { background-color: var(--accent); color: white; border-color: var(--accent-light); box-shadow: 0 0 8px var(--accent-glow); }
         .timeline { position: relative; margin: 3rem 0; padding: 1rem 0; overflow: auto; min-height: 100px; }
         .timeline::after { content: ''; position: absolute; width: 4px; background: linear-gradient(to bottom, var(--accent-light), var(--accent), var(--background)); top: 0; bottom: 0; left: 50%; transform: translateX(-50%); z-index: 0; border-radius: 2px; }
-        .entry { background: var(--card-bg); border-radius: 12px; width: calc(50% - 50px); position: relative; margin-bottom: 2.5rem; border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); transition: transform 0.35s ease, box-shadow 0.35s ease, width 0.35s ease; z-index: 1; overflow: hidden; display: block !important; opacity: 0; cursor: pointer; visibility: hidden; }
+        .entry { background: var(--card-bg); border-radius: 12px; width: calc(50% - 50px); position: relative; margin-bottom: 2.5rem; border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); transition: transform 0.35s ease, box-shadow 0.35s ease, width 0.35s ease, opacity 0.4s ease; z-index: 1; overflow: hidden; display: block !important; opacity: 0; cursor: pointer; visibility: hidden; }
         .entry.aos-init { visibility: visible; }
         .entry.aos-animate { opacity: 1; }
         .entry.mixitup-filtered-out { opacity: 0 !important; pointer-events: none; z-index: 0; visibility: hidden !important; }
@@ -82,86 +79,32 @@
         #education .education-entry { background: rgba(255, 255, 255, 0.03); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid var(--accent); }
         #experience .entry { overflow: hidden; background: rgba(255, 255, 255, 0.03); }
         #experience .entry-visible, #experience .entry-hidden { padding: 1.5rem; }
-        #experience .entry-hidden { padding-top: 0; max-height: 0; opacity: 0; transition: max-height 0.4s ease-out, opacity 0.4s ease-out, padding-top 0.4s ease-out;}
-        #experience .entry:hover .entry-hidden { max-height: 600px; opacity: 1;}
+        #experience .entry-hidden { padding-top: 0; }
         #experience .entry-hidden ul { margin: 0; padding-left: 20px; color: var(--foreground); font-size: 0.95rem; line-height: 1.6;}
         #experience .entry-hidden li { margin-bottom: 0.4rem; }
         #education .education-entry h3 { margin-bottom: 0.5rem; }
         #education .education-entry p { margin: 0.3rem 0; font-size: 0.95rem; line-height: 1.5; }
         #education .education-entry strong { color: var(--muted); }
         #education .education-entry .courses { font-size: 0.9rem; color: var(--muted); margin-top: 0.8rem; line-height: 1.4; }
-
-        /* --- Contact Section Styling --- */
-        #contact { border-bottom: none; } /* Maybe remove bottom border */
-        #contact h2 { margin-bottom: 1.5rem; } /* Less margin if needed */
-        .contact-grid {
-             display: grid;
-             /* Suggestion: Use grid for better alignment on different screen sizes */
-             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
-             gap: 2rem;
-             text-align: left; /* Align text left within grid items */
-             margin-top: 1rem;
-         }
-        .contact-item {
-            display: flex;
-            align-items: center; /* Vertically align icon and text */
-            gap: 1rem; /* Space between icon and text */
-            background: rgba(255, 255, 255, 0.05); /* Subtle background */
-            padding: 1rem 1.5rem;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .contact-item:hover {
-             background-color: rgba(255, 255, 255, 0.08);
-             transform: translateY(-3px);
-        }
-        .contact-icon {
-            font-size: 1.8rem; /* Icon size */
-            color: var(--accent-light);
-            width: 30px; /* Fixed width for alignment */
-            text-align: center;
-        }
-        .contact-details strong {
-            display: block; /* Label on its own line */
-            color: var(--muted);
-            font-size: 0.9rem;
-            margin-bottom: 0.2rem;
-        }
-        .contact-details span, /* For non-link items like address */
-        .contact-details a {
-            color: var(--foreground);
-            text-decoration: none;
-            font-size: 1rem;
-            word-break: break-word; /* Prevent long links overflowing */
-        }
-        .contact-details a {
-             color: var(--accent-light); /* Make links stand out */
-             transition: color 0.3s ease;
-        }
-        .contact-details a:hover {
-            color: var(--accent);
-            text-decoration: underline;
-        }
-
-
-        /* --- Resume Section --- */
+        #contact { border-bottom: none; }
+        #contact h2 { margin-bottom: 1.5rem; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: left; margin-top: 1rem; }
+        .contact-item { display: flex; align-items: center; gap: 1rem; background: rgba(255, 255, 255, 0.05); padding: 1rem 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); transition: background-color 0.3s ease, transform 0.3s ease; }
+        .contact-item:hover { background-color: rgba(255, 255, 255, 0.08); transform: translateY(-3px); }
+        .contact-icon { font-size: 1.8rem; color: var(--accent-light); width: 30px; text-align: center; flex-shrink: 0; }
+        .contact-details { flex-grow: 1; }
+        .contact-details strong { display: block; color: var(--muted); font-size: 0.9rem; margin-bottom: 0.2rem; }
+        .contact-details span, .contact-details a { color: var(--foreground); text-decoration: none; font-size: 1rem; word-break: break-word; }
+        .contact-details a { color: var(--accent-light); transition: color 0.3s ease; }
+        .contact-details a:hover { color: var(--accent); text-decoration: underline; }
         #resume { clear: both; margin-top: 4rem; padding-bottom: 1rem;}
         #resume h3 { color: var(--accent-light); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 0.7rem; margin-bottom: 2rem; text-align: center; width: 100%; font-size: 2rem; font-weight: 700; }
         .resume-links { text-align: center; }
         .resume-links a { color: var(--accent-light); margin: 0.5rem 1rem; text-decoration: none; font-weight: 600; transition: color 0.3s ease, text-shadow 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; display: inline-block; padding: 0.7rem 1.5rem; border: 1px solid var(--accent); border-radius: 20px; font-size: 1.1rem;}
         .resume-links a:hover { color: white; background-color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); box-shadow: 0 0 10px var(--accent-glow); }
-
-        /* --- Responsive Adjustments --- */
         @media (max-width: 768px) {
-            body { padding-top: 60px; } nav { gap: 0.5rem; padding: 0.8rem 0; } nav a { padding: 0.5rem 0.8rem; font-size: 0.9rem; } h1 { font-size: 2.2rem; } header p { font-size: 1rem; } section { padding: 1.5rem; margin: 2rem auto; } section h2, #resume h3 { font-size: 1.6rem; }
-            #about { flex-direction: column; text-align: center; } .profile-image-placeholder { width: 150px; height: 150px; margin-bottom: 1.5rem; } .role-filters button { padding: 0.5rem 1rem; font-size: 0.9rem; } .skills-header { flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;} .resume-links a { margin: 0.5rem; padding: 0.6rem 1.2rem; font-size: 1rem;}
-            .timeline { overflow: hidden; } .timeline::after { left: 20px; transform: translateX(0); } .entry { width: calc(100% - 50px) !important; float: none !important; clear: none !important; margin-left: 40px; margin-right: 0; border-left: 4px solid var(--accent); border-right: none; } .entry:hover { width: calc(100% - 50px) !important; transform: scale(1.02); } .timeline .entry:nth-child(odd), .timeline .entry:nth-child(even) { float: none !important; clear: none !important; margin-left: 40px; margin-right: 0; border-right: none; } .timeline .entry:nth-child(odd)::before, .timeline .entry:nth-child(even)::before { left: -12px; transform: translateX(-50%); right: auto; }
-            .contact-grid { grid-template-columns: 1fr; } /* Stack contact items on mobile */
-            .contact-item { flex-direction: column; align-items: flex-start; text-align: left; } /* Adjust contact item layout */
-            .contact-icon { margin-bottom: 0.5rem; }
+             body { padding-top: 60px; } nav { gap: 0.5rem; padding: 0.8rem 0; } nav a { padding: 0.5rem 0.8rem; font-size: 0.9rem; } h1 { font-size: 2.2rem; } header p { font-size: 1rem; } section { padding: 1.5rem; margin: 2rem auto; } section h2, #resume h3 { font-size: 1.6rem; } #about { flex-direction: column; text-align: center; } .profile-image-placeholder { width: 150px; height: 150px; margin-bottom: 1.5rem; } .role-filters button { padding: 0.5rem 1rem; font-size: 0.9rem; } .skills-header { flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;} .resume-links a { margin: 0.5rem; padding: 0.6rem 1.2rem; font-size: 1rem;} .timeline { overflow: hidden; } .timeline::after { left: 20px; transform: translateX(0); } .entry { width: calc(100% - 50px) !important; float: none !important; clear: none !important; margin-left: 40px; margin-right: 0; border-left: 4px solid var(--accent); border-right: none; } .entry:hover { width: calc(100% - 50px) !important; transform: scale(1.02); } .timeline .entry:nth-child(odd), .timeline .entry:nth-child(even) { float: none !important; clear: none !important; margin-left: 40px; margin-right: 0; border-right: none; } .timeline .entry:nth-child(odd)::before, .timeline .entry:nth-child(even)::before { left: -12px; transform: translateX(-50%); right: auto; } .contact-grid { grid-template-columns: 1fr; } .contact-item { flex-direction: column; align-items: flex-start; text-align: left; } .contact-icon { margin-bottom: 0.5rem; }
         }
-
     </style>
 </head>
 <body>
@@ -178,7 +121,7 @@
 
     <header data-aos="fade-down" data-aos-duration="800">
         <h1>Mo Torab Shaikh</h1>
-        <p id="header-subtitle">Software Engineer | CV | Edge | Robotics | Full Stack | Cloud | AI</p>
+        <p id="header-subtitle">Software Engineer | CV | Edge | Robotics | Full Stack | Cloud | AI/ML</p>
     </header>
 
     <section id="about" data-aos="fade-up" data-aos-duration="800">
@@ -190,16 +133,16 @@
     </section>
 
     <section id="roles" data-aos="fade-up" data-aos-duration="800">
-        <h2>Roles</h2>
+        <h2>Explore Roles</h2>
         <div class="role-filters">
              <button class="role-filter active" data-role-filter="all">Overview</button>
              <button class="role-filter" data-role-filter="robotics-swe">Robotics SWE</button>
              <button class="role-filter" data-role-filter="cv-engineer">CV Engineer</button>
              <button class="role-filter" data-role-filter="edge-engineer">Edge Computing</button>
+             <button class="role-filter" data-role-filter="aiml-engineer">AI/ML Engineer</button>
              <button class="role-filter" data-role-filter="fullstack-swe">Full Stack</button>
              <button class="role-filter" data-role-filter="cloud-engineer">Cloud Engineer</button>
-             <button class="role-filter" data-role-filter="ai-agent-engineer">AI/Agent Engineer</button>
-        </div>
+             </div>
     </section>
 
     <section id="skills" data-aos="fade-up" data-aos-duration="800">
@@ -207,15 +150,13 @@
             <h2>Skills</h2>
             </div>
         <div class="skills-container">
-            <p>Loading Skills...</p>
-        </div>
+            </div>
     </section>
 
     <section id="projects" data-aos="fade-up" data-aos-duration="800">
         <h2>Projects</h2>
         <div class="timeline" id="project-timeline">
-             <p>Loading Projects...</p>
-        </div>
+             </div>
     </section>
 
     <section id="experience" data-aos="fade-up" data-aos-duration="800">
@@ -272,81 +213,166 @@
     <section id="education" data-aos="fade-up" data-aos-duration="800">
         <h2>Education</h2>
         <div id="education-content">
-            <p>Loading Education...</p>
-        </div>
+            </div>
     </section>
 
     <section id="resume" data-aos="fade-up" data-aos-duration="800">
         <h3>Resume</h3>
         <div id="resume-links-container" class="resume-links">
-            <p>Loading link...</p>
-        </div>
+            </div>
     </section>
 
      <section id="contact" data-aos="fade-up" data-aos-duration="800">
-        <h2>Get In Touch</h2> <div id="contact-content">
-             <p>Loading Contact Info...</p>
-        </div>
+        <h2>Get In Touch</h2>
+        <div id="contact-content">
+             </div>
     </section>
 
+    <script src="https://unpkg.com/mixitup/dist/mixitup.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
         // ===========================================
-        // DATA DEFINITIONS (Keep previous data)
+        // DATA DEFINITIONS (Pruned & Updated)
         // ===========================================
-        const TARGET_ROLES = { 'all': 'Overview', 'robotics-swe': 'Robotics SWE', 'cv-engineer': 'CV Engineer', 'edge-engineer': 'Edge Computing', 'fullstack-swe': 'Full Stack', 'cloud-engineer': 'Cloud Engineer', 'ai-agent-engineer': 'AI/Agent Engineer' };
-        const aboutMeData = { 'all': "Versatile software engineer with 6 years of industry experience and 3 years in leadership roles. Proven ability across Computer Vision, Edge Computing, Robotics, Cloud Solutions, and Full Stack Development. Passionate about building efficient, scalable, and impactful technology.", 'robotics-swe': "Robotics Software Engineer with 6 years of experience designing, developing, and deploying software for autonomous systems. Expertise in ROS/ROS2, C++, Python, SLAM, navigation, and sensor integration. Proven ability to lead and deliver complex robotics projects.", 'cv-engineer': "Computer Vision Engineer with 6 years of experience developing and implementing advanced CV and ML solutions. Specialized in object detection/tracking, image processing, deep learning (TensorFlow/PyTorch), and deploying models on edge devices and cloud platforms (AWS).", 'edge-engineer': "Software Engineer with 6 years of experience, specializing in Edge Computing. Expertise in creating efficient, low-latency applications for resource-constrained devices using Python, C++, IoT protocols (MQTT), Docker, and on-device ML inference (OpenCV, TensorFlow Lite).", 'fullstack-swe': "Full Stack Engineer with 6 years of experience building and scaling robust web applications and APIs. Proficient in JavaScript/TypeScript (React, Node.js), Python (FastAPI), various databases (SQL/NoSQL), microservices architecture, CI/CD, and AWS cloud services.", 'cloud-engineer': "Cloud Engineer with 6 years of experience designing, implementing, and managing scalable and resilient cloud infrastructure, primarily on AWS. Expertise in serverless computing (Lambda), containerization (Docker), IaC, CI/CD pipelines, monitoring, and cost optimization.", 'ai-agent-engineer': "AI Engineer with 6 years of software development experience, now focusing on building intelligent agents and applications using Large Language Models (LLMs) and AI frameworks. Experience integrating OpenAI API, vector databases, and tools like Griptape/LangChain for complex task execution." };
-        const headerSubtitleData = { 'all': "Software Engineer | CV | Edge | Robotics | Full Stack | Cloud | AI", 'robotics-swe': "Robotics Software Engineer | ROS/ROS2 | C++ | Python | Autonomous Systems", 'cv-engineer': "Computer Vision Engineer | Deep Learning | ML Deployment | OpenCV | Python", 'edge-engineer': "Edge Computing Engineer | IoT | On-Device ML | C++ | Python", 'fullstack-swe': "Full Stack Engineer | React | Node.js | Python | AWS | Scalable Web Apps", 'cloud-engineer': "Cloud Engineer | AWS Certified | Serverless | DevOps | Infrastructure", 'ai-agent-engineer': "AI Engineer | LLMs | Agentic Workflows | Python | Cloud Integration" };
-        const resumeData = { 'all': { text: "General Overview Resume", href: "#" }, 'robotics-swe': { text: "Download Robotics SWE Resume", href: "#robotics-resume-link" }, 'cv-engineer': { text: "Download Computer Vision Resume", href: "#cv-resume-link" }, 'edge-engineer': { text: "Download Edge Computing Resume", href: "#edge-resume-link" }, 'fullstack-swe': { text: "Download Full Stack Resume", href: "#fullstack-resume-link" }, 'cloud-engineer': { text: "Download Cloud Engineering Resume", href: "#cloud-resume-link" }, 'ai-agent-engineer': { text: "Download AI Engineer Resume", href: "#ai-resume-link" } };
-        const skillsData = [ { categoryName: "Programming Languages", roles: ["robotics-swe", "cv-engineer", "edge-engineer", "fullstack-swe", "cloud-engineer", "ai-agent-engineer"], skills: [ { name: "Python", id: "python", roles: ["robotics-swe", "cv-engineer", "edge-engineer", "fullstack-swe", "cloud-engineer", "ai-agent-engineer"], isClickable: true }, { name: "C/C++", id: "cplusplus", roles: ["robotics-swe", "cv-engineer", "edge-engineer"], isClickable: true }, { name: "JavaScript", id: "javascript", roles: ["fullstack-swe", "cloud-engineer"], isClickable: true }, { name: "TypeScript", id: "typescript", roles: ["fullstack-swe", "cloud-engineer"], isClickable: true } ] }, { categoryName: "Frameworks & Tools", roles: ["robotics-swe", "cv-engineer", "edge-engineer", "fullstack-swe", "cloud-engineer", "ai-agent-engineer"], skills: [ { name: "ReactJS", id: "reactjs", roles: ["fullstack-swe", "cloud-engineer"], isClickable: true }, { name: "Node.js", id: "nodejs", roles: ["fullstack-swe", "cloud-engineer"], isClickable: true }, { name: "FastAPI", id: "fastapi", roles: ["fullstack-swe", "cloud-engineer", "ai-agent-engineer", "cv-engineer"], isClickable: true }, { name: "NestJS", id: "nestjs", roles: ["fullstack-swe"], isClickable: true }, { name: "ROS/ROS2", id: "ros", roles: ["robotics-swe"], isClickable: true }, { name: "Docker", id: "docker", roles: ["robotics-swe", "cv-engineer", "edge-engineer", "fullstack-swe", "cloud-engineer", "ai-agent-engineer"], isClickable: true }, { name: "Docker Swarm", id: "docker-swarm", roles: ["cloud-engineer", "fullstack-swe"], isClickable: true }, { name: "Redis", id: "redis", roles: ["fullstack-swe", "cloud-engineer", "ai-agent-engineer"], isClickable: true }, { name: "NGINX", id: "nginx", roles: ["cloud-engineer", "fullstack-swe"], isClickable: true }, { name: "GitHub Actions", id: "github-actions", roles: ["cloud-engineer", "fullstack-swe", "robotics-swe", "cv-engineer", "edge-engineer"], isClickable: true }, { name: "Bitbucket Pipelines", id: "bitbucket-pipelines", roles: ["cloud-engineer", "fullstack-swe"], isClickable: true }, { name: "MQTT", id: "mqtt", roles: ["edge-engineer", "robotics-swe", "iot-engineer", "cloud-engineer"], isClickable: true }, { name: "WebSockets", id: "websockets", roles: ["fullstack-swe"], isClickable: true } ] }, { categoryName: "Cloud Services (AWS)", roles: ["cloud-engineer", "fullstack-swe", "cv-engineer", "ai-agent-engineer"], skills: [ { name: "AWS Core (EC2, S3, VPC)", id: "aws", roles: ["cloud-engineer", "fullstack-swe", "cv-engineer", "ai-agent-engineer"], isClickable: true }, { name: "AWS Lambda", id: "aws-lambda", roles: ["cloud-engineer", "fullstack-swe", "cv-engineer", "ai-agent-engineer"], isClickable: true }, { name: "API Gateway", id: "api-gateway", roles: ["cloud-engineer", "fullstack-swe", "ai-agent-engineer"], isClickable: true }, { name: "DynamoDB", id: "dynamodb", roles: ["cloud-engineer", "fullstack-swe", "ai-agent-engineer"], isClickable: true }, { name: "S3", id: "s3", roles: ["cloud-engineer", "fullstack-swe", "cv-engineer", "ai-agent-engineer"], isClickable: true }, ] }, { categoryName: "Computer Vision & ML", roles: ["cv-engineer", "robotics-swe", "edge-engineer", "ai-agent-engineer"], skills: [ { name: "OpenCV", id: "opencv", roles: ["cv-engineer", "robotics-swe", "edge-engineer"], isClickable: true }, { name: "YOLO", id: "yolo", roles: ["cv-engineer", "edge-engineer"], isClickable: true }, { name: "TensorFlow", id: "tensorflow", roles: ["cv-engineer", "edge-engineer", "ai-agent-engineer"], isClickable: true }, { name: "PyTorch", id: "pytorch", roles: ["cv-engineer", "ai-agent-engineer", "robotics-swe"], isClickable: true }, { name: "CUDA", id: "cuda", roles: ["cv-engineer", "robotics-swe", "ai-agent-engineer"], isClickable: true }, { name: "SLAM", id: "slam", roles: ["robotics-swe"], isClickable: true }, { name: "Object Detection", id: "object-detection", roles: ["cv-engineer", "robotics-swe", "edge-engineer"], isClickable: true }, { name: "Image Processing", id: "image-processing", roles: ["cv-engineer", "robotics-swe", "edge-engineer"], isClickable: true }, { name: "OpenAI API", id: "openai", roles: ["ai-agent-engineer", "fullstack-swe", "cv-engineer"], isClickable: true }, { name: "Agentic Frameworks (Griptape)", id: "griptape", roles: ["ai-agent-engineer"], isClickable: true }, { name: "OCR", id: "ocr", roles: ["cv-engineer", "ai-agent-engineer"], isClickable: true }, ] }, { categoryName: "Databases", roles: ["fullstack-swe", "cloud-engineer", "ai-agent-engineer"], skills: [ { name: "PostgreSQL", id: "postgresql", roles: ["fullstack-swe", "cloud-engineer"], isClickable: true }, { name: "MongoDB", id: "mongodb", roles: ["fullstack-swe", "cloud-engineer", "iot-engineer"], isClickable: true }, { name: "DynamoDB", id: "dynamodb", roles: ["cloud-engineer", "fullstack-swe", "ai-agent-engineer"], isClickable: true }, { name: "MySQL", id: "mysql", roles: ["fullstack-swe"], isClickable: true }, { name: "Redis", id: "redis", roles: ["fullstack-swe", "cloud-engineer", "ai-agent-engineer"], isClickable: true } ] }, { categoryName: "Dev Tools & Practices", roles: ["robotics-swe", "cv-engineer", "edge-engineer", "fullstack-swe", "cloud-engineer", "ai-agent-engineer"], skills: [ { name: "Git", id: "git", roles: ["robotics-swe", "cv-engineer", "edge-engineer", "fullstack-swe", "cloud-engineer", "ai-agent-engineer"], isClickable: true }, { name: "Jira", id: "jira", roles: ["robotics-swe", "cv-engineer", "edge-engineer", "fullstack-swe", "cloud-engineer", "ai-agent-engineer"], isClickable: true }, { name: "CI/CD", id: "ci-cd", roles: ["cloud-engineer", "fullstack-swe", "robotics-swe", "edge-engineer", "cv-engineer"], isClickable: true }, { name: "Linux", id: "linux", roles: ["robotics-swe", "cv-engineer", "edge-engineer", "fullstack-swe", "cloud-engineer", "ai-agent-engineer"], isClickable: true }, { name: "Agile Development", id: "agile", roles: ["robotics-swe", "cv-engineer", "edge-engineer", "fullstack-swe", "cloud-engineer", "ai-agent-engineer"], isClickable: false }, { name: "Technical Leadership", id: "tech-leadership", roles: ["tech-lead", "senior-swe"], isClickable: false }, { name: "Team Management", id: "team-management", roles: ["tech-lead"], isClickable: false } ] } ];
-        const projectsData = [ { title: "Games - Role-Playing Assessment and Learning Games", imagePlaceholder: "Games Platform", duration: "Jul 2021 - Jul 2024", organization: "Talent Litmus", descriptionPoints: ["Led development of assessment games evaluating psychometric attributes, increasing hiring accuracy by 70%.", "Migrated frontend to serverless, reducing deployment time by 99%.", "Integrated OpenAI/StabilityAI for content generation."], skills: ["aws-lambda", "s3", "api-gateway", "dynamodb", "python", "javascript", "reactjs", "nodejs", "serverless", "openai", "stabilityai", "tensorflow", "ci-cd", "docker", "docker-swarm", "bitbucket-pipelines", "jira", "agile", "aws"], roles: ["Tech Lead", "Full Stack", "Cloud Architect"] }, { title: "Griptape AI Contribution", imagePlaceholder: "Griptape AI", duration: "Oct 2023 - Jan 2024", organization: "Open Source", descriptionPoints: ["Developed Redis Conversation memory driver for the Griptape RAG framework, enabling stateful AI agent interactions."], skills: ["redis", "python", "api-development", "git", "griptape"], roles: ["Open Source Contributor", "AI Engineer"] }, { title: "Automated Attendance System", imagePlaceholder: "Attendance System", duration: "Aug 2020 - Jan 2021", organization: "Thinglogix", descriptionPoints: ["Engineered multithreaded device-side application for video processing & on-device inference, reducing cloud costs via edge computing."], skills: ["python", "opencv", "cplusplus", "iot", "edge-computing", "video-streaming", "multithreading", "linux", "object-detection", "tensorflow"], roles: ["Software Developer", "Edge Computing Engineer", "CV Engineer"] }, { title: "OCR APIs for Document Processing", imagePlaceholder: "OCR API", duration: "Jun 2019 - Oct 2019", organization: "Thinglogix", descriptionPoints: ["Orchestrated APIs for document detection & auto-form filling, reducing manual effort by 90%.", "Trained/deployed Stamp/Signature detection model on AWS Lambda, processing large PDFs efficiently."], skills: ["aws-lambda", "ocr", "python", "machine-learning", "api-development", "yolo", "opencv", "aws", "deep-learning"], roles: ["ML Engineer", "API Developer", "CV Engineer"] }, { title: "Foundry - IoT Platform", imagePlaceholder: "Foundry IoT", duration: "Jun 2018 - Jul 2021", organization: "Thinglogix", descriptionPoints: ["Developed a multi-tenant, auto-scaling IoT platform for device management, reducing application development time by 80%."], skills: ["iot", "cloud-computing", "python", "nodejs", "aws", "microservices", "docker", "mongodb", "mqtt", "javascript", "linux", "api-gateway", "websockets"], roles: ["Full Stack Developer", "Cloud Architect", "IoT Engineer"] }, { title: "Robotic & Tactile Sensor Integration", imagePlaceholder: "Robotics Research", duration: "Jan 2025 - Present", organization: "AEMN Lab, UB", descriptionPoints: ["Developing a multi-language package (Python, C++) for robotic arm (Universal Robots) and tactile sensor integration using ROS2 framework."], skills: ["python", "cplusplus", "ros", "robotics", "sensor-integration", "linux", "git", "research"], roles: ["Research Assistant", "Robotics SWE"] } ];
+
+        // --- Reduced Roles (Research Scientist Removed) ---
+        const TARGET_ROLES = {
+            'all': 'Overview',
+            'robotics-swe': 'Robotics SWE',
+            'cv-engineer': 'CV Engineer',
+            'edge-engineer': 'Edge Computing',
+            'aiml-engineer': 'AI/ML Engineer',
+            'fullstack-swe': 'Full Stack',
+            'cloud-engineer': 'Cloud Engineer'
+            // Removed 'research-scientist'
+        };
+        const ALL_ROLES = Object.keys(TARGET_ROLES); // Use this for checking role validity
+
+        // --- Updated About Me, Header, Resume Data (Research Scientist Removed) ---
+        const aboutMeData = {
+            'all': "Versatile software engineer with 6+ years of industry experience and 3 years in leadership roles. Proven ability across Computer Vision, Edge Computing, Robotics, Cloud Solutions, Full Stack Development and AI/ML. Passionate about building efficient, scalable, and impactful technology.",
+            'robotics-swe': "Robotics Software Engineer with 6+ years of experience designing, developing, and deploying software for autonomous systems. Expertise in ROS/ROS2, C++, Python, SLAM, navigation, and sensor integration. Proven ability to lead and deliver complex robotics projects.",
+            'cv-engineer': "Computer Vision Engineer with 6+ years of experience developing and implementing advanced CV and ML solutions. Specialized in object detection/tracking, image processing, deep learning (TensorFlow/PyTorch), and deploying models on edge devices and cloud platforms (AWS).",
+            'edge-engineer': "Software Engineer with 6+ years of experience, specializing in Edge Computing. Expertise in creating efficient, low-latency applications for resource-constrained devices using Python, C++, IoT protocols (MQTT), Docker, and on-device ML inference (OpenCV, TensorFlow Lite).",
+            'aiml-engineer': "AI/ML Engineer with 6+ years of experience applying machine learning techniques to solve real-world problems. Proficient in Python, TensorFlow/PyTorch, data processing, model training/evaluation, and deploying ML solutions on cloud (AWS) and edge platforms. Experience with LLM integration & agentic frameworks.",
+            'fullstack-swe': "Full Stack Engineer with 6+ years of experience building and scaling robust web applications and APIs. Proficient in JavaScript/TypeScript (React, Node.js), Python (FastAPI), various databases (SQL/NoSQL), microservices architecture, CI/CD, and AWS cloud services.",
+            'cloud-engineer': "Cloud Engineer with 6+ years of experience designing, implementing, and managing scalable and resilient cloud infrastructure, primarily on AWS. Expertise in serverless computing (Lambda), containerization (Docker), IaC (CloudFormation), CI/CD pipelines, monitoring (CloudWatch), and MLOps principles."
+        };
+        const headerSubtitleData = {
+            'all': "Software Engineer | CV | Edge | Robotics | Full Stack | Cloud | AI/ML",
+            'robotics-swe': "Robotics Software Engineer | ROS/ROS2 | C++ | Python | Autonomous Systems",
+            'cv-engineer': "Computer Vision Engineer | Deep Learning | ML Deployment | OpenCV | Python",
+            'edge-engineer': "Edge Computing Engineer | IoT | On-Device ML | C++ | Python",
+            'aiml-engineer': "AI/ML Engineer | TensorFlow | PyTorch | Model Deployment | Python",
+            'fullstack-swe': "Full Stack Engineer | React | Node.js | Python | AWS | Scalable Web Apps",
+            'cloud-engineer': "Cloud Engineer | AWS | Serverless | DevOps | MLOps Infrastructure"
+        };
+        const resumeData = { // Research Scientist Removed
+            'all': { href: "#" },
+            'robotics-swe': { href: "#robotics-resume-link" },
+            'cv-engineer': { href: "#cv-resume-link" },
+            'edge-engineer': { href: "#edge-resume-link" },
+            'aiml-engineer': { href: "#aiml-resume-link" },
+            'fullstack-swe': { href: "#fullstack-resume-link" },
+            'cloud-engineer': { href: "#cloud-resume-link" }
+        };
+
+        // --- Project Data with Updated Skills (Keep previous version) ---
+        const projectsData = [
+            { title: "Foundry - IoT Platform", imagePlaceholder: "Foundry IoT", duration: "Jun 2018 - Jul 2021", organization: "Thinglogix",
+              descriptionPoints: ["Developed a multi-tenant, auto-scaling IoT platform using microservices for device management, reducing application dev time by 80%.", "Utilized AWS services including Lambda, SQS, SES, DynamoDB, Cognito, CloudFormation, and CloudWatch.", "Built frontend components with Angular and backend services with Node.js & Python."],
+              skills: ["iot", "cloud-computing", "python", "nodejs", "aws", "microservices", "docker", "mongodb", "postgresql", "mqtt", "javascript", "linux", "api-gateway", "websockets", "angular", "aws-lambda", "aws-sqs", "aws-ses", "dynamodb", "aws-cognito", "aws-cfn", "aws-cw", "aws-s3", "aws-cloudfront"],
+              roles: ["Full Stack Developer", "Cloud Architect", "IoT Engineer"] },
+             { title: "OCR APIs for Document Processing", imagePlaceholder: "OCR API", duration: "Jun 2019 - Oct 2019", organization: "Thinglogix",
+               descriptionPoints: ["Orchestrated serverless APIs (Lambda, API Gateway) for document detection & auto-form filling via OCR (AWS Textract, Google OCR), reducing manual effort by 90%.", "Trained & deployed a TensorFlow-based Stamp/Signature detection model on Lambda.", "Integrated with AWS WorkMail and Salesforce."],
+               skills: ["aws-lambda", "ocr", "python", "machine-learning", "api-gateway", "aws-cfn", "tensorflow", "salesforce", "aws-textract", "google-ocr", "aws-workmail", "serverless", "aws", "deep-learning", "cv-concept"],
+               roles: ["ML Engineer", "API Developer", "CV Engineer", "Cloud Engineer"] },
+             { title: "Automated Attendance System", imagePlaceholder: "Attendance System", duration: "Aug 2020 - Jan 2021", organization: "Thinglogix",
+               descriptionPoints: ["Engineered a C++/Python edge application on Nvidia Jetson for multi-camera video processing & on-device face detection/recognition.", "Implemented robust multi-threading for cameras, image buffering (for network/GPU issues), MQTT/HTTP communication (with SQS backup), and periodic camera reconnection."],
+               skills: ["python", "opencv", "cplusplus", "iot", "edge-computing", "multithreading", "linux", "object-detection", "tensorflow", "nvidia-jetson", "image-processing", "face-detection", "gps", "aws-sqs", "docker", "mqtt", "cv-concept"],
+               roles: ["Software Developer", "Edge Computing Engineer", "CV Engineer"] },
+            { title: "Games - Role-Playing Assessment Platform", imagePlaceholder: "Games Platform", duration: "Jul 2021 - Jul 2024", organization: "Talent Litmus",
+              descriptionPoints: ["Led development of web-based assessment games (React/Angular frontends, Node.js/NestJS/ExpressJS backends) evaluating psychometric attributes.", "Managed deployment using NGINX, EC2, S3, CloudFront, Route53, MongoDB, Redis.", "Integrated OpenAI/StabilityAI APIs. Implemented CI/CD pipelines (Bitbucket) & Docker Swarm.", "Achieved 70% increase in hiring accuracy & supported 40k concurrent users."],
+              skills: ["python", "javascript", "reactjs", "nodejs", "serverless", "openai", "stabilityai", "tensorflow", "ci-cd", "docker", "docker-swarm", "bitbucket-pipelines", "jira", "agile", "aws", "angular", "nestjs", "expressjs", "mongodb", "s3", "aws-cloudfront", "nginx", "aws-ec2", "aws-route53", "redis", "typescript", "ai", "aws-lambda", "api-gateway", "dynamodb"],
+              roles: ["Tech Lead", "Full Stack", "Cloud Architect"] },
+            { title: "Griptape AI Contribution", imagePlaceholder: "Griptape AI", duration: "Oct 2023 - Jan 2024", organization: "Open Source",
+              descriptionPoints: ["Developed Redis Conversation memory driver for the Griptape RAG framework, enabling stateful AI agent interactions."],
+              skills: ["redis", "python", "api-development", "git", "griptape", "ai"],
+              roles: ["Open Source Contributor", "AI Engineer"] },
+            { title: "Robotic & Tactile Sensor Integration", imagePlaceholder: "Robotics Research", duration: "Jan 2025 - Present", organization: "AEMN Lab, UB",
+              descriptionPoints: ["Developing a multi-language package (Python, C++) for robotic arm (Universal Robots) and tactile sensor integration using ROS2 framework.", "Utilizing CMake, NumPy, Pandas, and Matplotlib for development and analysis."],
+              skills: ["python", "cplusplus", "ros", "robotics", "sensor-integration", "linux", "git", "research", "cmake", "numpy", "pandas", "matplotlib", "machine-learning"],
+              roles: ["Research Assistant", "Robotics SWE"] }
+        ];
+
+        // --- Skills Data Definition (Includes all potentially relevant skills initially) ---
+        let allPossibleSkills = [
+             { categoryName: "Programming Languages", roles: ALL_ROLES, skills: [ { name: "Python", id: "python", roles: ['robotics-swe', 'cv-engineer', 'edge-engineer', 'fullstack-swe', 'cloud-engineer', 'aiml-engineer'], isClickable: true }, { name: "C/C++", id: "cplusplus", roles: ['robotics-swe', 'cv-engineer', 'edge-engineer'], isClickable: true }, { name: "JavaScript", id: "javascript", roles: ['fullstack-swe', 'cloud-engineer'], isClickable: true }, { name: "TypeScript", id: "typescript", roles: ['fullstack-swe', 'cloud-engineer'], isClickable: true } ] },
+             { categoryName: "Frameworks & Libraries", roles: ALL_ROLES, skills: [ { name: "ReactJS", id: "reactjs", roles: ['fullstack-swe'], isClickable: true }, { name: "Angular", id: "angular", roles: ['fullstack-swe'], isClickable: true }, { name: "Node.js", id: "nodejs", roles: ['fullstack-swe', 'cloud-engineer'], isClickable: true }, { name: "FastAPI", id: "fastapi", roles: ['fullstack-swe', 'cloud-engineer', 'aiml-engineer'], isClickable: true }, { name: "NestJS", id: "nestjs", roles: ['fullstack-swe'], isClickable: true }, { name: "ExpressJS", id: "expressjs", roles: ['fullstack-swe'], isClickable: true }, { name: "ROS/ROS2", id: "ros", roles: ['robotics-swe'], isClickable: true }, { name: "OpenCV", id: "opencv", roles: ['cv-engineer', 'robotics-swe', 'edge-engineer', 'aiml-engineer'], isClickable: true }, { name: "TensorFlow", id: "tensorflow", roles: ['cv-engineer', 'edge-engineer', 'aiml-engineer'], isClickable: true }, { name: "PyTorch", id: "pytorch", roles: ['cv-engineer', 'aiml-engineer', 'robotics-swe'], isClickable: true }, { name: "Griptape", id: "griptape", roles: ['aiml-engineer'], isClickable: true }, { name: "WebSockets", id: "websockets", roles: ['fullstack-swe', 'cloud-engineer'], isClickable: true }, { name: "Matplotlib", id: "matplotlib", roles: ['aiml-engineer', 'robotics-swe'], isClickable: true } ] },
+             { categoryName: "Data Science & Databases", roles: ALL_ROLES, skills: [ { name: "NumPy", id: "numpy", roles: ['cv-engineer', 'aiml-engineer', 'robotics-swe', 'edge-engineer'], isClickable: true }, { name: "Pandas", id: "pandas", roles: ['aiml-engineer', 'fullstack-swe', 'robotics-swe'], isClickable: true }, { name: "PostgreSQL", id: "postgresql", roles: ['fullstack-swe', 'cloud-engineer', 'aiml-engineer'], isClickable: true }, { name: "MongoDB", id: "mongodb", roles: ['fullstack-swe', 'cloud-engineer', 'iot-engineer'], isClickable: true }, { name: "DynamoDB", id: "dynamodb", roles: ['cloud-engineer', 'fullstack-swe', 'aiml-engineer'], isClickable: true }, { name: "Redis", id: "redis", roles: ['fullstack-swe', 'cloud-engineer', 'aiml-engineer'], isClickable: true } ] },
+             { categoryName: "Cloud Services (AWS)", roles: ALL_ROLES, skills: [ { name: "Core (EC2, S3, VPC)", id: "aws", roles: ['cloud-engineer', 'fullstack-swe', 'cv-engineer', 'aiml-engineer'], isClickable: true }, { name: "Lambda", id: "aws-lambda", roles: ['cloud-engineer', 'fullstack-swe', 'cv-engineer', 'aiml-engineer'], isClickable: true }, { name: "API Gateway", id: "api-gateway", roles: ['cloud-engineer', 'fullstack-swe', 'aiml-engineer'], isClickable: true }, { name: "S3", id: "s3", roles: ['cloud-engineer', 'fullstack-swe', 'cv-engineer', 'aiml-engineer'], isClickable: true }, { name: "SQS", id: "aws-sqs", roles: ['cloud-engineer', 'edge-engineer', 'fullstack-swe'], isClickable: true }, { name: "SES", id: "aws-ses", roles: ['cloud-engineer', 'fullstack-swe'], isClickable: true }, { name: "Cognito", id: "aws-cognito", roles: ['cloud-engineer', 'fullstack-swe'], isClickable: true }, { name: "CloudFront", id: "aws-cloudfront", roles: ['cloud-engineer', 'fullstack-swe'], isClickable: true }, { name: "Route53", id: "aws-route53", roles: ['cloud-engineer', 'fullstack-swe'], isClickable: true }, { name: "CloudFormation", id: "aws-cfn", roles: ['cloud-engineer'], isClickable: true }, { name: "CloudWatch", id: "aws-cw", roles: ['cloud-engineer'], isClickable: true }, { name: "Textract", id: "aws-textract", roles: ['cloud-engineer', 'cv-engineer', 'aiml-engineer'], isClickable: true }, { name: "WorkMail", id: "aws-workmail", roles: ['cloud-engineer'], isClickable: true }, { name: "EC2", id: "aws-ec2", roles: ['cloud-engineer', 'fullstack-swe'], isClickable: true } ] },
+             { categoryName: "Hardware, Embedded & IoT", roles: ['edge-engineer', 'robotics-swe', 'iot-engineer'], skills: [ { name: "Nvidia Jetson", id: "nvidia-jetson", roles: ['edge-engineer', 'cv-engineer', 'robotics-swe'], isClickable: true }, { name: "GPS Module", id: "gps", roles: ['edge-engineer', 'robotics-swe'], isClickable: true }, { name: "IoT Concepts", id: "iot", roles: ['edge-engineer', 'robotics-swe', 'cloud-engineer', 'fullstack-swe'], isClickable: true }, { name: "MQTT", id: "mqtt", roles: ['edge-engineer', 'robotics-swe', 'cloud-engineer'], isClickable: true }, { name: "Multithreading", id: "multithreading", roles: ['edge-engineer', 'robotics-swe', 'cplusplus-dev'], isClickable: true }, { name: "CUDA", id: "cuda", roles: ['cv-engineer', 'robotics-swe', 'aiml-engineer', 'edge-engineer'], isClickable: true } ] },
+             { categoryName: "AI/ML & CV Concepts", roles: ['cv-engineer', 'robotics-swe', 'edge-engineer', 'aiml-engineer'], skills: [ { name: "AI Concepts", id: "ai", roles: ['aiml-engineer', 'cv-engineer', 'robotics-swe'], isClickable: true }, { name: "Machine Learning", id: "machine-learning", roles: ['cv-engineer', 'aiml-engineer', 'edge-engineer', 'robotics-swe'], isClickable: true }, { name: "Deep Learning", id: "deep-learning", roles: ['cv-engineer', 'aiml-engineer'], isClickable: true }, { name: "Computer Vision", id: "cv-concept", roles: ['cv-engineer', 'robotics-swe', 'edge-engineer', 'aiml-engineer'], isClickable: true }, { name: "Object Detection", id: "object-detection", roles: ['cv-engineer', 'robotics-swe', 'edge-engineer', 'aiml-engineer'], isClickable: true }, { name: "Image Processing", id: "image-processing", roles: ['cv-engineer', "edge-engineer", 'robotics-swe', 'aiml-engineer'], isClickable: true }, { name: "Face Detection", id: "face-detection", roles: ['cv-engineer', 'edge-engineer'], isClickable: true }, { name: "OCR", id: "ocr", roles: ['cv-engineer', 'aiml-engineer'], isClickable: true }, { name: "OpenAI API", id: "openai", roles: ['aiml-engineer', 'fullstack-swe', 'cv-engineer'], isClickable: true }, { name: "SLAM", id: "slam", roles: ['robotics-swe', 'cv-engineer'], isClickable: true } ] },
+             { categoryName: "Dev Tools, Practices & Integrations", roles: ALL_ROLES, skills: [ { name: "Git", id: "git", roles: ALL_ROLES, isClickable: true }, { name: "Docker", id: "docker", roles: ALL_ROLES, isClickable: true }, { name: "Docker Swarm", id: "docker-swarm", roles: ['cloud-engineer', 'fullstack-swe'], isClickable: true }, { name: "CI/CD", id: "ci-cd", roles: ['cloud-engineer', 'fullstack-swe', 'robotics-swe', 'edge-engineer', 'cv-engineer'], isClickable: true }, { name: "Bitbucket Pipelines", id: "bitbucket-pipelines", roles: ['cloud-engineer', 'fullstack-swe'], isClickable: true }, { name: "Linux", id: "linux", roles: ALL_ROLES, isClickable: true }, { name: "CMake", id: "cmake", roles: ['robotics-swe', 'cplusplus'], isClickable: true }, { name: "Jira", id: "jira", roles: ALL_ROLES, isClickable: true }, { name: "Agile Development", id: "agile", roles: ALL_ROLES, isClickable: false }, { name: "Salesforce Integration", id: "salesforce", roles: ['cloud-engineer', 'fullstack-swe'], isClickable: true }, { name: "Google OCR", id: "google-ocr", roles: ['cloud-engineer', 'cv-engineer', 'aiml-engineer'], isClickable: true }, { name: "NGINX", id: "nginx", roles: ['cloud-engineer', 'fullstack-swe'], isClickable: true }, { name: "Technical Leadership", id: "tech-leadership", roles: ['tech-lead', 'senior-swe'], isClickable: false }, { name: "Team Management", id: "team-management", roles: ['tech-lead'], isClickable: false } ] }
+        ];
+
+        // --- Function to get all unique skill IDs used in projects and GRA + Exceptions ---
+         function getUsedSkillIds() {
+             const usedIds = new Set();
+             const graSkills = ['cplusplus', 'ros', 'python', 'cmake', 'numpy', 'pandas', 'matplotlib', 'machine-learning'];
+             graSkills.forEach(id => usedIds.add(id));
+             projectsData.forEach(project => {
+                 if (Array.isArray(project.skills)) {
+                     project.skills.forEach(id => usedIds.add(id));
+                 }
+             });
+             // Exceptions & Fundamentals to KEEP
+             const exceptions = ['deep-learning', 'cv-concept', 'ai', 'cuda', 'robotics', 'iot', 'cloud-computing', 'javascript', 'typescript', 'git', 'linux', 'docker', 'ci-cd', 'agile'];
+             exceptions.forEach(id => usedIds.add(id));
+             console.log("Used Skill IDs (including exceptions/fundamentals):", usedIds);
+             return usedIds;
+         }
+
+         // --- Prune skillsData based on usage ---
+         const usedSkillIds = getUsedSkillIds();
+         const prunedSkillsData = allPossibleSkills.map(category => {
+             const relevantSkills = category.skills.filter(skill => usedSkillIds.has(skill.id));
+              // Update roles for remaining skills to only include roles from the final TARGET_ROLES list
+              relevantSkills.forEach(skill => {
+                   if (Array.isArray(skill.roles)) {
+                       skill.roles = skill.roles.filter(role => TARGET_ROLES.hasOwnProperty(role));
+                   }
+              });
+             if (relevantSkills.length > 0) {
+                  // Update category roles based on the roles of the skills remaining within it
+                  const categoryRolesSet = new Set();
+                  relevantSkills.forEach(skill => {
+                       if(Array.isArray(skill.roles)) skill.roles.forEach(role => categoryRolesSet.add(role));
+                  });
+                  // Add 'all' role if needed, convert set to array
+                  const finalCategoryRoles = ['all', ...Array.from(categoryRolesSet)];
+                 return { ...category, skills: relevantSkills, roles: finalCategoryRoles };
+             }
+             return null;
+         }).filter(category => category !== null);
+
+         console.log("Final Pruned Skills Data:", prunedSkillsData);
+
+        // --- Education & Contact Data (Keep previous) ---
         const educationData = [ { university: "University at Buffalo", location: "Buffalo, NY", degree: "Master of Science in Robotics", graduation: "Dec 2025", courses: ["Intro to Machine Learning", "Computer Vision and Image Processing", "Robotics Algorithms", "GPU Programming"] }, { university: "Poornima University", location: "Jaipur, India", degree: "Bachelor of Technology in Computer Engineering", graduation: "May 2018", courses: ["Operating system", "DBMS", "Data Structures and algorithms", "Digital Electronics", "Microprocessor and interfaces", "Computer Networks", "Artificial intelligence", "Neural Network", "Real time system", "Distributed systems", "Embedded systems", "Cloud Computing", "Mobile Computing"] } ];
         const contactData = { email: "torabshaikh5@gmail.com", linkedin: "https://linkedin.com/in/torabshaikh", github: "https://github.com/torabshaikh", blog: "https://cloudnode.tech", address: "Buffalo, NY" };
 
         // ===========================================
-        // HTML GENERATION FUNCTIONS
+        // HTML GENERATION FUNCTIONS (Definitions remain the same)
         // ===========================================
-        function generateAboutMeHTML(roleId) { const container = document.getElementById('about-text-container'); const subtitleElement = document.getElementById('header-subtitle'); if (!container || !subtitleElement) return; const aboutText = aboutMeData[roleId] || aboutMeData['all']; const subtitleText = headerSubtitleData[roleId] || headerSubtitleData['all']; container.innerHTML = `<p>${aboutText}</p>`; subtitleElement.textContent = subtitleText; }
-        function generateSkillsHTML(data) { const container = document.querySelector('#skills .skills-container'); if (!container) return; let html = ''; const skillIdToNameMap = {}; data.forEach(category => { html += `<div class="skills-category" style="display: none;" data-role="${category.roles.join(' ')}"><h3>${category.categoryName}</h3><div class="skill-badges">`; category.skills.forEach(skill => { const skillRoles = skill.roles.join(' '); const isClickableClass = skill.isClickable ? 'skill-badge' : ''; const dataSkillAttr = skill.isClickable ? `data-skill="${skill.id}"` : ''; html += `<span class="badge ${isClickableClass}" style="display: none;" ${dataSkillAttr} data-role="${skillRoles}">${skill.name}</span>`; skillIdToNameMap[skill.id] = skill.name; }); html += `</div></div>`; }); container.innerHTML = html; return skillIdToNameMap; }
-        function generateProjectsHTML(data, skillIdToNameMap) { const container = document.getElementById('project-timeline'); if (!container) { console.error("Project timeline container not found"); return; } let html = ''; if (!data || data.length === 0) { container.innerHTML = '<p style="text-align: center; color: var(--muted);">No projects to display.</p>'; return; } data.forEach((project, index) => { const animation = (index % 2 === 0) ? 'fade-right' : 'fade-left'; const skillClasses = project.skills.map(id => `skill-${id}`).join(' '); const rolesText = project.roles.join(', '); let condensedSkillsHTML = project.skills.slice(0, 5).map(id => { const skillName = skillIdToNameMap[id] || id.replace('-', ' '); return `<span>${skillName}</span>`; }).join(''); html += `<div class="entry mix ${skillClasses}" data-aos="${animation}" data-aos-duration="600"><div class="entry-visible"><h3>${project.title}</h3><p><strong>Org:</strong> ${project.organization}</p><p><strong>Duration:</strong> ${project.duration}</p><div class="skills-list-condensed" title="${project.skills.map(id => skillIdToNameMap[id] || id).join(', ')}"><strong>Skills:</strong> ${condensedSkillsHTML}</div></div><div class="entry-hidden"><div class="project-image">${project.imagePlaceholder}</div><ul>${project.descriptionPoints.map(point => `<li>${point}</li>`).join('')}</ul><span class="role"><strong>Involved Roles:</strong> ${rolesText}</span></div></div>`; }); container.innerHTML = html; console.log(`Generated ${data.length} projects.`); }
-        function generateResumeLinksHTML(roleId) { const container = document.getElementById('resume-links-container'); if (!container) return; const resumeInfo = resumeData[roleId] || resumeData['all']; const buttonText = "Download Resume"; container.innerHTML = `<a href="${resumeInfo.href}" target="_blank" rel="noopener noreferrer">${buttonText}</a>`; } // Uses generic text
-        function generateEducationHTML(data) { const container = document.getElementById('education-content'); if (!container) return; let html = ''; data.forEach(edu => { html += `<div class="education-entry"><h3>${edu.degree}</h3><p><strong>University:</strong> ${edu.university} | ${edu.location}</p><p><strong>Graduation:</strong> ${edu.graduation}</p>${edu.courses && edu.courses.length > 0 ? `<p class="courses"><strong>Courses:</strong> ${edu.courses.join(', ')}</p>` : ''}</div>`; }); container.innerHTML = html; }
-        function generateContactHTML(data) { // Updated for new layout and icons
-             const container = document.getElementById('contact-content');
-             if (!container) return;
-             container.innerHTML = `
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope contact-icon"></i>
-                        <div class="contact-details">
-                            <strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a>
-                        </div>
-                    </div>
-                     <div class="contact-item">
-                         <i class="fab fa-linkedin contact-icon"></i>
-                         <div class="contact-details">
-                             <strong>LinkedIn:</strong> <a href="${data.linkedin}" target="_blank" rel="noopener noreferrer">linkedin.com/in/torabshaikh</a>
-                         </div>
-                    </div>
-                     <div class="contact-item">
-                         <i class="fab fa-github contact-icon"></i>
-                         <div class="contact-details">
-                             <strong>GitHub:</strong> <a href="${data.github}" target="_blank" rel="noopener noreferrer">github.com/torabshaikh</a>
-                         </div>
-                    </div>
-                    <div class="contact-item">
-                         <i class="fas fa-rss contact-icon"></i> <div class="contact-details">
-                             <strong>Blog:</strong> <a href="${data.blog}" target="_blank" rel="noopener noreferrer">CloudNode.tech</a>
-                         </div>
-                     </div>
-                     <div class="contact-item">
-                         <i class="fas fa-map-marker-alt contact-icon"></i>
-                         <div class="contact-details">
-                              <strong>Location:</strong> <span>${data.address}</span>
-                         </div>
-                    </div>
-                </div>`;
-        }
+        function generateAboutMeHTML(roleId) { const container = document.getElementById('about-text-container'); const subtitleElement = document.getElementById('header-subtitle'); if (!container || !subtitleElement) {console.error("Missing About/Subtitle container"); return; } const aboutText = aboutMeData[roleId] || aboutMeData['all']; const subtitleText = headerSubtitleData[roleId] || headerSubtitleData['all']; container.innerHTML = `<p>${aboutText}</p>`; if(subtitleElement) subtitleElement.textContent = subtitleText; console.log("generateAboutMeHTML: Updated for role:", roleId); }
+        function generateSkillsHTML(data) { const container = document.querySelector('#skills .skills-container'); if (!container) { console.error("Skills container not found!"); return {}; } container.innerHTML = ''; let html = ''; const skillIdToNameMap = {}; if (!data || !Array.isArray(data)) { console.error("Invalid skillsData"); return {};} data.forEach(category => { if (!category || !category.categoryName || !Array.isArray(category.roles) || !Array.isArray(category.skills)) { console.warn("Skipping invalid category:", category); return; } const categoryRoles = category.roles.join(' '); html += `<div class="skills-category" style="display: none;" data-role="${categoryRoles}"><h3>${category.categoryName}</h3><div class="skill-badges">`; category.skills.forEach(skill => { if (!skill || !skill.name || !skill.id || !Array.isArray(skill.roles)) { console.warn("Skipping invalid skill:", skill); return; } const skillRoles = skill.roles.join(' '); const isClickableClass = skill.isClickable ? 'skill-badge' : ''; const dataSkillAttr = skill.isClickable ? `data-skill="${skill.id}"` : ''; html += `<span class="badge ${isClickableClass}" style="display: none;" ${dataSkillAttr} data-role="${skillRoles}">${skill.name}</span>`; skillIdToNameMap[skill.id] = skill.name; }); html += `</div></div>`; }); container.innerHTML = html; console.log("generateSkillsHTML: Generated."); return skillIdToNameMap; }
+        function generateProjectsHTML(data, skillIdToNameMap) { const container = document.getElementById('project-timeline'); if (!container) { console.error("Project timeline container not found!"); return; } container.innerHTML = ''; let html = ''; if (!data || !Array.isArray(data) || data.length === 0) { console.warn("Project data invalid/empty."); container.innerHTML = '<p style="text-align: center; color: var(--muted);">No projects found.</p>'; return; } console.log(`generateProjectsHTML: Generating ${data.length} projects.`); try { data.forEach((project, index) => { if (!project || typeof project !== 'object') { console.warn(`Skipping invalid project at index ${index}`); return; } const animation = (index % 2 === 0) ? 'fade-right' : 'fade-left'; const skillClasses = Array.isArray(project.skills) ? project.skills.map(id => `skill-${id}`).join(' ') : ''; const rolesText = Array.isArray(project.roles) ? project.roles.join(', ') : 'N/A'; let condensedSkillsHTML = ''; if (Array.isArray(project.skills)) { condensedSkillsHTML = project.skills.slice(0, 5).map(id => { const skillName = skillIdToNameMap[id] || id.replace(/-/g, ' '); return `<span>${skillName}</span>`; }).join(''); } const descriptionPointsHTML = Array.isArray(project.descriptionPoints) ? project.descriptionPoints.map(point => `<li>${point || ''}</li>`).join('') : ''; const title = project.title || 'Untitled Project'; const org = project.organization || 'N/A'; const duration = project.duration || 'N/A'; const placeholder = project.imagePlaceholder || 'Image'; const skillsTitleAttr = Array.isArray(project.skills) ? project.skills.map(id => skillIdToNameMap[id] || id).join(', ') : ''; html += `<div class="entry mix ${skillClasses}" data-aos="${animation}" data-aos-duration="600"><div class="entry-visible"><h3>${title}</h3><p><strong>Org:</strong> ${org}</p><p><strong>Duration:</strong> ${duration}</p><div class="skills-list-condensed" title="${skillsTitleAttr}"><strong>Skills:</strong> ${condensedSkillsHTML}</div></div><div class="entry-hidden"><div class="project-image">${placeholder}</div><ul>${descriptionPointsHTML}</ul><span class="role"><strong>Involved Roles:</strong> ${rolesText}</span></div></div>`; }); } catch (error) { console.error("Error during project HTML generation loop:", error); container.innerHTML = '<p style="text-align: center; color: red;">Error generating projects.</p>'; return; } if (html.length > 0) { try { container.innerHTML = html; console.log(`generateProjectsHTML: Assigned HTML. Child count: ${container.children.length}`); if (!container.querySelector('.entry')) { console.error("CRITICAL FAILURE: Assigned project HTML, but NO '.entry' found after!"); } } catch(e) { console.error("Error setting innerHTML for projects:", e); container.innerHTML = '<p style="text-align: center; color: red;">Error displaying projects.</p>'; } } else { console.warn("generateProjectsHTML: Generated HTML empty."); container.innerHTML = '<p style="text-align: center; color: var(--muted);">No projects generated.</p>'; } }
+        function generateResumeLinksHTML(roleId) { const container = document.getElementById('resume-links-container'); if (!container) { console.error("Resume container not found!"); return; } container.innerHTML = ''; const resumeInfo = resumeData[roleId] || resumeData['all']; const buttonText = "Download Resume"; if (!resumeInfo || !resumeInfo.href) { console.warn(`No resume info for role: ${roleId}`); container.innerHTML = '<p>Resume link unavailable.</p>'; return; } container.innerHTML = `<a href="${resumeInfo.href}" target="_blank" rel="noopener noreferrer">${buttonText}</a>`; console.log("generateResumeLinksHTML: Updated for role:", roleId); }
+        function generateEducationHTML(data) { const container = document.getElementById('education-content'); if (!container) { console.error("Education container not found!"); return; } container.innerHTML = ''; let html = ''; if (!data || !Array.isArray(data) || data.length === 0) { console.warn("Education data invalid/empty."); container.innerHTML = '<p>No education details.</p>'; return; } data.forEach(edu => { html += `<div class="education-entry"><h3>${edu.degree || 'Degree'}</h3><p><strong>University:</strong> ${edu.university || 'N/A'} | ${edu.location || 'N/A'}</p><p><strong>Graduation:</strong> ${edu.graduation || 'N/A'}</p>${edu.courses && edu.courses.length > 0 ? `<p class="courses"><strong>Courses:</strong> ${edu.courses.join(', ')}</p>` : ''}</div>`; }); container.innerHTML = html; console.log("generateEducationHTML: Generated."); }
+        function generateContactHTML(data) { const container = document.getElementById('contact-content'); if (!container) { console.error("Contact container not found!"); return; } container.innerHTML = ''; if (!data || typeof data !== 'object' || !data.email) { console.warn("Contact data invalid/incomplete."); container.innerHTML = '<p>Contact info unavailable.</p>'; return; } container.innerHTML = `<div class="contact-grid">${data.email ? `<div class="contact-item"><i class="fas fa-envelope contact-icon"></i><div class="contact-details"><strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a></div></div>` : ''}${data.linkedin ? `<div class="contact-item"><i class="fab fa-linkedin contact-icon"></i><div class="contact-details"><strong>LinkedIn:</strong> <a href="${data.linkedin}" target="_blank" rel="noopener noreferrer">linkedin.com/in/torabshaikh</a></div></div>` : ''}${data.github ? `<div class="contact-item"><i class="fab fa-github contact-icon"></i><div class="contact-details"><strong>GitHub:</strong> <a href="${data.github}" target="_blank" rel="noopener noreferrer">github.com/torabshaikh</a></div></div>` : ''}${data.blog ? `<div class="contact-item"><i class="fas fa-rss contact-icon"></i><div class="contact-details"><strong>Blog:</strong> <a href="${data.blog}" target="_blank" rel="noopener noreferrer">CloudNode.tech</a></div></div>` : ''}${data.address ? `<div class="contact-item"><i class="fas fa-map-marker-alt contact-icon"></i><div class="contact-details"><strong>Location:</strong> <span>${data.address}</span></div></div>` : ''}</div>`; console.log("generateContactHTML: Generated."); }
+
 
         // ===========================================
         // MAIN SCRIPT LOGIC
@@ -356,37 +382,79 @@
             let mixer = null;
 
             try {
+                console.log("DOM Loaded. Starting setup...");
+
                 const urlParams = new URLSearchParams(window.location.search);
                 let initialRole = urlParams.get('role') || 'all';
-                if (!TARGET_ROLES[initialRole]) initialRole = 'all';
+                // Validate against the final reduced TARGET_ROLES
+                if (!TARGET_ROLES[initialRole]) {
+                    initialRole = 'all';
+                }
                 let currentRoleFilter = initialRole;
                 let currentSkillFilter = 'all';
 
+                // --- Generate Content (using PRUNED skills data) ---
                 console.log("Generating initial content for role:", currentRoleFilter);
                 generateAboutMeHTML(currentRoleFilter);
-                const skillIdMap = generateSkillsHTML(skillsData);
+                const skillIdMap = generateSkillsHTML(prunedSkillsData) || {}; // Use pruned data
                 generateProjectsHTML(projectsData, skillIdMap);
                 generateEducationHTML(educationData);
                 generateContactHTML(contactData);
                 generateResumeLinksHTML(currentRoleFilter);
+                console.log("Content generation functions called.");
 
-                const rolesSection = document.getElementById('roles');
-                if (rolesSection && currentRoleFilter !== 'all') {
-                    console.log("Hiding roles section.");
-                    rolesSection.style.display = 'none';
-                } else if (rolesSection) {
-                     rolesSection.style.display = '';
-                }
+                 // --- DOM Selectors ---
+                 const rolesSection = document.getElementById('roles');
+                 const roleFilterButtons = document.querySelectorAll('.role-filter');
+                 // Select skill elements *after* generation
+                 let skillCategories = document.querySelectorAll('#skills .skills-category');
+                 let allSkillBadges = document.querySelectorAll('#skills .badge');
+                 const skillsContainer = document.querySelector('#skills .skills-container');
+                 const projectsContainer = document.getElementById('project-timeline');
+                 const navLinks = document.querySelectorAll('nav a.nav-link');
+                 const sections = document.querySelectorAll('section[id]');
 
-                document.querySelectorAll('.role-filter').forEach(btn => {
+                // --- Activate Initial Role Button ---
+                roleFilterButtons.forEach(btn => {
                     btn.classList.remove('active');
                     if (btn.dataset.roleFilter === currentRoleFilter) btn.classList.add('active');
                 });
 
-                console.log("Initializing AOS...");
-                AOS.init({ duration: 600, easing: 'ease-in-out', once: true, offset: 50 });
+                 // --- Conditionally Hide Roles Section ---
+                 if (rolesSection && currentRoleFilter !== 'all') {
+                     console.log("Hiding roles section for initial role:", currentRoleFilter);
+                     rolesSection.style.display = 'none';
+                 } else if (rolesSection) {
+                      rolesSection.style.display = '';
+                 }
 
-                const projectsContainer = document.getElementById('project-timeline');
+                // --- Initialize AOS ---
+                 console.log("Initializing AOS...");
+                 AOS.init({ duration: 600, easing: 'ease-in-out', once: true, offset: 50 });
+
+                // --- Function to Apply Role Filtering to Skills ---
+                // Defined here to be available for initial call and listener
+                 function applyRoleFilteringToSkills(roleFilter) {
+                    skillCategories = document.querySelectorAll('#skills .skills-category'); // Re-select current state
+                    allSkillBadges = document.querySelectorAll('#skills .badge'); // Re-select current state
+                     console.log(`Applying skill display filter for role: ${roleFilter}`);
+                     if (!skillCategories || !allSkillBadges) { console.error("Cannot apply role filtering: skill elements not found."); return; }
+                     skillCategories.forEach(category => {
+                         const roles = category.dataset.role ? category.dataset.role.split(' ') : [];
+                         const shouldShowCategory = roleFilter === 'all' || roles.some(r => roleFilter === r);
+                         category.style.display = shouldShowCategory ? '' : 'none';
+                     });
+                     allSkillBadges.forEach(badge => {
+                         const parentCategory = badge.closest('.skills-category');
+                         if (parentCategory && parentCategory.style.display === 'none') { badge.style.display = 'none'; return; }
+                         const roles = badge.dataset.role ? badge.dataset.role.split(' ') : [];
+                         const shouldShowBadge = roleFilter === 'all' || roles.some(r => roleFilter === r);
+                         badge.style.display = shouldShowBadge ? '' : 'none';
+                     });
+                 }
+
+
+                // --- Initialize MixItUp (Delayed) ---
                 setTimeout(() => {
                      console.log("Attempting MixItUp Initialization...");
                     if (projectsContainer && projectsContainer.querySelector('.entry')) {
@@ -399,56 +467,65 @@
                             });
                             console.log("MixItUp Initialized Successfully.");
                         } catch (e) { console.error("MixItUp Initialization Error:", e); }
-                    } else { console.warn("Project timeline container empty or not ready for MixItUp."); }
-                     // Apply initial skill filtering AFTER attempting MixItUp init
-                     applyRoleFilteringToSkills(currentRoleFilter);
-                     console.log(`Initial Role Applied Visually: ${currentRoleFilter}`);
-                }, 350);
+                    } else { console.warn("MixItUp Init: Project timeline container empty or no .entry found."); }
+
+                    // --- Apply Initial Role Filtering AFTER potential MixItUp init ---
+                    // This ensures skills visibility matches the initial role state
+                    applyRoleFilteringToSkills(currentRoleFilter);
+                    console.log(`Initial Role Skill Filtering applied for: ${currentRoleFilter}`);
+
+                }, 400); // Keep delay
 
 
-                const roleFilterButtons = document.querySelectorAll('.role-filter');
-                const skillCategories = document.querySelectorAll('#skills .skills-category');
-                const allSkillBadges = document.querySelectorAll('#skills .badge');
-                const skillsContainer = document.querySelector('#skills .skills-container');
-
-                 function applyRoleFilteringToSkills(roleFilter) {
-                     console.log(`Applying skill filter for role: ${roleFilter}`); skillCategories.forEach(category => { const roles = category.dataset.role ? category.dataset.role.split(' ') : []; const shouldShowCategory = roleFilter === 'all' || roles.some(r => roleFilter === r); category.style.display = shouldShowCategory ? '' : 'none'; }); allSkillBadges.forEach(badge => { const parentCategory = badge.closest('.skills-category'); if (parentCategory && parentCategory.style.display === 'none') { badge.style.display = 'none'; return; } const roles = badge.dataset.role ? badge.dataset.role.split(' ') : []; const shouldShowBadge = roleFilter === 'all' || roles.some(r => roleFilter === r); badge.style.display = shouldShowBadge ? '' : 'none'; });
-                 }
-
-
+                // --- Event Listener: Role Filters ---
                 roleFilterButtons.forEach(button => {
                     button.addEventListener('click', function() {
-                        if (rolesSection && rolesSection.style.display === 'none') return;
+                        if (rolesSection && rolesSection.style.display === 'none') return; // Should not be clickable if hidden
                         roleFilterButtons.forEach(btn => btn.classList.remove('active'));
                         this.classList.add('active');
                         currentRoleFilter = this.dataset.roleFilter;
                         if (window.history.pushState) { const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + (currentRoleFilter !== 'all' ? `?role=${currentRoleFilter}` : ''); window.history.pushState({path: newUrl}, '', newUrl); }
                         generateAboutMeHTML(currentRoleFilter);
                         generateResumeLinksHTML(currentRoleFilter);
-                        applyRoleFilteringToSkills(currentRoleFilter);
+                        applyRoleFilteringToSkills(currentRoleFilter); // Apply filter to skills DOM
                         if (skillsContainer) skillsContainer.querySelectorAll('.skill-badge.active').forEach(b => b.classList.remove('active'));
                         currentSkillFilter = 'all';
-                        if (mixer) { mixer.filter('all').catch(error => console.error("MixItUp filtering error on role change:", error)); console.log('Project filter reset.'); }
+                        if (mixer) { mixer.filter('all').then(() => { console.log('Project filter reset.'); }).catch(error => console.error("MixItUp reset error:", error)); }
                          else { console.warn("Mixer not available to reset project filter."); }
                         console.log(`Role filter changed to: ${currentRoleFilter}`);
                     });
                 });
 
+
+                // --- Event Listener: Clickable Skill Badges (Delegation) ---
                  if (skillsContainer) {
-                     skillsContainer.addEventListener('click', function(event) { if (event.target.matches('.skill-badge') && event.target.style.display !== 'none') { const badge = event.target; const skill = badge.dataset.skill; let targetSelector = 'all'; if (badge.classList.contains('active')) { badge.classList.remove('active'); currentSkillFilter = 'all'; targetSelector = 'all'; } else { skillsContainer.querySelectorAll('.skill-badge.active').forEach(b => b.classList.remove('active')); badge.classList.add('active'); currentSkillFilter = skill; targetSelector = `.skill-${skill}`; } if (mixer) { console.log(`Filtering projects by: ${targetSelector}`); mixer.filter(targetSelector).catch(error => console.error("MixItUp filtering error:", error)); } else { console.warn("Mixer not available for skill filtering."); } } });
+                     skillsContainer.addEventListener('click', function(event) {
+                         if (event.target.matches('.skill-badge') && event.target.style.display !== 'none') {
+                             const badge = event.target;
+                             const skill = badge.dataset.skill;
+                              if (!skill) return;
+                             let targetSelector = 'all';
+                             if (badge.classList.contains('active')) {
+                                 badge.classList.remove('active'); currentSkillFilter = 'all'; targetSelector = 'all';
+                             } else {
+                                 skillsContainer.querySelectorAll('.skill-badge.active').forEach(b => b.classList.remove('active'));
+                                 badge.classList.add('active'); currentSkillFilter = skill; targetSelector = `.skill-${skill}`;
+                             }
+                             if (mixer) { console.log(`Filtering projects by: ${targetSelector}`); mixer.filter(targetSelector).catch(error => console.error("MixItUp skill filter error:", error)); }
+                              else { console.warn("Mixer not available for skill filtering."); }
+                         }
+                     });
                  }
 
-                // Navigation Active State & Smooth Scroll
-                 const navLinks = document.querySelectorAll('nav a.nav-link');
-                 const sections = document.querySelectorAll('section[id]');
+                // --- Navigation Active State & Smooth Scroll ---
                  function updateActiveNavLink() { let currentSectionId = ''; let minDistance = Infinity; const navHeight = document.querySelector('nav').offsetHeight; const buffer = navHeight + 50; sections.forEach(section => { const rect = section.getBoundingClientRect(); if (rect.top <= buffer && rect.bottom >= buffer) { const distance = Math.abs(rect.top - buffer); if (distance < minDistance) { minDistance = distance; currentSectionId = section.getAttribute('id'); } } }); if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 50) { const lastSection = document.querySelector('section[id]:last-of-type'); if(lastSection) currentSectionId = lastSection.id; } else if (!currentSectionId && window.pageYOffset < 200 ) { currentSectionId = 'about'; } navLinks.forEach(link => { link.classList.remove('active'); const linkHref = link.getAttribute('href'); if (linkHref === `#${currentSectionId}`) { link.classList.add('active'); } }); }
                  updateActiveNavLink();
                  let scrollTimeout; window.addEventListener('scroll', () => { clearTimeout(scrollTimeout); scrollTimeout = setTimeout(updateActiveNavLink, 50); });
                  navLinks.forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const targetId = this.getAttribute('href'); const targetElement = document.querySelector(targetId); if (targetElement) { const navHeight = document.querySelector('nav').offsetHeight; const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight - 20; window.scrollTo({ top: targetPosition, behavior: 'smooth' }); } }); });
 
             } catch (error) {
-                 console.error("Major error during initialization:", error);
-                 document.body.innerHTML = '<p style="color: red; padding: 20px;">An error occurred while loading the portfolio. Please check the console.</p>';
+                 console.error("FATAL ERROR during page setup:", error);
+                 document.body.innerHTML = `<p style="color: #ff8888; background: #331111; padding: 20px; text-align: center; font-family: sans-serif;">A critical error occurred while loading the portfolio content. Please check the browser console (F12) for details. Error: ${error.message}</p>`;
             }
 
         }); // End DOMContentLoaded
