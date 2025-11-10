@@ -6,11 +6,10 @@
     <title>Torab Shaikh | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://unpkg.com/mixitup/dist/mixitup.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        /* --- CSS STYLES (NO CHANGES, KEEP PREVIOUS VERSION) --- */
+        /* Base & Layout Styles */
         :root { --background: #111115; --foreground: #e8e8e8; --accent: #8b5cf6; --accent-light: #a78bfa; --accent-glow: rgba(139, 92, 246, 0.5); --muted: #888888; --card-bg: #1f1f23; --nav-bg: #1a1a1e; --border-color: #333337; }
         ::selection { background-color: var(--accent); color: white; }
         body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: var(--background); color: var(--foreground); padding-top: 70px; overflow-x: hidden; }
@@ -25,53 +24,46 @@
         nav a.active { background-color: var(--accent); color: white; box-shadow: 0 0 10px var(--accent-glow); }
         section { max-width: 1000px; margin: 4rem auto; padding: 2.5rem; background: var(--card-bg); border-radius: 16px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); border: 1px solid var(--border-color); }
         section h2 { border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 0.7rem; margin-bottom: 2.5rem; text-align: center; width: 100%; }
-        #about { display: flex; align-items: center; gap: 2rem; }
+        
+        /* About Section */
+        #about { display: flex; align-items: center; gap: 2.5rem; }
         .about-content { flex: 1; }
+        .about-content p { line-height: 1.7; font-size: 1.05rem; }
         .profile-image-placeholder { width: 180px; height: 180px; background-color: #333; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: var(--muted); font-size: 1rem; font-weight: bold; flex-shrink: 0; border: 3px solid var(--accent-light); box-shadow: 0 0 15px var(--accent-glow); text-align: center; animation: pulse-border 2s infinite ease-in-out; object-fit: cover; }
         @keyframes pulse-border { 0% { box-shadow: 0 0 15px var(--accent-glow); } 50% { box-shadow: 0 0 25px rgba(167, 139, 250, 0.7); } 100% { box-shadow: 0 0 15px var(--accent-glow); } }
-        #roles { padding-bottom: 1rem; margin-bottom: 2rem; transition: opacity 0.3s, max-height 0.3s; }
-        #roles h2 { margin-bottom: 1.5rem; }
-        .role-filters { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
-        .role-filters button { background: none; border: 2px solid var(--accent-light); color: var(--foreground); padding: 0.6rem 1.2rem; cursor: pointer; border-radius: 18px; font-size: 0.95rem; font-weight: 500; transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease; }
-        .role-filters button:hover { background-color: var(--accent-light); color: var(--background); box-shadow: 0 0 10px var(--accent-glow); transform: translateY(-2px); }
-        .role-filters button.active { background-color: var(--accent-light); color: var(--background); box-shadow: 0 0 10px var(--accent-glow); }
-        #philosophy { text-align: center; } #philosophy .philosophy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; text-align: left; } .philosophy-card { background: rgba(255, 255, 255, 0.03); padding: 1.5rem; border-radius: 12px; border-left: 3px solid var(--accent); } .philosophy-card i { font-size: 1.8rem; color: var(--accent-light); margin-bottom: 1rem; display: block; } .philosophy-card h3 { margin-bottom: 0.5rem; font-size: 1.2rem; } .philosophy-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin: 0; }
-        #skills h3 { color: var(--accent-light); margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 600; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
-        .skills-header { display: flex; justify-content: center; align-items: center; position: relative; width: 100%; margin-bottom: 2rem; }
-        .skills-header h2 { margin-bottom: 0; display: inline-block; width: auto; }
-        #skills .skills-container { transition: opacity 0.3s ease; } #skills .skills-category { margin-bottom: 1rem; overflow: hidden; }
-        #skills .skill-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .badge { background-color: rgba(139, 92, 246, 0.2); color: var(--accent-light); border: 1px solid var(--accent); padding: 0.4rem 0.9rem; margin: 0.3rem; border-radius: 16px; font-size: 0.9rem; font-weight: 500; display: inline-block; transition: transform 0.2s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; cursor: default; }
-        .badge.skill-badge { cursor: pointer; } .badge.skill-badge:hover { transform: translateY(-2px) scale(1.03); background-color: rgba(139, 92, 246, 0.4); box-shadow: 0 2px 5px rgba(0,0,0,0.2); } .badge.skill-badge.active { background-color: var(--accent); color: white; border-color: var(--accent-light); box-shadow: 0 0 8px var(--accent-glow); }
-        .timeline { position: relative; margin: 3rem 0; padding: 1rem 0; overflow: auto; min-height: 100px; }
+
+        /* Unified Journey Timeline Styles */
+        .timeline { 
+            position: relative; 
+            margin: 3rem 0; 
+            padding: 1rem 0; 
+            overflow: auto; /* <-- FIX: Ensures the container wraps the floated entries */
+        }
         .timeline::after { content: ''; position: absolute; width: 4px; background: linear-gradient(to bottom, var(--accent-light), var(--accent), var(--background)); top: 0; bottom: 0; left: 50%; transform: translateX(-50%); z-index: 0; border-radius: 2px; }
-        .entry { background: var(--card-bg); border-radius: 12px; width: calc(50% - 50px); position: relative; margin-bottom: 2.5rem; border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); transition: transform 0.35s ease, box-shadow 0.35s ease, width 0.35s ease, opacity 0.4s ease; z-index: 1; overflow: hidden; display: block !important; opacity: 0; cursor: pointer; visibility: hidden; }
-        .entry.aos-init { visibility: visible; } .entry.aos-animate { opacity: 1; }
-        .entry.mixitup-filtered-out { opacity: 0 !important; pointer-events: none; z-index: 0; visibility: hidden !important; }
-        .timeline .entry:nth-child(odd) { float: left; clear: both; margin-left: 10px; border-left: 4px solid var(--accent); } .timeline .entry:nth-child(even) { float: right; clear: both; margin-right: 10px; border-right: 4px solid var(--accent); }
-        .entry:hover { width: calc(50% - 25px); transform: scale(1.03); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); z-index: 10; overflow: visible; }
-        .entry-visible, .entry-hidden { padding: 1.5rem; }
-        .entry-hidden { padding-top: 0; max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.4s ease-out, opacity 0.4s ease-out, padding-top 0.4s ease-out; }
-        .entry:hover .entry-hidden { padding-top: 1rem; max-height: 1000px; opacity: 1; }
-        .entry-visible h3 { margin-top: 0; color: var(--accent-light); font-weight: 600; margin-bottom: 0.5rem; }
-        .entry-visible p { color: var(--foreground); font-size: 0.9rem; line-height: 1.4; margin-bottom: 0.3rem; }
-        .entry-visible p strong { color: var(--muted); font-weight: 600; }
-        .entry .skills-list-condensed { margin-top: 0.8rem; font-size: 0.85rem; color: var(--muted); line-height: 1.5; max-height: 3em; overflow: hidden; text-overflow: ellipsis; }
-        .entry:hover .skills-list-condensed { max-height: none; }
-        .entry .skills-list-condensed span::after { content: ", "; } .entry .skills-list-condensed span:last-child::after { content: ""; } .entry:hover .skills-list-condensed span:last-child::after { content: ""; }
-        .entry-hidden ul { color: var(--foreground); font-size: 0.95rem; line-height: 1.6; margin: 0; padding-left: 20px; } .entry-hidden li { margin-bottom: 0.4rem; }
-        .entry .role { font-size: 0.9rem; color: var(--muted); margin-top: 1rem; display: block; font-weight: 600; } .entry .role strong { color: var(--muted); }
-        .entry::before { content: ''; position: absolute; top: 25px; width: 20px; height: 20px; border-radius: 50%; background: var(--accent-light); border: 4px solid var(--background); z-index: 11; box-shadow: 0 0 10px var(--accent-glow); animation: pulse-dot 2s infinite ease-in-out; }
-        @keyframes pulse-dot { 0% { transform: scale(1); } 50% { transform: scale(1.1); box-shadow: 0 0 15px rgba(167, 139, 250, 0.7); } 100% { transform: scale(1); } }
-        .timeline .entry:nth-child(odd)::before { right: -32px; transform: translateX(50%); } .timeline .entry:nth-child(even)::before { left: -32px; transform: translateX(-50%); }
-        .entry-hidden .project-image { width: 100%; border-radius: 8px; margin-bottom: 1.5rem; box-shadow: 0 3px 8px rgba(0,0,0,0.3); background-color: #444; aspect-ratio: 16 / 9; display: flex; justify-content: center; align-items: center; color: var(--muted); font-size: 1.2rem; font-weight: bold; border: 1px solid var(--border-color); overflow: hidden; }
-        .entry-hidden .project-image img { width: 100%; height: 100%; object-fit: cover; }
-        .entry-hidden h4 { color: var(--accent); margin-top: 1.5rem; margin-bottom: 0.7rem; font-weight: 600; } .entry-hidden .narrative-text { font-size: 0.95rem; line-height: 1.6; color: var(--foreground); font-style: italic; background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--accent); }
-        .hidden-by-role { display: none !important; }
+        .timeline-entry { background: var(--card-bg); border-radius: 12px; width: calc(50% - 50px); position: relative; margin-bottom: 2.5rem; border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); z-index: 1; padding: 1.5rem 2rem; }
+        .timeline .timeline-entry:nth-child(odd) { float: left; clear: both; margin-left: 10px; border-left: 4px solid var(--accent); }
+        .timeline .timeline-entry:nth-child(even) { float: right; clear: both; margin-right: 10px; border-right: 4px solid var(--accent); }
+        .timeline-entry::before { content: ''; position: absolute; top: 25px; width: 20px; height: 20px; border-radius: 50%; background: var(--accent-light); border: 4px solid var(--background); z-index: 11; box-shadow: 0 0 10px var(--accent-glow); animation: pulse-dot 2s infinite ease-in-out; }
+        @keyframes pulse-dot { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+        .timeline .timeline-entry:nth-child(odd)::before { right: -32px; transform: translateX(50%); }
+        .timeline .timeline-entry:nth-child(even)::before { left: -32px; transform: translateX(-50%); }
+        .timeline-entry h3 { margin-top: 0; }
+        .timeline-entry .role-info { font-size: 0.95rem; color: var(--muted); margin-bottom: 1.5rem; }
+        .timeline-entry .narrative-text { font-size: 0.95rem; line-height: 1.6; color: var(--foreground); font-style: italic; background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--accent); margin-bottom: 1.5rem; }
+        
+        /* Nested Project Card Styles */
+        .projects-header { color: var(--accent-light); font-weight: 600; font-size: 1.1rem; margin-top: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+        .project-card { background: rgba(255, 255, 255, 0.03); border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; border: 1px solid var(--border-color); transition: box-shadow 0.3s ease; }
+        .project-card:hover { box-shadow: 0 0 15px rgba(139, 92, 246, 0.2); }
+        .project-card-header { padding: 1rem 1.2rem; font-weight: 600; font-size: 1.05rem; background-color: rgba(139, 92, 246, 0.1); }
+        .project-card-body { padding: 1.2rem; }
+        .project-card-body ul { padding-left: 20px; margin: 0 0 1rem 0; font-size: 0.9rem; line-height: 1.6; }
+        .project-card-body li { margin-bottom: 0.5rem; }
+        .skill-badges-condensed { display: flex; flex-wrap: wrap; gap: 0.5rem; padding-top: 0.5rem; }
+        .badge { background-color: rgba(139, 92, 246, 0.2); color: var(--accent-light); border: 1px solid var(--accent); padding: 0.4rem 0.9rem; border-radius: 16px; font-size: 0.85rem; font-weight: 500; }
+
+        /* Education & Contact Styles */
         #education .education-entry { background: rgba(255, 255, 255, 0.03); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid var(--accent); }
-        #experience .entry { overflow: hidden; background: rgba(255, 255, 255, 0.03); } #experience .entry-visible, #experience .entry-hidden { padding: 1.5rem; }
-        #experience .entry-hidden { padding-top: 0; } #experience .entry-hidden ul { margin: 0; padding-left: 20px; color: var(--foreground); font-size: 0.95rem; line-height: 1.6;}
-        #experience .entry-hidden li { margin-bottom: 0.4rem; }
         #education .education-entry h3 { margin-bottom: 0.5rem; } #education .education-entry p { margin: 0.3rem 0; font-size: 0.95rem; line-height: 1.5; } #education .education-entry strong { color: var(--muted); } #education .education-entry .courses { font-size: 0.9rem; color: var(--muted); margin-top: 0.8rem; line-height: 1.4; }
         #contact { border-bottom: none; } #contact h2 { margin-bottom: 1.5rem; }
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: left; margin-top: 1rem; }
@@ -80,24 +72,39 @@
         .contact-icon { font-size: 1.8rem; color: var(--accent-light); width: 30px; text-align: center; flex-shrink: 0; }
         .contact-details { flex-grow: 1; }
         .contact-details strong { display: block; color: var(--muted); font-size: 0.9rem; margin-bottom: 0.2rem; } .contact-details span, .contact-details a { color: var(--foreground); text-decoration: none; font-size: 1rem; word-break: break-word; } .contact-details a { color: var(--accent-light); transition: color 0.3s ease; } .contact-details a:hover { color: var(--accent); text-decoration: underline; }
+        
+        /* Resume Styles */
         #resume { clear: both; margin-top: 4rem; padding-bottom: 1rem;}
         #resume h3 { color: var(--accent-light); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 0.7rem; margin-bottom: 2rem; text-align: center; width: 100%; font-size: 2rem; font-weight: 700; }
         .resume-links { text-align: center; }
         .resume-links a { color: var(--accent-light); margin: 0.5rem 1rem; text-decoration: none; font-weight: 600; transition: color 0.3s ease, text-shadow 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; display: inline-block; padding: 0.7rem 1.5rem; border: 1px solid var(--accent); border-radius: 20px; font-size: 1.1rem;}
         .resume-links a:hover { color: white; background-color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); box-shadow: 0 0 10px var(--accent-glow); }
+        
+        /* Responsive Media Queries */
         @media (max-width: 768px) {
-            body { padding-top: 60px; } nav { gap: 0.5rem; padding: 0.8rem 0; } nav a { padding: 0.5rem 0.8rem; font-size: 0.9rem; } h1 { font-size: 2.2rem; } header p { font-size: 1rem; } section { padding: 1.5rem; margin: 2rem auto; } section h2, #resume h3 { font-size: 1.6rem; } #about { flex-direction: column; text-align: center; } .profile-image-placeholder { width: 150px; height: 150px; margin-bottom: 1.5rem; } .role-filters button { padding: 0.5rem 1rem; font-size: 0.9rem; } .skills-header { flex-direction: column; gap: 1rem; margin-bottom: 1.5rem;} .resume-links a { margin: 0.5rem; padding: 0.6rem 1.2rem; font-size: 1rem;} .timeline { overflow: hidden; } .timeline::after { left: 20px; transform: translateX(0); } .entry { width: calc(100% - 50px) !important; float: none !important; clear: none !important; margin-left: 40px; margin-right: 0; border-left: 4px solid var(--accent); border-right: none; } .entry:hover { width: calc(100% - 50px) !important; transform: scale(1.02); } .timeline .entry:nth-child(odd), .timeline .entry:nth-child(even) { float: none !important; clear: none !important; margin-left: 40px; margin-right: 0; border-right: none; } .timeline .entry:nth-child(odd)::before, .timeline .entry:nth-child(even)::before { left: -12px; transform: translateX(-50%); right: auto; } .contact-grid { grid-template-columns: 1fr; } .contact-item { flex-direction: column; align-items: flex-start; text-align: left; } .contact-icon { margin-bottom: 0.5rem; }
+            body { padding-top: 60px; } 
+            nav { gap: 0.5rem; padding: 0.8rem 0; justify-content: space-around; } 
+            nav a { padding: 0.5rem 0.8rem; font-size: 0.9rem; } 
+            h1 { font-size: 2.2rem; } header p { font-size: 1rem; } 
+            section { padding: 1.5rem; margin: 2rem auto; } 
+            section h2, #resume h3 { font-size: 1.6rem; } 
+            #about { flex-direction: column; text-align: center; } 
+            .profile-image-placeholder { width: 150px; height: 150px; margin-bottom: 1.5rem; } 
+            .timeline { overflow: hidden; } /* Use hidden on mobile to contain, as floats are disabled */
+            .timeline::after { left: 20px; transform: translateX(0); } 
+            .timeline-entry { width: calc(100% - 50px) !important; float: none !important; margin-left: 40px; margin-right: 0; border-left: 4px solid var(--accent); border-right: none; }
+            .timeline .timeline-entry:nth-child(odd), .timeline .timeline-entry:nth-child(even) { float: none !important; margin-left: 40px; border-right: none; } 
+            .timeline .timeline-entry:nth-child(odd)::before, .timeline .timeline-entry:nth-child(even)::before { left: -12px; transform: translateX(-50%); right: auto; } 
+            .contact-grid { grid-template-columns: 1fr; } 
+            .contact-item { flex-direction: column; align-items: flex-start; text-align: left; } 
+            .contact-icon { margin-bottom: 0.5rem; }
         }
     </style>
 </head>
 <body>
     <nav>
         <a href="#about" class="nav-link active">About</a>
-        <a href="#philosophy" class="nav-link">Philosophy</a>
-        <a href="#roles" class="nav-link">Roles</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#journey" class="nav-link">Journey</a>
         <a href="#education" class="nav-link">Education</a>
         <a href="#resume" class="nav-link">Resume</a>
         <a href="#contact" class="nav-link">Contact</a>
@@ -105,363 +112,262 @@
 
     <header data-aos="fade-down" data-aos-duration="800">
         <h1>Mo Torab Shaikh</h1>
-        <p id="header-subtitle">Software Engineer | CV | Edge | Robotics | Full Stack | Cloud | AI/ML</p>
+        <p id="header-subtitle">Software & Robotics Engineer | From Cloud to Cognition</p>
     </header>
 
     <section id="about" data-aos="fade-up" data-aos-duration="800">
-        <img height="180" width="180" class="profile-image-placeholder" src="./profile_picture.jpg" alt="Profile Picture">
+        <img class="profile-image-placeholder" src="./profile_picture.jpg" alt="Profile Picture">
         <div class="about-content">
             <h2 id="about-title">My Journey</h2>
-            <div id="about-text-container"><p>Loading...</p></div>
+            <div id="about-text-container">
+                </div>
         </div>
     </section>
     
-    <section id="philosophy" data-aos="fade-up" data-aos-duration="800">
-        <h2>My Philosophy</h2>
-        <div class="philosophy-grid">
-            <div class="philosophy-card">
-                <i class="fas fa-puzzle-piece"></i>
-                <h3>Pragmatic Problem-Solving</h3>
-                <p>I believe the best solutions are born from a deep understanding of the problem. I focus on building what's necessary and effective, avoiding over-engineering while ensuring solutions are scalable and maintainable.</p>
+    <section id="journey" data-aos="fade-up" data-aos-duration="800">
+        <h2>My Journey & Key Projects</h2>
+        <div class="timeline" id="journey-timeline">
             </div>
-            <div class="philosophy-card">
-                <i class="fas fa-sync-alt"></i>
-                <h3>Continuous Learning</h3>
-                <p>The world of technology is always evolving, and so am I. Whether it's mastering a new robotics framework or a cloud service, I am constantly learning to stay at the forefront and deliver modern, efficient solutions.</p>
-            </div>
-            <div class="philosophy-card">
-                <i class="fas fa-users"></i>
-                <h3>Collaborative Spirit</h3>
-                <p>Great things are built by teams, not individuals. I thrive in collaborative environments, valuing clear communication, constructive feedback, and shared ownership to achieve our collective goals.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="roles" data-aos="fade-up" data-aos-duration="800">
-        <h2>Explore My Roles</h2>
-        <div class="role-filters">
-            <button class="role-filter active" data-role-filter="all">Overview</button>
-            <button class="role-filter" data-role-filter="robotics-swe">Robotics SWE</button>
-            <button class="role-filter" data-role-filter="cv-engineer">CV Engineer</button>
-            <button class="role-filter" data-role-filter="edge-engineer">Edge Computing</button>
-            <button class="role-filter" data-role-filter="aiml-engineer">AI/ML Engineer</button>
-            <button class="role-filter" data-role-filter="fullstack-swe">Full Stack</button>
-            <button class="role-filter" data-role-filter="cloud-engineer">Cloud Engineer</button>
-        </div>
-    </section>
-
-    <section id="skills" data-aos="fade-up" data-aos-duration="800">
-        <div class="skills-header"><h2>Skills</h2></div>
-        <div class="skills-container"></div>
-    </section>
-
-    <section id="projects" data-aos="fade-up" data-aos-duration="800">
-        <h2>Projects Timeline</h2>
-        <div class="timeline" id="project-timeline"></div>
-    </section>
-
-    <section id="experience" data-aos="fade-up" data-aos-duration="800">
-        <h2>Professional Experience</h2>
-        <div class="timeline">
-            <div class="entry" data-aos="fade-right" data-aos-duration="600">
-                <div class="entry-visible">
-                    <h3>Tech Lead</h3>
-                    <p><strong>Duration:</strong> Jul 2021 - Jul 2024</p>
-                    <p><strong>Organization:</strong> Talent Litmus, Mumbai, India</p>
-                    <div class="skills-list-condensed"><strong>Skills:</strong> Leadership, CI/CD, Docker Swarm, AWS, Agile...</div>
-                </div>
-                <div class="entry-hidden">
-                    <h4>Key Achievements:</h4>
-                    <ul>
-                        <li>Stepped into a leadership role, guiding a cross-functional team of 6 to deliver results that doubled client acquisition.</li>
-                        <li>Championed best practices by developing new workflows and coding guidelines, which cut down runtime issues by 60%.</li>
-                        <li>Drove major system upgrades and led incident management, boosting system availability to 99.99%.</li>
-                        <li>Automated our deployment process with CI/CD pipelines, reducing deployment time by a massive 90%.</li>
-                    </ul>
-                    <h4>What I Learned:</h4>
-                    <p class="narrative-text">This role was my transition from an individual contributor to a leader. I learned the importance of clear communication, mentorship, and balancing technical debt with feature delivery. Scaling our system to support 40,000 concurrent users was a challenge that taught me invaluable lessons in system design and resilience.</p>
-                </div>
-            </div>
-            <div class="entry" data-aos="fade-left" data-aos-duration="600">
-                <div class="entry-visible">
-                    <h3>Senior Software Engineer</h3>
-                    <p><strong>Duration:</strong> Jun 2018 - Jul 2021</p>
-                    <p><strong>Organization:</strong> Helios Web Services (Thinglogix), Jaipur, India</p>
-                    <div class="skills-list-condensed"><strong>Skills:</strong> Python, Node.js, AWS, IoT, OpenCV, Docker...</div>
-                </div>
-                <div class="entry-hidden">
-                    <h4>Key Contributions:</h4>
-                    <ul>
-                        <li>Contributed to the end-to-end development of core Thinglogix technology, from the Foundry IoT Platform to OCR APIs.</li>
-                        <li>Recognized as the "Excellent Technical Player of the Year" (2019) for my problem-solving and technical contributions.</li>
-                    </ul>
-                    <h4>What I Learned:</h4>
-                    <p class="narrative-text">At Thinglogix, I honed my core software engineering skills on a diverse set of projects. I moved fluidly between backend development, cloud architecture, and even edge computing. This experience solidified my passion for building tangible products that solve real-world problems.</p>
-                </div>
-            </div>
-            <div class="entry" data-aos="fade-right" data-aos-duration="600">
-                <div class="entry-visible">
-                    <h3>Graduate Research Assistant</h3>
-                    <p><strong>Duration:</strong> Jan 2025 - Present</p>
-                    <p><strong>Organization:</strong> AEMN Lab, UB, Buffalo, NY</p>
-                    <div class="skills-list-condensed"><strong>Skills:</strong> Python, C++, ROS2, Robotics, Research...</div>
-                </div>
-                <div class="entry-hidden">
-                    <h4>Current Focus:</h4>
-                    <ul>
-                        <li>Developing a multi-language package (Python, C++) to bridge the gap between a Universal Robots arm and novel tactile sensors using ROS2.</li>
-                        <li>My work focuses on creating reliable, real-time communication and data processing pipelines for advanced robotic manipulation.</li>
-                    </ul>
-                    <h4>What I'm Learning:</h4>
-                    <p class="narrative-text">This role is a deep dive into the world of academic research and robotics. I'm strengthening my C++ and ROS2 skills while learning the rigor of academic development. It's a fascinating challenge to work on the cutting edge of human-robot interaction.</p>
-                </div>
-            </div>
-        </div>
     </section>
 
     <section id="education" data-aos="fade-up" data-aos-duration="800">
         <h2>Education</h2>
-        <div id="education-content"></div>
+        <div id="education-content">
+            </div>
     </section>
 
     <section id="resume" data-aos="fade-up" data-aos-duration="800">
         <h3>Resume</h3>
-        <div id="resume-links-container" class="resume-links"></div>
+        <div id="resume-links-container" class="resume-links">
+            </div>
     </section>
 
     <section id="contact" data-aos="fade-up" data-aos-duration="800">
         <h2>Get In Touch</h2>
-        <div id="contact-content"></div>
+        <div id="contact-content">
+            </div>
     </section>
     
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         // ===========================================
-        // 1. UPDATED DATA DEFINITIONS
+        // 1. DATA DEFINITIONS (SIMPLIFIED)
         // ===========================================
 
-        // --- NEW: Narrative-focused About Me Data ---
-        const aboutMeData = {
-            'all': {
-                title: 'My Journey: From Code to Cognition',
-                text: "My fascination with technology began with software, but my passion truly ignited when I saw how code could make machines perceive and interact with the physical world. With 6+ years in the industry leading teams and building scalable systems, I'm now channeling that experience into my Master's in Robotics. I thrive at the intersection of software engineering, machine learning, and hardware, driven by a mission to build intelligent, autonomous systems that solve real-world challenges."
-            },
-            'robotics-swe': {
-                title: 'My Approach to Robotics',
-                text: "I see robotics as the ultimate systems integration challenge. My approach combines rigorous software engineering principles with a deep understanding of robotic algorithms and hardware. With expertise in ROS/ROS2, C++, and sensor integration, I build robust, reliable software that forms the brain and nervous system for autonomous machines."
-            },
-            'cv-engineer': {
-                title: 'My Vision for CV',
-                text: "To me, Computer Vision is about giving machines the gift of sight. I specialize in developing and deploying advanced CV solutions, from object detection to image processing. I enjoy the full lifecycle, from training deep learning models in TensorFlow/PyTorch to optimizing them for real-time performance on edge devices."
-            },
-            'edge-engineer': {
-                title: 'My Edge Philosophy',
-                text: "I believe intelligence shouldn't be confined to the cloud. I specialize in creating efficient, low-latency applications for resource-constrained devices. Using Python, C++, and on-device ML, I build systems that can think and act locally, ensuring speed and reliability where it matters most."
-            },
-            'aiml-engineer': {
-                title: 'My AI/ML Perspective',
-                text: "I approach AI/ML with a problem-first mindset. I'm skilled in the full ML lifecycle, from data processing and model training to deployment on cloud or edge platforms. My experience includes classic ML, deep learning, and integrating LLMs to create truly intelligent applications."
-            },
-            'fullstack-swe': {
-                title: 'My Full Stack Craft',
-                text: "As a Full Stack Engineer, I am a product-oriented builder. I love architecting and creating robust web applications and APIs from the ground up. I am proficient across the stack, from creating intuitive React frontends to scaling resilient Node.js or Python backends on AWS."
-            },
-            'cloud-engineer': {
-                title: 'My Cloud Strategy',
-                text: "I view the cloud as the ultimate enabler for scalable and resilient systems. I specialize in designing and managing infrastructure on AWS, with a focus on serverless computing, containerization (Docker), and Infrastructure as Code. My goal is to build automated, observable, and cost-efficient systems."
-            }
-        };
+        // --- NEW: Consolidated About Me Narrative ---
+        const aboutMeText = "My fascination with technology began with software, but my passion truly ignited when I saw how code could make machines perceive and interact with the physical world. This drive led me from leading software teams in industry to pursuing a Master's in Robotics. <br><br>My philosophy is built on **pragmatic problem-solving** and **continuous learning**; I focus on building scalable, maintainable solutions and am always evolving my skills. I thrive at the intersection of robust software, machine learning, and hardware, driven by a mission to build intelligent, autonomous systems that solve real-world challenges.";
 
-        // --- NEW: Project Data with Narrative and Images ---
-        const projectsData = [
+        // --- NEW: Unified Journey Data Structure ---
+        const journeyData = [
             {
-                title: "Games - Role-Playing Assessment Platform",
-                image: "https://images.unsplash.com/photo-1542744095-291d1f67b221?q=80&w=1000&auto=format&fit=crop", // Replace with your image
-                duration: "Jul 2021 - Jul 2024", organization: "Talent Litmus",
-                descriptionPoints: ["Led development of web-based assessment games (React, Node.js) evaluating psychometric attributes.", "Managed deployment on AWS, scaling to support 40k concurrent users.", "Integrated OpenAI/StabilityAI APIs to create dynamic scenarios.", "Implemented CI/CD pipelines (Bitbucket) & Docker Swarm for orchestration."],
-                narrative: "This project was a masterclass in scalability and user engagement. The challenge was not just to build a functional platform, but one that could handle a massive, spiky load while remaining responsive. Integrating generative AI was a highlight, as it allowed us to create truly adaptive and personalized assessments. It pushed my skills in both cloud architecture and product leadership.",
-                skills: ["python", "javascript", "reactjs", "nodejs", "serverless", "openai", "stabilityai", "ci-cd", "docker", "docker-swarm", "bitbucket-pipelines", "agile", "aws", "nestjs", "mongodb", "s3", "aws-cloudfront", "nginx", "aws-ec2", "redis", "typescript", "ai"],
-                roles: ["Tech Lead", "Full Stack", "Cloud Architect"]
+                role: "Graduate Research Assistant",
+                organization: "AEMN Lab, University at Buffalo",
+                duration: "Jan 2025 - Present",
+                narrative: "This role is a deep dive into academic research and robotics. I'm strengthening my C++ and ROS2 skills while learning the rigor of academic development. It's a fascinating challenge to work on the cutting edge of human-robot interaction and tactile sensing.",
+                projects: [
+                    {
+                        title: "Robotic & Tactile Sensor Integration",
+                        descriptionPoints: [
+                            "Developing a multi-language package (Python, C++) to integrate a Universal Robots arm and novel tactile sensors using the ROS2 framework.",
+                            "Focusing on creating reliable, real-time communication and data processing pipelines for advanced robotic manipulation."
+                        ],
+                        skills: ["Robotics", "ROS2", "C++", "Python", "Sensor Integration", "CMake"]
+                    }
+                ]
             },
             {
-                title: "Automated Attendance System",
-                image: "https://www.simplilearn.com/ice9/free_resources_article_thumb/face-recognition-deep-learning-article.jpg", // Replace with your image
-                duration: "Aug 2020 - Jan 2021", organization: "Thinglogix",
-                descriptionPoints: ["Engineered a C++/Python edge application on Nvidia Jetson for multi-camera video processing & on-device face recognition.", "Implemented robust multi-threading for cameras, image buffering, and fail-safe communication (MQTT with SQS backup)."],
-                narrative: "This was my first major dive into the world of edge computing. The primary challenge was resource management on the Nvidia Jetson—how to process multiple video streams in real-time without overwhelming the device. I learned a ton about C++ performance tuning, multi-threading, and building resilient systems that can operate in unreliable network conditions. It sparked my interest in on-device AI.",
-                skills: ["python", "opencv", "cplusplus", "iot", "edge-computing", "multithreading", "linux", "object-detection", "tensorflow", "nvidia-jetson", "image-processing", "face-detection", "gps", "aws-sqs", "docker", "mqtt", "cv-concept"],
-                roles: ["Software Developer", "Edge Computing Engineer", "CV Engineer"]
+                role: "Tech Lead",
+                organization: "Talent Litmus, Mumbai",
+                duration: "Jul 2021 - Jul 2024",
+                narrative: "This role was my transition from an individual contributor to a leader. I learned the importance of clear communication, mentorship, and balancing technical debt with feature delivery. Scaling our system to support 40,000 concurrent users taught me invaluable lessons in system design and resilience.",
+                projects: [
+                    {
+                        title: "Role-Playing Assessment Platform",
+                        descriptionPoints: [
+                           "Led development of web-based assessment games evaluating psychometric attributes.",
+                           "Managed deployment on AWS, scaling to support 40k concurrent users.",
+                           "Integrated OpenAI/StabilityAI APIs to create dynamic scenarios.",
+                           "Implemented CI/CD pipelines (Bitbucket) & Docker Swarm for orchestration."
+                        ],
+                        skills: ["Tech Lead", "React", "Node.js", "AWS", "Docker Swarm", "CI/CD", "OpenAI"]
+                    }
+                ]
             },
             {
-                title: "Robotic & Tactile Sensor Integration",
-                image: "https://www.universal-robots.com/media/23842/ur20-collaborative-robot-palletizing.jpg", // Replace with your image
-                duration: "Jan 2025 - Present", organization: "AEMN Lab, UB",
-                descriptionPoints: ["Developing a multi-language package (Python, C++) for integrating a Universal Robots arm and tactile sensors using ROS2.", "Creating a reliable, real-time data processing pipeline for robotic manipulation tasks."],
-                narrative: "My current research pushes me to the forefront of robotics. The goal is to give robots a human-like sense of touch. This involves writing high-performance C++ nodes in ROS2, managing complex data streams, and applying machine learning to interpret sensor data. It's the perfect blend of my interests in software, hardware, and AI.",
-                skills: ["python", "cplusplus", "ros", "robotics", "sensor-integration", "linux", "git", "research", "cmake", "numpy", "pandas", "matplotlib", "machine-learning"],
-                roles: ["Research Assistant", "Robotics SWE"]
-            },
-            {
-                title: "Foundry - IoT Platform",
-                image: "https://www.iot-now.com/wp-content/uploads/2021/07/IoT-devices-data-scaled.jpg", // Replace with your image
-                duration: "Jun 2018 - Jul 2021", organization: "Thinglogix",
-                descriptionPoints: ["Developed a multi-tenant, auto-scaling IoT platform using microservices that cut client application dev time by 80%.", "Utilized a wide array of AWS services including Lambda, SQS, DynamoDB, and CloudFormation.", "Built frontend components with Angular and backend services with Node.js & Python."],
-                narrative: "Foundry was my deep-dive into cloud-native architecture. We built a platform from the ground up to manage thousands of IoT devices. This project taught me the power of serverless and microservices for building scalable, cost-effective systems. It was a foundational experience that shaped my entire approach to cloud engineering.",
-                skills: ["iot", "cloud-computing", "python", "nodejs", "aws", "microservices", "docker", "mongodb", "postgresql", "mqtt", "javascript", "linux", "api-gateway", "websockets", "angular", "aws-lambda", "aws-sqs", "aws-ses", "dynamodb", "aws-cognito", "aws-cfn", "aws-cw", "aws-s3", "aws-cloudfront"],
-                roles: ["Full Stack Developer", "Cloud Architect", "IoT Engineer"]
-            },
-            {
-                title: "OCR APIs for Document Processing",
-                image: "https://www.researchgate.net/publication/340406560/figure/fig1/AS:876405232889856@1585984531868/An-example-of-OCR-processing-and-correction-of-a-historical-document-The-image-of-the.png", // Replace with your image
-                duration: "Jun 2019 - Oct 2019", organization: "Thinglogix",
-                descriptionPoints: ["Orchestrated serverless APIs for document detection & auto-form filling via OCR (AWS Textract, Google OCR).", "Trained & deployed a TensorFlow model on Lambda for Stamp/Signature detection.", "Reduced manual data entry effort by 90% for clients."],
-                narrative: "This project showed me the immediate business impact of AI. By building a simple API, we could automate a tedious and error-prone process. The most interesting technical challenge was optimizing our TensorFlow model to run within the constraints of an AWS Lambda function. It was a great lesson in practical MLOps.",
-                skills: ["aws-lambda", "ocr", "python", "machine-learning", "api-gateway", "aws-cfn", "tensorflow", "salesforce", "aws-textract", "google-ocr", "aws-workmail", "serverless", "aws", "deep-learning", "cv-concept"],
-                roles: ["ML Engineer", "API Developer", "CV Engineer", "Cloud Engineer"]
+                role: "Senior Software Engineer",
+                organization: "Helios Web Services (Thinglogix), Jaipur",
+                duration: "Jun 2018 - Jul 2021",
+                narrative: "At Thinglogix, I honed my core engineering skills on a diverse set of projects. I moved fluidly between backend development, cloud architecture, and edge computing. This experience solidified my passion for building tangible products that solve real-world problems and earned me the 'Excellent Technical Player of a Year' award in 2019.",
+                projects: [
+                     {
+                        title: "Automated Attendance System",
+                        descriptionPoints: [
+                           "Engineered a C++/Python edge application on Nvidia Jetson for multi-camera video processing & on-device face recognition.",
+                           "Implemented robust multi-threading for cameras and fail-safe communication (MQTT with SQS backup)."
+                        ],
+                        skills: ["Edge AI", "C++", "Python", "OpenCV", "Nvidia Jetson", "Multithreading"]
+                    },
+                    {
+                        title: "Foundry - IoT Platform",
+                        descriptionPoints: [
+                           "Developed a multi-tenant, auto-scaling IoT platform using microservices that cut client application dev time by 80%.",
+                           "Utilized AWS Lambda, SQS, and DynamoDB."
+                        ],
+                        skills: ["IoT", "AWS Serverless", "Microservices", "Node.js", "Python"]
+                    },
+                    {
+                        title: "OCR APIs for Document Processing",
+                        descriptionPoints: [
+                           "Orchestrated serverless APIs for document detection & auto-form filling via OCR (AWS Textract, Google OCR).",
+                           "Trained & deployed a TensorFlow model on Lambda for Stamp/Signature detection."
+                        ],
+                        skills: ["ML", "TensorFlow", "AWS Lambda", "OCR", "API Design"]
+                    }
+                ]
             }
         ];
-        
-        // (Other data like TARGET_ROLES, headerSubtitleData, resumeData, prunedSkillsData, etc. remains the same)
-        const TARGET_ROLES = {'all': 'Overview', 'robotics-swe': 'Robotics SWE', 'cv-engineer': 'CV Engineer', 'edge-engineer': 'Edge Computing', 'aiml-engineer': 'AI/ML Engineer', 'fullstack-swe': 'Full Stack', 'cloud-engineer': 'Cloud Engineer'};
-        const headerSubtitleData = {'all': "Software Engineer | CV | Edge | Robotics | Full Stack | Cloud | AI/ML", 'robotics-swe': "Robotics Software Engineer | ROS/ROS2 | C++ | Python | Autonomous Systems", 'cv-engineer': "Computer Vision Engineer | Deep Learning | ML Deployment | OpenCV | Python", 'edge-engineer': "Edge Computing Engineer | IoT | On-Device ML | C++ | Python", 'aiml-engineer': "AI/ML Engineer | TensorFlow | PyTorch | Model Deployment | Python", 'fullstack-swe': "Full Stack Engineer | React | Node.js | Python | AWS | Scalable Web Apps", 'cloud-engineer': "Cloud Engineer | AWS | Serverless | DevOps | MLOps Infrastructure"};
-        const resumeData = {'all': { href: "#" },'robotics-swe': { href: "#robotics-resume-link" },'cv-engineer': { href: "#cv-resume-link" },'edge-engineer': { href: "#edge-resume-link" },'aiml-engineer': { href: "#aiml-resume-link" },'fullstack-swe': { href: "#fullstack-resume-link" },'cloud-engineer': { href: "#cloud-resume-link" }};
-        const educationData = [ { university: "University at Buffalo", location: "Buffalo, NY", degree: "Master of Science in Robotics", graduation: "Dec 2025", courses: ["Intro to Machine Learning", "Computer Vision and Image Processing", "Robotics Algorithms", "GPU Programming"] }, { university: "Poornima University", location: "Jaipur, India", degree: "Bachelor of Technology in Computer Engineering", graduation: "May 2018", courses: ["Operating system", "DBMS", "Data Structures and algorithms", "Digital Electronics", "Microprocessor and interfaces", "Computer Networks", "Artificial intelligence", "Neural Network", "Real time system", "Distributed systems", "Embedded systems", "Cloud Computing", "Mobile Computing"] } ];
-        const contactData = { email: "torabshaikh5@gmail.com", linkedin: "https://linkedin.com/in/torabshaikh", github: "https://github.com/torabshaikh", blog: "https://cloudnode.tech", address: "Buffalo, NY" };
-        let allPossibleSkills = [ { categoryName: "Programming Languages", roles: Object.keys(TARGET_ROLES), skills: [ { name: "Python", id: "python", roles: ['robotics-swe', 'cv-engineer', 'edge-engineer', 'fullstack-swe', 'cloud-engineer', 'aiml-engineer'], isClickable: true }, { name: "C/C++", id: "cplusplus", roles: ['robotics-swe', 'cv-engineer', 'edge-engineer'], isClickable: true }, { name: "JavaScript", id: "javascript", roles: ['fullstack-swe', 'cloud-engineer'], isClickable: true }, { name: "TypeScript", id: "typescript", roles: ['fullstack-swe', 'cloud-engineer'], isClickable: true } ] }, { categoryName: "Frameworks & Libraries", roles: Object.keys(TARGET_ROLES), skills: [ { name: "ReactJS", id: "reactjs", roles: ['fullstack-swe'], isClickable: true }, { name: "Node.js", id: "nodejs", roles: ['fullstack-swe', 'cloud-engineer'], isClickable: true }, { name: "ROS/ROS2", id: "ros", roles: ['robotics-swe'], isClickable: true }, { name: "OpenCV", id: "opencv", roles: ['cv-engineer', 'robotics-swe', 'edge-engineer', 'aiml-engineer'], isClickable: true }, { name: "TensorFlow", id: "tensorflow", roles: ['cv-engineer', 'edge-engineer', 'aiml-engineer'], isClickable: true } ] }, { categoryName: "Data Science & Databases", roles: Object.keys(TARGET_ROLES), skills: [ { name: "NumPy", id: "numpy", roles: ['cv-engineer', 'aiml-engineer', 'robotics-swe', 'edge-engineer'], isClickable: true }, { name: "Pandas", id: "pandas", roles: ['aiml-engineer', 'fullstack-swe', 'robotics-swe'], isClickable: true }, { name: "PostgreSQL", id: "postgresql", roles: ['fullstack-swe', 'cloud-engineer', 'aiml-engineer'], isClickable: true }, { name: "MongoDB", id: "mongodb", roles: ['fullstack-swe', 'cloud-engineer'], isClickable: true }, { name: "DynamoDB", id: "dynamodb", roles: ['cloud-engineer', 'fullstack-swe', 'aiml-engineer'], isClickable: true }, { name: "Redis", id: "redis", roles: ['fullstack-swe', 'cloud-engineer', 'aiml-engineer'], isClickable: true } ] }, { categoryName: "Cloud Services (AWS)", roles: Object.keys(TARGET_ROLES), skills: [ { name: "Core (EC2, S3, VPC)", id: "aws", roles: ['cloud-engineer', 'fullstack-swe', 'cv-engineer', 'aiml-engineer'], isClickable: true }, { name: "Lambda", id: "aws-lambda", roles: ['cloud-engineer', 'fullstack-swe', 'cv-engineer', 'aiml-engineer'], isClickable: true }, { name: "API Gateway", id: "api-gateway", roles: ['cloud-engineer', 'fullstack-swe', 'aiml-engineer'], isClickable: true }, { name: "SQS", id: "aws-sqs", roles: ['cloud-engineer', 'edge-engineer', 'fullstack-swe'], isClickable: true }, { name: "CloudFormation", id: "aws-cfn", roles: ['cloud-engineer'], isClickable: true } ] }, { categoryName: "Hardware, Embedded & IoT", roles: ['edge-engineer', 'robotics-swe'], skills: [ { name: "Nvidia Jetson", id: "nvidia-jetson", roles: ['edge-engineer', 'cv-engineer', 'robotics-swe'], isClickable: true }, { name: "IoT Concepts", id: "iot", roles: ['edge-engineer', 'robotics-swe', 'cloud-engineer', 'fullstack-swe'], isClickable: true }, { name: "MQTT", id: "mqtt", roles: ['edge-engineer', 'robotics-swe', 'cloud-engineer'], isClickable: true }, { name: "Multithreading", id: "multithreading", roles: ['edge-engineer', 'robotics-swe'], isClickable: true } ] }, { categoryName: "AI/ML & CV Concepts", roles: ['cv-engineer', 'robotics-swe', 'edge-engineer', 'aiml-engineer'], skills: [ { name: "Machine Learning", id: "machine-learning", roles: ['cv-engineer', 'aiml-engineer', 'edge-engineer', 'robotics-swe'], isClickable: true }, { name: "Deep Learning", id: "deep-learning", roles: ['cv-engineer', 'aiml-engineer'], isClickable: true }, { name: "Computer Vision", id: "cv-concept", roles: ['cv-engineer', 'robotics-swe', 'edge-engineer', 'aiml-engineer'], isClickable: true }, { name: "Object Detection", id: "object-detection", roles: ['cv-engineer', 'robotics-swe', 'edge-engineer', 'aiml-engineer'], isClickable: true }, { name: "OpenAI API", id: "openai", roles: ['aiml-engineer', 'fullstack-swe'], isClickable: true } ] }, { categoryName: "Dev Tools & Practices", roles: Object.keys(TARGET_ROLES), skills: [ { name: "Git", id: "git", roles: Object.keys(TARGET_ROLES), isClickable: true }, { name: "Docker", id: "docker", roles: Object.keys(TARGET_ROLES), isClickable: true }, { name: "Docker Swarm", id: "docker-swarm", roles: ['cloud-engineer', 'fullstack-swe'], isClickable: true }, { name: "CI/CD", id: "ci-cd", roles: ['cloud-engineer', 'fullstack-swe', 'robotics-swe'], isClickable: true }, { name: "Linux", id: "linux", roles: Object.keys(TARGET_ROLES), isClickable: true }, { name: "CMake", id: "cmake", roles: ['robotics-swe'], isClickable: true }, { name: "Agile Development", id: "agile", roles: Object.keys(TARGET_ROLES), isClickable: false } ] } ];
-        const usedSkillIds = new Set(); projectsData.forEach(p => p.skills.forEach(id => usedSkillIds.add(id)));
-        const prunedSkillsData = allPossibleSkills.map(cat => ({...cat, skills: cat.skills.filter(skill => usedSkillIds.has(skill.id))})).filter(cat => cat.skills.length > 0);
+
+        // --- Other data (education, contact, resume) ---
+        const educationData = [ 
+            { university: "University at Buffalo", location: "Buffalo, NY", degree: "Master of Science in Robotics", graduation: "Dec 2025", courses: ["Machine Learning", "Computer Vision", "Robotics Algorithms", "GPU Programming"] }, 
+            { university: "Poornima University", location: "Jaipur, India", degree: "Bachelor of Technology in Computer Engineering", graduation: "May 2018" } 
+        ];
+        const contactData = { 
+            email: "torabshaikh5@gmail.com", 
+            linkedin: "https://linkedin.com/in/torabshaikh", 
+            github: "https://github.com/torabshaikh", 
+            blog: "https://cloudnode.tech", 
+            address: "Buffalo, NY" 
+        };
+        const resumeLink = "#"; // Add your resume link here
 
         // ===========================================
-        // 2. UPDATED HTML GENERATION FUNCTIONS
+        // 2. HTML GENERATION FUNCTIONS
         // ===========================================
 
-        // --- UPDATED: generateAboutMeHTML to set title and text ---
-        function generateAboutMeHTML(roleId) {
+        function generateAboutMeHTML() {
             const container = document.getElementById('about-text-container');
-            const titleElement = document.getElementById('about-title');
-            const subtitleElement = document.getElementById('header-subtitle');
-            if (!container || !titleElement) return;
-
-            const aboutInfo = aboutMeData[roleId] || aboutMeData['all'];
-            const subtitleText = headerSubtitleData[roleId] || headerSubtitleData['all'];
-
-            titleElement.textContent = aboutInfo.title;
-            container.innerHTML = `<p>${aboutInfo.text}</p>`;
-            if(subtitleElement) subtitleElement.textContent = subtitleText;
+            if (container) {
+                container.innerHTML = `<p>${aboutMeText}</p>`;
+            }
         }
 
-        // --- UPDATED: generateProjectsHTML to include image and narrative ---
-        function generateProjectsHTML(data, skillIdToNameMap) {
-            const container = document.getElementById('project-timeline');
+        // --- NEW: generateJourneyHTML function ---
+        function generateJourneyHTML(data) {
+            const container = document.getElementById('journey-timeline');
             if (!container) return;
-            container.innerHTML = '';
             let html = '';
-            data.forEach((project, index) => {
+            data.forEach((entry, index) => {
                 const animation = (index % 2 === 0) ? 'fade-right' : 'fade-left';
-                const skillClasses = (project.skills || []).map(id => `skill-${id}`).join(' ');
-                const rolesText = (project.roles || []).join(', ');
-                const condensedSkillsHTML = (project.skills || []).slice(0, 5).map(id => `<span>${skillIdToNameMap[id] || id}</span>`).join('');
-                const descriptionPointsHTML = (project.descriptionPoints || []).map(point => `<li>${point}</li>`).join('');
-                // NEW: Image and Narrative handling
-                const imageHTML = project.image ? `<img src="${project.image}" alt="${project.title} screenshot">` : `<span>${project.title}</span>`;
-                const narrativeHTML = project.narrative ? `<h4>What I Learned</h4><p class="narrative-text">${project.narrative}</p>` : '';
+                let projectsHTML = '';
+                
+                if (entry.projects && entry.projects.length > 0) {
+                    projectsHTML += '<h4 class="projects-header">Key Projects:</h4>';
+                    entry.projects.forEach(project => {
+                        const skillsHTML = (project.skills || []).map(skill => `<span class="badge">${skill}</span>`).join(' ');
+                        const pointsHTML = (project.descriptionPoints || []).map(p => `<li>${p}</li>`).join('');
+                        projectsHTML += `
+                            <div class="project-card">
+                                <div class="project-card-header">${project.title}</div>
+                                <div class="project-card-body">
+                                    <ul>${pointsHTML}</ul>
+                                    <div class="skill-badges-condensed">${skillsHTML}</div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
 
                 html += `
-                    <div class="entry mix ${skillClasses}" data-aos="${animation}" data-aos-duration="600">
-                        <div class="entry-visible">
-                            <h3>${project.title || 'Untitled'}</h3>
-                            <p><strong>Org:</strong> ${project.organization || 'N/A'}</p>
-                            <p><strong>Duration:</strong> ${project.duration || 'N/A'}</p>
-                            <div class="skills-list-condensed"><strong>Skills:</strong> ${condensedSkillsHTML}</div>
-                        </div>
-                        <div class="entry-hidden">
-                            <div class="project-image">${imageHTML}</div>
-                            <h4>Key Contributions:</h4>
-                            <ul>${descriptionPointsHTML}</ul>
-                            ${narrativeHTML}
-                            <span class="role"><strong>Involved Roles:</strong> ${rolesText}</span>
-                        </div>
-                    </div>`;
+                    <div class="timeline-entry" data-aos="${animation}" data-aos-duration="600">
+                        <h3>${entry.role}</h3>
+                        <p class="role-info"><strong>${entry.organization}</strong> | ${entry.duration}</p>
+                        <p class="narrative-text">${entry.narrative}</p>
+                        ${projectsHTML}
+                    </div>
+                `;
             });
             container.innerHTML = html;
         }
+        
+        // --- Standard Generation Functions ---
+        function generateEducationHTML(data) { 
+            const container = document.getElementById('education-content'); 
+            if (!container) return; 
+            let html = ''; 
+            data.forEach(edu => { 
+                html += `<div class="education-entry"><h3>${edu.degree}</h3><p><strong>University:</strong> ${edu.university} | ${edu.location}</p><p><strong>Graduation:</strong> ${edu.graduation}</p>${edu.courses && edu.courses.length > 0 ? `<p class="courses"><strong>Relevant Courses:</strong> ${edu.courses.join(', ')}</p>` : ''}</div>`; 
+            }); 
+            container.innerHTML = html; 
+        }
+        
+        function generateResumeLinksHTML(link) { 
+            const container = document.getElementById('resume-links-container'); 
+            if (container) {
+                container.innerHTML = `<a href="${link}" target="_blank" rel="noopener noreferrer">Download Resume</a>`; 
+            }
+        }
 
-        // (Other generation functions like generateSkillsHTML, generateEducationHTML, etc., remain the same)
-        function generateSkillsHTML(data) { const container = document.querySelector('#skills .skills-container'); if (!container) { return {}; } container.innerHTML = ''; let html = ''; const skillIdToNameMap = {}; data.forEach(category => { const categoryRoles = (category.roles || []).join(' '); html += `<div class="skills-category" style="display: none;" data-role="${categoryRoles}"><h3>${category.categoryName}</h3><div class="skill-badges">`; (category.skills || []).forEach(skill => { const skillRoles = (skill.roles || []).join(' '); const isClickableClass = skill.isClickable ? 'skill-badge' : ''; const dataSkillAttr = skill.isClickable ? `data-skill="${skill.id}"` : ''; html += `<span class="badge ${isClickableClass}" style="display: none;" ${dataSkillAttr} data-role="${skillRoles}">${skill.name}</span>`; skillIdToNameMap[skill.id] = skill.name; }); html += `</div></div>`; }); container.innerHTML = html; return skillIdToNameMap; }
-        function generateResumeLinksHTML(roleId) { const container = document.getElementById('resume-links-container'); if (!container) return; const resumeInfo = resumeData[roleId] || resumeData['all']; container.innerHTML = `<a href="${resumeInfo.href}" target="_blank" rel="noopener noreferrer">Download Resume</a>`; }
-        function generateEducationHTML(data) { const container = document.getElementById('education-content'); if (!container) return; let html = ''; data.forEach(edu => { html += `<div class="education-entry"><h3>${edu.degree}</h3><p><strong>University:</strong> ${edu.university} | ${edu.location}</p><p><strong>Graduation:</strong> ${edu.graduation}</p>${edu.courses && edu.courses.length > 0 ? `<p class="courses"><strong>Courses:</strong> ${edu.courses.join(', ')}</p>` : ''}</div>`; }); container.innerHTML = html; }
-        function generateContactHTML(data) { const container = document.getElementById('contact-content'); if (!container) return; container.innerHTML = `<div class="contact-grid">${data.email ? `<div class="contact-item"><i class="fas fa-envelope contact-icon"></i><div class="contact-details"><strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a></div></div>` : ''}${data.linkedin ? `<div class="contact-item"><i class="fab fa-linkedin contact-icon"></i><div class="contact-details"><strong>LinkedIn:</strong> <a href="${data.linkedin}" target="_blank" rel="noopener noreferrer">linkedin.com/in/torabshaikh</a></div></div>` : ''}${data.github ? `<div class="contact-item"><i class="fab fa-github contact-icon"></i><div class="contact-details"><strong>GitHub:</strong> <a href="${data.github}" target="_blank" rel="noopener noreferrer">github.com/torabshaikh</a></div></div>` : ''}${data.blog ? `<div class="contact-item"><i class="fas fa-rss contact-icon"></i><div class="contact-details"><strong>Blog:</strong> <a href="${data.blog}" target="_blank" rel="noopener noreferrer">CloudNode.tech</a></div></div>` : ''}${data.address ? `<div class="contact-item"><i class="fas fa-map-marker-alt contact-icon"></i><div class="contact-details"><strong>Location:</strong> <span>${data.address}</span></div></div>` : ''}</div>`; }
+        function generateContactHTML(data) { 
+            const container = document.getElementById('contact-content'); 
+            if (!container) return; 
+            container.innerHTML = `<div class="contact-grid">
+                ${data.email ? `<div class="contact-item"><i class="fas fa-envelope contact-icon"></i><div class="contact-details"><strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a></div></div>` : ''}
+                ${data.linkedin ? `<div class="contact-item"><i class="fab fa-linkedin contact-icon"></i><div class="contact-details"><strong>LinkedIn:</strong> <a href="${data.linkedin}" target="_blank" rel="noopener noreferrer">linkedin.com/in/torabshaikh</a></div></div>` : ''}
+                ${data.github ? `<div class="contact-item"><i class="fab fa-github contact-icon"></i><div class="contact-details"><strong>GitHub:</strong> <a href="${data.github}" target="_blank" rel="noopener noreferrer">github.com/torabshaikh</a></div></div>` : ''}
+                ${data.blog ? `<div class="contact-item"><i class="fas fa-rss contact-icon"></i><div class="contact-details"><strong>Blog:</strong> <a href="${data.blog}" target="_blank" rel="noopener noreferrer">CloudNode.tech</a></div></div>` : ''}
+                ${data.address ? `<div class="contact-item"><i class="fas fa-map-marker-alt contact-icon"></i><div class="contact-details"><strong>Location:</strong> <span>${data.address}</span></div></div>` : ''}
+            </div>`; 
+        }
         
         // ===========================================
-        // 3. MAIN SCRIPT LOGIC (Largely the same)
+        // 3. MAIN SCRIPT LOGIC (SIMPLIFIED)
         // ===========================================
-        let mixer = null;
-        const urlParams = new URLSearchParams(window.location.search);
-        let initialRole = urlParams.get('role') || 'all';
-        if (!TARGET_ROLES[initialRole]) initialRole = 'all';
-        let currentRoleFilter = initialRole;
-
-        // Generate Content
-        generateAboutMeHTML(currentRoleFilter);
-        const skillIdMap = generateSkillsHTML(prunedSkillsData);
-        generateProjectsHTML(projectsData, skillIdMap);
+        
+        // --- Generate all content on load ---
+        generateAboutMeHTML();
+        generateJourneyHTML(journeyData);
         generateEducationHTML(educationData);
         generateContactHTML(contactData);
-        generateResumeLinksHTML(currentRoleFilter);
+        generateResumeLinksHTML(resumeLink);
 
-        // DOM Selectors
-        const rolesSection = document.getElementById('roles');
-        const roleFilterButtons = document.querySelectorAll('.role-filter');
-        const skillsContainer = document.querySelector('#skills .skills-container');
-        const projectsContainer = document.getElementById('project-timeline');
+        // --- Initialize AOS ---
+        AOS.init({ duration: 600, easing: 'ease-in-out', once: true, offset: 50 });
+        
+        // --- Navigation Active State & Smooth Scroll ---
         const navLinks = document.querySelectorAll('nav a.nav-link');
         const sections = document.querySelectorAll('section[id]');
 
-        // Activate Initial Role Button
-        roleFilterButtons.forEach(btn => {
-            btn.classList.remove('active');
-            if (btn.dataset.roleFilter === currentRoleFilter) btn.classList.add('active');
-        });
-        if (rolesSection && currentRoleFilter !== 'all') {
-            rolesSection.style.display = 'none';
-        }
-
-        AOS.init({ duration: 600, easing: 'ease-in-out', once: true, offset: 50 });
-        
-        function applyRoleFilteringToSkills(roleFilter) {
-            document.querySelectorAll('#skills .skills-category').forEach(category => {
-                const roles = category.dataset.role ? category.dataset.role.split(' ') : [];
-                category.style.display = (roleFilter === 'all' || roles.includes(roleFilter)) ? '' : 'none';
-            });
-            document.querySelectorAll('#skills .badge').forEach(badge => {
-                const parentCategory = badge.closest('.skills-category');
-                if (parentCategory && parentCategory.style.display === 'none') {
-                    badge.style.display = 'none';
-                    return;
+        function updateActiveNavLink() { 
+            let currentId = 'about'; 
+            const navHeight = 70; 
+            sections.forEach(section => { 
+                const rect = section.getBoundingClientRect(); 
+                if (rect.top <= navHeight + 20) { 
+                    currentId = section.id; 
                 }
-                const roles = badge.dataset.role ? badge.dataset.role.split(' ') : [];
-                badge.style.display = (roleFilter === 'all' || roles.includes(roleFilter)) ? '' : 'none';
-            });
+            }); 
+            navLinks.forEach(link => { 
+                link.classList.remove('active'); 
+                if (link.getAttribute('href') === `#${currentId}`) { 
+                    link.classList.add('active'); 
+                }
+            }); 
         }
-
-        setTimeout(() => {
-            if (projectsContainer && projectsContainer.querySelector('.entry')) {
-                mixer = mixitup(projectsContainer, {
-                    selectors: { target: '.entry' },
-                    animation: { duration: 350, effects: 'fade stagger(50ms)', applyPerspective: false },
-                    callbacks: { onMixEnd: () => AOS.refreshHard() }
-                });
-            }
-            applyRoleFilteringToSkills(currentRoleFilter);
-        }, 400);
-
-        // Event Listeners (Role Filters, Skill Badges, Nav Scroll) are unchanged
-        roleFilterButtons.forEach(button => { button.addEventListener('click', function() { if (rolesSection.style.display === 'none') return; roleFilterButtons.forEach(btn => btn.classList.remove('active')); this.classList.add('active'); currentRoleFilter = this.dataset.roleFilter; const newUrl = window.location.pathname + (currentRoleFilter !== 'all' ? `?role=${currentRoleFilter}` : ''); window.history.pushState({path: newUrl}, '', newUrl); generateAboutMeHTML(currentRoleFilter); generateResumeLinksHTML(currentRoleFilter); applyRoleFilteringToSkills(currentRoleFilter); skillsContainer.querySelectorAll('.skill-badge.active').forEach(b => b.classList.remove('active')); if (mixer) mixer.filter('all'); }); });
-        if (skillsContainer) { skillsContainer.addEventListener('click', function(e) { if (e.target.matches('.skill-badge') && e.target.style.display !== 'none') { const badge = e.target; const skill = badge.dataset.skill; if (!skill) return; let selector = 'all'; if (badge.classList.contains('active')) { badge.classList.remove('active'); } else { skillsContainer.querySelectorAll('.skill-badge.active').forEach(b => b.classList.remove('active')); badge.classList.add('active'); selector = `.skill-${skill}`; } if (mixer) mixer.filter(selector); } }); }
-        function updateActiveNavLink() { let currentId = ''; sections.forEach(section => { const rect = section.getBoundingClientRect(); if (rect.top <= 100 && rect.bottom >= 100) { currentId = section.id; }}); navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === `#${currentId}`) { link.classList.add('active'); }}); }
         window.addEventListener('scroll', updateActiveNavLink);
-        navLinks.forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const targetId = this.getAttribute('href'); const targetEl = document.querySelector(targetId); if(targetEl) { const navHeight = document.querySelector('nav').offsetHeight; const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 20; window.scrollTo({ top: targetPos, behavior: 'smooth' }); } }); });
-
+        
+        navLinks.forEach(anchor => { 
+            anchor.addEventListener('click', function (e) { 
+                e.preventDefault(); 
+                const targetId = this.getAttribute('href'); 
+                const targetEl = document.querySelector(targetId); 
+                if(targetEl) { 
+                    const navHeight = document.querySelector('nav').offsetHeight; 
+                    const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 20; 
+                    window.scrollTo({ top: targetPos, behavior: 'smooth' }); 
+                } 
+            }); 
+        });
     });
     </script>
 </body>
