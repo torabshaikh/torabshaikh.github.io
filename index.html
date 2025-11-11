@@ -11,7 +11,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMR0XPFQSJ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -21,7 +20,6 @@
         gtag('config', 'G-HMR0XPFQSJ');
     </script>
     <style>
-        /* (Base, Header, Nav, Section, About styles are unchanged) */
         :root {
             --background: #111115;
             --foreground: #e8e8e8;
@@ -87,6 +85,7 @@
             line-height: 1.5;
         }
 
+        /* --- UPDATED NAV STYLES --- */
         nav {
             position: fixed;
             top: 0;
@@ -94,13 +93,26 @@
             width: 100%;
             background-color: rgba(26, 26, 30, 0.85);
             backdrop-filter: blur(10px);
-            padding: 1rem 0;
+            padding: 1rem 2rem; /* Added side padding */
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
+            justify-content: space-between; /* Changed from center */
+            align-items: center;
             border-bottom: 1px solid var(--border-color);
+            box-sizing: border-box;
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--foreground);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
         }
 
         nav a {
@@ -124,7 +136,18 @@
             color: white;
             box-shadow: 0 0 10px var(--accent-glow);
         }
-
+        
+        /* NEW: Hamburger Button */
+        .nav-toggle {
+            display: none; /* Hidden on desktop */
+            background: none;
+            border: none;
+            color: var(--foreground);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        /* (Rest of desktop styles are unchanged) */
+        
         section {
             max-width: 1000px;
             margin: 4rem auto;
@@ -332,7 +355,7 @@
             padding: 1.2rem;
         }
 
-        /* --- NEW: Project Image Placeholder Style --- */
+        /* --- Project Image Placeholder Style --- */
         .project-image {
             width: 100%;
             aspect-ratio: 16 / 9;
@@ -378,7 +401,7 @@
             font-weight: 500;
         }
 
-        /* (Education, Contact, Resume, and Media Query styles are unchanged) */
+        /* (Education, Contact, Resume styles are unchanged) */
         #education .education-entry {
             background: rgba(255, 255, 255, 0.03);
             padding: 1.5rem;
@@ -519,21 +542,42 @@
             box-shadow: 0 0 10px var(--accent-glow);
         }
 
-        @media (max-width: 768px) {
+        /* ========== UPDATED MOBILE STYLES (@media) ========== */
+       @media (max-width: 768px) {
             body {
                 padding-top: 60px;
             }
-
+            
+            /* --- HAMBURGER NAV STYLES --- */
             nav {
-                gap: 0.5rem;
-                padding: 0.8rem 0;
-                justify-content: space-around;
+                padding: 0.8rem 1.5rem;
+                flex-wrap: wrap; /* Allows menu to stack */
             }
 
-            nav a {
-                padding: 0.5rem 0.8rem;
-                font-size: 0.9rem;
+            .nav-toggle {
+                display: block; /* Show hamburger */
             }
+
+            .nav-links {
+                display: none; /* Hide menu by default */
+                flex-direction: column;
+                width: 100%;
+                gap: 0.5rem;
+                padding-top: 1rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex; /* Show menu when active */
+            }
+            
+            /* Make links full-width for easier tapping */
+            nav .nav-links a {
+                width: 100%;
+                padding: 0.8rem 1rem;
+                box-sizing: border-box;
+            }
+            /* --- END HAMBURGER NAV STYLES --- */
 
             h1 {
                 font-size: 2.2rem;
@@ -563,38 +607,37 @@
                 height: 150px;
                 margin-bottom: 1.5rem;
             }
-
+            
+            /* --- PROGRESSIVE TIMELINE FIX --- */
             .timeline {
                 overflow: hidden;
             }
 
             .timeline::after {
-                left: 20px;
-                transform: translateX(0);
+                display: none; /* Hide the center line */
             }
 
             .timeline-entry {
-                width: calc(100% - 50px) !important;
+                width: 100% !important; /* Make entries full-width */
                 float: none !important;
-                margin-left: 40px;
-                margin-right: 0;
+                margin: 0 0 1.5rem 0; /* Remove side margins, add bottom margin */
                 border-left: 4px solid var(--accent);
                 border-right: none;
+                box-sizing: border-box; /* Ensures padding is included in width */
             }
 
             .timeline .timeline-entry:nth-child(odd),
             .timeline .timeline-entry:nth-child(even) {
                 float: none !important;
-                margin-left: 40px;
+                margin-left: 0;
                 border-right: none;
             }
 
             .timeline .timeline-entry:nth-child(odd)::before,
             .timeline .timeline-entry:nth-child(even)::before {
-                left: -12px;
-                transform: translateX(-50%);
-                right: auto;
+                display: none; /* Hide the dots */
             }
+            /* --- END PROGRESSIVE TIMELINE FIX --- */
 
             .contact-grid {
                 grid-template-columns: 1fr;
@@ -615,11 +658,19 @@
 
 <body>
     <nav>
-        <a href="#about" class="nav-link active">About</a>
-        <a href="#journey" class="nav-link">Journey</a>
-        <a href="#education" class="nav-link">Education</a>
-        <a href="#resume" class="nav-link">Resume</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#about" class="nav-brand">Torab Shaikh</a>
+        
+        <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="nav-links" id="nav-links-container">
+            <a href="#about" class="nav-link active">About</a>
+            <a href="#journey" class="nav-link">Journey</a>
+            <a href="#education" class="nav-link">Education</a>
+            <a href="#resume" class="nav-link">Resume</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
     </nav>
 
     <header data-aos="fade-down" data-aos-duration="800">
@@ -663,7 +714,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // ===========================================
-            // 1. DATA DEFINITIONS (WITH HUMANIZED TEXT)
+            // 1. DATA DEFINITIONS (UNCHANGED)
             // ===========================================
 
             const aboutMeText = "For six years, I was a full-stack software engineer and tech lead, building scalable cloud systems. I loved the challenge, but I found myself increasingly fascinated by a single question: how can we make software perceive and interact with the physical world? I wanted to move beyond the screen. <br><br>This question drove me to pursue my Master's in Robotics. It's the perfect way to bridge my deep experience in software with the complex, tangible problems of robotics and AI. I'm a pragmatic builder at heart—I believe in continuous learning and clear communication—and I'm now focused on applying my skills to create the intelligent, autonomous systems I've always been curious about.";
@@ -678,7 +729,7 @@
                         {
                             title: "Robotic & Tactile Sensor Integration",
                             imagePlaceholderText: "Robotic Arm with Tactile Sensor",
-                            imageURL: "./tactile_sensor.png", // <-- Add your generated image URL here
+                            imageURL: "./tactile_sensor.png",
                             descriptionPoints: [
                                 "Developing a multi-language package (Python, C++) to integrate a Universal Robots arm and novel tactile sensors using the ROS2 framework.",
                                 "Focusing on creating reliable, real-time communication and data processing pipelines for advanced robotic manipulation."
@@ -696,7 +747,7 @@
                         {
                             title: "Role-Playing Assessment Platform",
                             imagePlaceholderText: "AI Assessment Dashboard",
-                            imageURL: "games.png", // <-- Add your generated image URL here
+                            imageURL: "games.png",
                             descriptionPoints: [
                                 "Led development of web-based assessment games evaluating psychometric attributes.",
                                 "Managed deployment on AWS, scaling to support 40k concurrent users.",
@@ -716,7 +767,7 @@
                         {
                             title: "Automated Attendance System",
                             imagePlaceholderText: "Edge AI - Face Recognition",
-                            imageURL: "automated_attendance.png", // <-- Add your generated image URL here
+                            imageURL: "automated_attendance.png",
                             descriptionPoints: [
                                 "Engineered a C++/Python edge application on Nvidia Jetson for multi-camera video processing & on-device face recognition.",
                                 "Implemented robust multi-threading for cameras and fail-safe communication (MQTT with SQS backup)."
@@ -726,7 +777,7 @@
                         {
                             title: "Foundry - IoT Platform",
                             imagePlaceholderText: "IoT Cloud Platform Dashboard",
-                            imageURL: "foundry.png", // <-- Add your generated image URL here
+                            imageURL: "foundry.png",
                             descriptionPoints: [
                                 "Developed a multi-tenant, auto-scaling IoT platform using microservices that cut client application dev time by 80%.",
                                 "Utilized AWS Lambda, SQS, and DynamoDB."
@@ -736,7 +787,7 @@
                         {
                             title: "OCR APIs for Document Processing",
                             imagePlaceholderText: "AI Document Scanning (OCR)",
-                            imageURL: "OCR.png", // <-- Add your generated image URL here
+                            imageURL: "OCR.png",
                             descriptionPoints: [
                                 "Orchestrated serverless APIs for document detection & auto-form filling via OCR (AWS Textract, Google OCR).",
                                 "Trained & deployed a TensorFlow model on Lambda for Stamp/Signature detection."
@@ -758,10 +809,10 @@
                 blog: "https://cloudnode.tech",
                 address: "Buffalo, NY"
             };
-            const resumeLink = "#";
+            const resumeLink = "#"; // <-- Make sure to replace '#' with your actual resume link
 
             // ===========================================
-            // 2. HTML GENERATION FUNCTIONS
+            // 2. HTML GENERATION FUNCTIONS (UNCHANGED)
             // ===========================================
 
             function generateAboutMeHTML() {
@@ -784,8 +835,6 @@
                         entry.projects.forEach(project => {
                             const skillsHTML = (project.skills || []).map(skill => `<span class="badge">${skill}</span>`).join(' ');
                             const pointsHTML = (project.descriptionPoints || []).map(p => `<li>${p}</li>`).join('');
-
-                            // --- UPDATED: Image logic ---
                             const bgImage = project.imageURL ? `style="background-image: url('${project.imageURL}')"` : '';
                             const placeholderText = !project.imageURL ? (project.imagePlaceholderText || '') : '';
                             const imageHTML = `<div class="project-image" ${bgImage}>${placeholderText}</div>`;
@@ -845,17 +894,37 @@
             }
 
             // ===========================================
-            // 3. MAIN SCRIPT LOGIC (SIMPLIFIED)
+            // 3. MAIN SCRIPT LOGIC
             // ===========================================
 
+            // --- Generate all static content ---
             generateAboutMeHTML();
             generateJourneyHTML(journeyData);
             generateEducationHTML(educationData);
             generateContactHTML(contactData);
             generateResumeLinksHTML(resumeLink);
 
+            // --- Initialize AOS (Animations) ---
             AOS.init({ duration: 600, easing: 'ease-in-out', once: true, offset: 50 });
 
+            // --- NEW: Hamburger Menu Logic ---
+            const navToggle = document.getElementById('nav-toggle-btn');
+            const navLinksContainer = document.getElementById('nav-links-container');
+
+            if (navToggle && navLinksContainer) {
+                navToggle.addEventListener('click', () => {
+                    navLinksContainer.classList.toggle('active');
+                });
+
+                // Hide menu when a link is clicked (for single-page app)
+                navLinksContainer.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinksContainer.classList.remove('active');
+                    });
+                });
+            }
+
+            // --- Navigation Active State & Smooth Scroll ---
             const navLinks = document.querySelectorAll('nav a.nav-link');
             const sections = document.querySelectorAll('section[id]');
 
