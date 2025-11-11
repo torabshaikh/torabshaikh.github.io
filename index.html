@@ -1,57 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Torab Shaikh | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMR0XPFQSJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-HMR0XPFQSJ');
+    </script>
     <style>
         /* (Base, Header, Nav, Section, About styles are unchanged) */
-        :root { --background: #111115; --foreground: #e8e8e8; --accent: #8b5cf6; --accent-light: #a78bfa; --accent-glow: rgba(139, 92, 246, 0.5); --muted: #888888; --card-bg: #1f1f23; --nav-bg: #1a1a1e; --border-color: #333337; }
-        ::selection { background-color: var(--accent); color: white; }
-        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: var(--background); color: var(--foreground); padding-top: 70px; overflow-x: hidden; }
-        header { text-align: center; padding: 4rem 1rem 3rem 1rem; background: linear-gradient(145deg, #1a1a1e, var(--background)); margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); }
-        h1 { color: var(--foreground); font-size: 2.8rem; font-weight: 700; margin-bottom: 0.5rem; text-shadow: 0 0 15px var(--accent-glow); }
-        h2 { color: var(--accent-light); margin-bottom: 0.5rem; font-size: 2rem; font-weight: 700; }
-        h3 { color: var(--accent-light); font-weight: 600; margin-top: 0; margin-bottom: 0.8rem;}
-        header p { color: var(--muted); font-size: 1.2rem; max-width: 600px; margin: 0 auto; line-height: 1.5; }
-        nav { position: fixed; top: 0; left: 0; width: 100%; background-color: rgba(26, 26, 30, 0.85); backdrop-filter: blur(10px); padding: 1rem 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); display: flex; justify-content: center; gap: 1.5rem; border-bottom: 1px solid var(--border-color); }
-        nav a { color: var(--foreground); text-decoration: none; padding: 0.6rem 1.3rem; border-radius: 20px; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; }
-        nav a:hover { background-color: var(--accent); color: white; transform: translateY(-2px); box-shadow: 0 0 10px var(--accent-glow);}
-        nav a.active { background-color: var(--accent); color: white; box-shadow: 0 0 10px var(--accent-glow); }
-        section { max-width: 1000px; margin: 4rem auto; padding: 2.5rem; background: var(--card-bg); border-radius: 16px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); border: 1px solid var(--border-color); }
-        section h2 { border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 0.7rem; margin-bottom: 2.5rem; text-align: center; width: 100%; }
-        #about { display: flex; align-items: center; gap: 2.5rem; }
-        .about-content { flex: 1; }
-        .about-content p { line-height: 1.7; font-size: 1.05rem; }
-        .profile-image-placeholder { width: 180px; height: 180px; background-color: #333; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: var(--muted); font-size: 1rem; font-weight: bold; flex-shrink: 0; border: 3px solid var(--accent-light); box-shadow: 0 0 15px var(--accent-glow); text-align: center; animation: pulse-border 2s infinite ease-in-out; object-fit: cover; }
-        @keyframes pulse-border { 0% { box-shadow: 0 0 15px var(--accent-glow); } 50% { box-shadow: 0 0 25px rgba(167, 139, 250, 0.7); } 100% { box-shadow: 0 0 15px var(--accent-glow); } }
-        .timeline { position: relative; margin: 3rem 0; padding: 1rem 0; overflow: auto; }
-        .timeline::after { content: ''; position: absolute; width: 4px; background: linear-gradient(to bottom, var(--accent-light), var(--accent), var(--background)); top: 0; bottom: 0; left: 50%; transform: translateX(-50%); z-index: 0; border-radius: 2px; }
-        .timeline-entry { background: var(--card-bg); border-radius: 12px; width: calc(50% - 50px); position: relative; margin-bottom: 2.5rem; border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); z-index: 1; padding: 1.5rem 2rem; }
-        .timeline .timeline-entry:nth-child(odd) { float: left; clear: both; margin-left: 10px; border-left: 4px solid var(--accent); }
-        .timeline .timeline-entry:nth-child(even) { float: right; clear: both; margin-right: 10px; border-right: 4px solid var(--accent); }
-        .timeline-entry::before { content: ''; position: absolute; top: 25px; width: 20px; height: 20px; border-radius: 50%; background: var(--accent-light); border: 4px solid var(--background); z-index: 11; box-shadow: 0 0 10px var(--accent-glow); animation: pulse-dot 2s infinite ease-in-out; }
-        @keyframes pulse-dot { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-        .timeline .timeline-entry:nth-child(odd)::before { right: -32px; transform: translateX(50%); }
-        .timeline .timeline-entry:nth-child(even)::before { left: -32px; transform: translateX(-50%); }
-        .timeline-entry h3 { margin-top: 0; }
-        .timeline-entry .role-info { font-size: 0.95rem; color: var(--muted); margin-bottom: 1.5rem; }
-        .timeline-entry .narrative-text { font-size: 0.95rem; line-height: 1.6; color: var(--foreground); font-style: italic; background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--accent); margin-bottom: 1.5rem; }
-        .projects-header { color: var(--accent-light); font-weight: 600; font-size: 1.1rem; margin-top: 2rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
-        .project-card { background: rgba(255, 255, 255, 0.03); border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; border: 1px solid var(--border-color); transition: box-shadow 0.3s ease; }
-        .project-card:hover { box-shadow: 0 0 15px rgba(139, 92, 246, 0.2); }
-        .project-card-header { padding: 1rem 1.2rem; font-weight: 600; font-size: 1.05rem; background-color: rgba(139, 92, 246, 0.1); }
-        .project-card-body { padding: 1.2rem; }
-        
+        :root {
+            --background: #111115;
+            --foreground: #e8e8e8;
+            --accent: #8b5cf6;
+            --accent-light: #a78bfa;
+            --accent-glow: rgba(139, 92, 246, 0.5);
+            --muted: #888888;
+            --card-bg: #1f1f23;
+            --nav-bg: #1a1a1e;
+            --border-color: #333337;
+        }
+
+        ::selection {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--foreground);
+            padding-top: 70px;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 1rem 3rem 1rem;
+            background: linear-gradient(145deg, #1a1a1e, var(--background));
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 {
+            color: var(--foreground);
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        h2 {
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        h3 {
+            color: var(--accent-light);
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+        }
+
+        header p {
+            color: var(--muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(26, 26, 30, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav a {
+            color: var(--foreground);
+            text-decoration: none;
+            padding: 0.6rem 1.3rem;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        nav a.active {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        section {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 2.5rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+        }
+
+        section h2 {
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.7rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        #about {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content p {
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .profile-image-placeholder {
+            width: 180px;
+            height: 180px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--muted);
+            font-size: 1rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            border: 3px solid var(--accent-light);
+            box-shadow: 0 0 15px var(--accent-glow);
+            text-align: center;
+            animation: pulse-border 2s infinite ease-in-out;
+            object-fit: cover;
+        }
+
+        @keyframes pulse-border {
+            0% {
+                box-shadow: 0 0 15px var(--accent-glow);
+            }
+
+            50% {
+                box-shadow: 0 0 25px rgba(167, 139, 250, 0.7);
+            }
+
+            100% {
+                box-shadow: 0 0 15px var(--accent-glow);
+            }
+        }
+
+        .timeline {
+            position: relative;
+            margin: 3rem 0;
+            padding: 1rem 0;
+            overflow: auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--accent-light), var(--accent), var(--background));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+            border-radius: 2px;
+        }
+
+        .timeline-entry {
+            background: var(--card-bg);
+            border-radius: 12px;
+            width: calc(50% - 50px);
+            position: relative;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 1.5rem 2rem;
+        }
+
+        .timeline .timeline-entry:nth-child(odd) {
+            float: left;
+            clear: both;
+            margin-left: 10px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .timeline .timeline-entry:nth-child(even) {
+            float: right;
+            clear: both;
+            margin-right: 10px;
+            border-right: 4px solid var(--accent);
+        }
+
+        .timeline-entry::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            border: 4px solid var(--background);
+            z-index: 11;
+            box-shadow: 0 0 10px var(--accent-glow);
+            animation: pulse-dot 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-dot {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .timeline .timeline-entry:nth-child(odd)::before {
+            right: -32px;
+            transform: translateX(50%);
+        }
+
+        .timeline .timeline-entry:nth-child(even)::before {
+            left: -32px;
+            transform: translateX(-50%);
+        }
+
+        .timeline-entry h3 {
+            margin-top: 0;
+        }
+
+        .timeline-entry .role-info {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-entry .narrative-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--foreground);
+            font-style: italic;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .projects-header {
+            color: var(--accent-light);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+        }
+
+        .project-card-header {
+            padding: 1rem 1.2rem;
+            font-weight: 600;
+            font-size: 1.05rem;
+            background-color: rgba(139, 92, 246, 0.1);
+        }
+
+        .project-card-body {
+            padding: 1.2rem;
+        }
+
         /* --- NEW: Project Image Placeholder Style --- */
         .project-image {
             width: 100%;
             aspect-ratio: 16 / 9;
-            background-color: #333; /* A dark placeholder */
+            background-color: #333;
+            /* A dark placeholder */
             border-radius: 6px;
             margin-bottom: 1.2rem;
             background-size: cover;
@@ -63,47 +349,270 @@
             font-size: 0.9rem;
             color: var(--muted);
         }
-        
-        .project-card-body ul { padding-left: 20px; margin: 0 0 1rem 0; font-size: 0.9rem; line-height: 1.6; }
-        .project-card-body li { margin-bottom: 0.5rem; }
-        .skill-badges-condensed { display: flex; flex-wrap: wrap; gap: 0.5rem; padding-top: 0.5rem; }
-        .badge { background-color: rgba(139, 92, 246, 0.2); color: var(--accent-light); border: 1px solid var(--accent); padding: 0.4rem 0.9rem; border-radius: 16px; font-size: 0.85rem; font-weight: 500; }
-        
+
+        .project-card-body ul {
+            padding-left: 20px;
+            margin: 0 0 1rem 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .project-card-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-badges-condensed {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding-top: 0.5rem;
+        }
+
+        .badge {
+            background-color: rgba(139, 92, 246, 0.2);
+            color: var(--accent-light);
+            border: 1px solid var(--accent);
+            padding: 0.4rem 0.9rem;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
         /* (Education, Contact, Resume, and Media Query styles are unchanged) */
-        #education .education-entry { background: rgba(255, 255, 255, 0.03); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid var(--accent); }
-        #education .education-entry h3 { margin-bottom: 0.5rem; } #education .education-entry p { margin: 0.3rem 0; font-size: 0.95rem; line-height: 1.5; } #education .education-entry strong { color: var(--muted); } #education .education-entry .courses { font-size: 0.9rem; color: var(--muted); margin-top: 0.8rem; line-height: 1.4; }
-        #contact { border-bottom: none; } #contact h2 { margin-bottom: 1.5rem; }
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: left; margin-top: 1rem; }
-        .contact-item { display: flex; align-items: center; gap: 1rem; background: rgba(255, 255, 255, 0.05); padding: 1rem 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); transition: background-color 0.3s ease, transform 0.3s ease; }
-        .contact-item:hover { background-color: rgba(255, 255, 255, 0.08); transform: translateY(-3px); }
-        .contact-icon { font-size: 1.8rem; color: var(--accent-light); width: 30px; text-align: center; flex-shrink: 0; }
-        .contact-details { flex-grow: 1; }
-        .contact-details strong { display: block; color: var(--muted); font-size: 0.9rem; margin-bottom: 0.2rem; } .contact-details span, .contact-details a { color: var(--foreground); text-decoration: none; font-size: 1rem; word-break: break-word; } .contact-details a { color: var(--accent-light); transition: color 0.3s ease; } .contact-details a:hover { color: var(--accent); text-decoration: underline; }
-        #resume { clear: both; margin-top: 4rem; padding-bottom: 1rem;}
-        #resume h3 { color: var(--accent-light); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 0.7rem; margin-bottom: 2rem; text-align: center; width: 100%; font-size: 2rem; font-weight: 700; }
-        .resume-links { text-align: center; }
-        .resume-links a { color: var(--accent-light); margin: 0.5rem 1rem; text-decoration: none; font-weight: 600; transition: color 0.3s ease, text-shadow 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; display: inline-block; padding: 0.7rem 1.5rem; border: 1px solid var(--accent); border-radius: 20px; font-size: 1.1rem;}
-        .resume-links a:hover { color: white; background-color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); box-shadow: 0 0 10px var(--accent-glow); }
+        #education .education-entry {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        #education .education-entry h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        #education .education-entry p {
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        #education .education-entry strong {
+            color: var(--muted);
+        }
+
+        #education .education-entry .courses {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-top: 0.8rem;
+            line-height: 1.4;
+        }
+
+        #contact {
+            border-bottom: none;
+        }
+
+        #contact h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            font-size: 1.8rem;
+            color: var(--accent-light);
+            width: 30px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .contact-details {
+            flex-grow: 1;
+        }
+
+        .contact-details strong {
+            display: block;
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-details span,
+        .contact-details a {
+            color: var(--foreground);
+            text-decoration: none;
+            font-size: 1rem;
+            word-break: break-word;
+        }
+
+        .contact-details a {
+            color: var(--accent-light);
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        #resume {
+            clear: both;
+            margin-top: 4rem;
+            padding-bottom: 1rem;
+        }
+
+        #resume h3 {
+            color: var(--accent-light);
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+            padding-bottom: 0.7rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            width: 100%;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .resume-links {
+            text-align: center;
+        }
+
+        .resume-links a {
+            color: var(--accent-light);
+            margin: 0.5rem 1rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease, text-shadow 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            font-size: 1.1rem;
+        }
+
+        .resume-links a:hover {
+            color: white;
+            background-color: var(--accent);
+            text-shadow: 0 0 8px var(--accent-glow);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
         @media (max-width: 768px) {
-            body { padding-top: 60px; } 
-            nav { gap: 0.5rem; padding: 0.8rem 0; justify-content: space-around; } 
-            nav a { padding: 0.5rem 0.8rem; font-size: 0.9rem; } 
-            h1 { font-size: 2.2rem; } header p { font-size: 1rem; } 
-            section { padding: 1.5rem; margin: 2rem auto; } 
-            section h2, #resume h3 { font-size: 1.6rem; } 
-            #about { flex-direction: column; text-align: center; } 
-            .profile-image-placeholder { width: 150px; height: 150px; margin-bottom: 1.5rem; } 
-            .timeline { overflow: hidden; }
-            .timeline::after { left: 20px; transform: translateX(0); } 
-            .timeline-entry { width: calc(100% - 50px) !important; float: none !important; margin-left: 40px; margin-right: 0; border-left: 4px solid var(--accent); border-right: none; }
-            .timeline .timeline-entry:nth-child(odd), .timeline .timeline-entry:nth-child(even) { float: none !important; margin-left: 40px; border-right: none; } 
-            .timeline .timeline-entry:nth-child(odd)::before, .timeline .timeline-entry:nth-child(even)::before { left: -12px; transform: translateX(-50%); right: auto; } 
-            .contact-grid { grid-template-columns: 1fr; } 
-            .contact-item { flex-direction: column; align-items: flex-start; text-align: left; } 
-            .contact-icon { margin-bottom: 0.5rem; }
+            body {
+                padding-top: 60px;
+            }
+
+            nav {
+                gap: 0.5rem;
+                padding: 0.8rem 0;
+                justify-content: space-around;
+            }
+
+            nav a {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 1.5rem;
+                margin: 2rem auto;
+            }
+
+            section h2,
+            #resume h3 {
+                font-size: 1.6rem;
+            }
+
+            #about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-image-placeholder {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 1.5rem;
+            }
+
+            .timeline {
+                overflow: hidden;
+            }
+
+            .timeline::after {
+                left: 20px;
+                transform: translateX(0);
+            }
+
+            .timeline-entry {
+                width: calc(100% - 50px) !important;
+                float: none !important;
+                margin-left: 40px;
+                margin-right: 0;
+                border-left: 4px solid var(--accent);
+                border-right: none;
+            }
+
+            .timeline .timeline-entry:nth-child(odd),
+            .timeline .timeline-entry:nth-child(even) {
+                float: none !important;
+                margin-left: 40px;
+                border-right: none;
+            }
+
+            .timeline .timeline-entry:nth-child(odd)::before,
+            .timeline .timeline-entry:nth-child(even)::before {
+                left: -12px;
+                transform: translateX(-50%);
+                right: auto;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .contact-icon {
+                margin-bottom: 0.5rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <nav>
         <a href="#about" class="nav-link active">About</a>
@@ -123,165 +632,165 @@
         <div class="about-content">
             <h2 id="about-title">My Journey</h2>
             <div id="about-text-container">
-                </div>
+            </div>
         </div>
     </section>
-    
+
     <section id="journey" data-aos="fade-up" data-aos-duration="800">
         <h2>My Journey & Key Projects</h2>
         <div class="timeline" id="journey-timeline">
-            </div>
+        </div>
     </section>
 
     <section id="education" data-aos="fade-up" data-aos-duration="800">
         <h2>Education</h2>
         <div id="education-content">
-            </div>
+        </div>
     </section>
 
     <section id="resume" data-aos="fade-up" data-aos-duration="800">
         <h3>Resume</h3>
         <div id="resume-links-container" class="resume-links">
-            </div>
+        </div>
     </section>
 
     <section id="contact" data-aos="fade-up" data-aos-duration="800">
         <h2>Get In Touch</h2>
         <div id="contact-content">
-            </div>
+        </div>
     </section>
-    
+
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // ===========================================
-        // 1. DATA DEFINITIONS (WITH HUMANIZED TEXT)
-        // ===========================================
+        document.addEventListener('DOMContentLoaded', function () {
+            // ===========================================
+            // 1. DATA DEFINITIONS (WITH HUMANIZED TEXT)
+            // ===========================================
 
-        const aboutMeText = "For six years, I was a full-stack software engineer and tech lead, building scalable cloud systems. I loved the challenge, but I found myself increasingly fascinated by a single question: how can we make software perceive and interact with the physical world? I wanted to move beyond the screen. <br><br>This question drove me to pursue my Master's in Robotics. It's the perfect way to bridge my deep experience in software with the complex, tangible problems of robotics and AI. I'm a pragmatic builder at heart—I believe in continuous learning and clear communication—and I'm now focused on applying my skills to create the intelligent, autonomous systems I've always been curious about.";
+            const aboutMeText = "For six years, I was a full-stack software engineer and tech lead, building scalable cloud systems. I loved the challenge, but I found myself increasingly fascinated by a single question: how can we make software perceive and interact with the physical world? I wanted to move beyond the screen. <br><br>This question drove me to pursue my Master's in Robotics. It's the perfect way to bridge my deep experience in software with the complex, tangible problems of robotics and AI. I'm a pragmatic builder at heart—I believe in continuous learning and clear communication—and I'm now focused on applying my skills to create the intelligent, autonomous systems I've always been curious about.";
 
-        const journeyData = [
-            {
-                role: "Graduate Research Assistant",
-                organization: "AEMN Lab, University at Buffalo",
-                duration: "Jan 2025 - Present",
-                narrative: "This is where I'm getting my hands dirty with pure robotics. It's a fascinating challenge, very different from production software. I'm deep in C++ and ROS2, learning the rigor of academic research as I work on a core problem in robotics: giving machines a sense of touch.",
-                projects: [
-                    {
-                        title: "Robotic & Tactile Sensor Integration",
-                        imagePlaceholderText: "Robotic Arm with Tactile Sensor",
-                        imageURL: "./tactile_sensor.png", // <-- Add your generated image URL here
-                        descriptionPoints: [
-                            "Developing a multi-language package (Python, C++) to integrate a Universal Robots arm and novel tactile sensors using the ROS2 framework.",
-                            "Focusing on creating reliable, real-time communication and data processing pipelines for advanced robotic manipulation."
-                        ],
-                        skills: ["Robotics", "ROS2", "C++", "Python", "Sensor Integration", "CMake"]
-                    }
-                ]
-            },
-            {
-                role: "Tech Lead",
-                organization: "Talent Litmus, Mumbai",
-                duration: "Jul 2021 - Jul 2024",
-                narrative: "This was a huge growth period for me. I transitioned from just writing code to leading a team of six. I learned the hard lessons of balancing product deadlines with technical debt and the importance of good mentorship. Scaling our platform to 40,000 concurrent users was a trial by fire in resilient system design, and it taught me lessons I use every day.",
-                projects: [
-                    {
-                        title: "Role-Playing Assessment Platform",
-                        imagePlaceholderText: "AI Assessment Dashboard",
-                        imageURL: "games.png", // <-- Add your generated image URL here
-                        descriptionPoints: [
-                           "Led development of web-based assessment games evaluating psychometric attributes.",
-                           "Managed deployment on AWS, scaling to support 40k concurrent users.",
-                           "Integrated OpenAI/StabilityAI APIs to create dynamic scenarios.",
-                           "Implemented CI/CD pipelines (Bitbucket) & Docker Swarm for orchestration."
-                        ],
-                        skills: ["Tech Lead", "React", "Node.js", "AWS", "Docker Swarm", "CI/CD", "OpenAI"]
-                    }
-                ]
-            },
-            {
-                role: "Senior Software Engineer",
-                organization: "Helios Web Services (Thinglogix), Jaipur",
-                duration: "Jun 2018 - Jul 2021",
-                narrative: "This is where I truly built my foundation as an engineer. It was a classic startup environment where I wore many hats—from cloud architect one day to an edge AI developer the next. This is where I built my first real hardware-facing project (the Automated Attendance System) and discovered my passion for making software work in the real, messy world. I'm still proud to have been named 'Excellent Technical Player of the Year' here.",
-                projects: [
-                     {
-                        title: "Automated Attendance System",
-                        imagePlaceholderText: "Edge AI - Face Recognition",
-                        imageURL: "automated_attendance.png", // <-- Add your generated image URL here
-                        descriptionPoints: [
-                           "Engineered a C++/Python edge application on Nvidia Jetson for multi-camera video processing & on-device face recognition.",
-                           "Implemented robust multi-threading for cameras and fail-safe communication (MQTT with SQS backup)."
-                        ],
-                        skills: ["Edge AI", "C++", "Python", "OpenCV", "Nvidia Jetson", "Multithreading"]
-                    },
-                    {
-                        title: "Foundry - IoT Platform",
-                        imagePlaceholderText: "IoT Cloud Platform Dashboard",
-                        imageURL: "foundry.png", // <-- Add your generated image URL here
-                        descriptionPoints: [
-                           "Developed a multi-tenant, auto-scaling IoT platform using microservices that cut client application dev time by 80%.",
-                           "Utilized AWS Lambda, SQS, and DynamoDB."
-                        ],
-                        skills: ["IoT", "AWS Serverless", "Microservices", "Node.js", "Python"]
-                    },
-                    {
-                        title: "OCR APIs for Document Processing",
-                        imagePlaceholderText: "AI Document Scanning (OCR)",
-                        imageURL: "OCR.png", // <-- Add your generated image URL here
-                        descriptionPoints: [
-                           "Orchestrated serverless APIs for document detection & auto-form filling via OCR (AWS Textract, Google OCR).",
-                           "Trained & deployed a TensorFlow model on Lambda for Stamp/Signature detection."
-                        ],
-                        skills: ["ML", "TensorFlow", "AWS Lambda", "OCR", "API Design"]
-                    }
-                ]
+            const journeyData = [
+                {
+                    role: "Graduate Research Assistant",
+                    organization: "AEMN Lab, University at Buffalo",
+                    duration: "Jan 2025 - Present",
+                    narrative: "This is where I'm getting my hands dirty with pure robotics. It's a fascinating challenge, very different from production software. I'm deep in C++ and ROS2, learning the rigor of academic research as I work on a core problem in robotics: giving machines a sense of touch.",
+                    projects: [
+                        {
+                            title: "Robotic & Tactile Sensor Integration",
+                            imagePlaceholderText: "Robotic Arm with Tactile Sensor",
+                            imageURL: "./tactile_sensor.png", // <-- Add your generated image URL here
+                            descriptionPoints: [
+                                "Developing a multi-language package (Python, C++) to integrate a Universal Robots arm and novel tactile sensors using the ROS2 framework.",
+                                "Focusing on creating reliable, real-time communication and data processing pipelines for advanced robotic manipulation."
+                            ],
+                            skills: ["Robotics", "ROS2", "C++", "Python", "Sensor Integration", "CMake"]
+                        }
+                    ]
+                },
+                {
+                    role: "Tech Lead",
+                    organization: "Talent Litmus, Mumbai",
+                    duration: "Jul 2021 - Jul 2024",
+                    narrative: "This was a huge growth period for me. I transitioned from just writing code to leading a team of six. I learned the hard lessons of balancing product deadlines with technical debt and the importance of good mentorship. Scaling our platform to 40,000 concurrent users was a trial by fire in resilient system design, and it taught me lessons I use every day.",
+                    projects: [
+                        {
+                            title: "Role-Playing Assessment Platform",
+                            imagePlaceholderText: "AI Assessment Dashboard",
+                            imageURL: "games.png", // <-- Add your generated image URL here
+                            descriptionPoints: [
+                                "Led development of web-based assessment games evaluating psychometric attributes.",
+                                "Managed deployment on AWS, scaling to support 40k concurrent users.",
+                                "Integrated OpenAI/StabilityAI APIs to create dynamic scenarios.",
+                                "Implemented CI/CD pipelines (Bitbucket) & Docker Swarm for orchestration."
+                            ],
+                            skills: ["Tech Lead", "React", "Node.js", "AWS", "Docker Swarm", "CI/CD", "OpenAI"]
+                        }
+                    ]
+                },
+                {
+                    role: "Senior Software Engineer",
+                    organization: "Helios Web Services (Thinglogix), Jaipur",
+                    duration: "Jun 2018 - Jul 2021",
+                    narrative: "This is where I truly built my foundation as an engineer. It was a classic startup environment where I wore many hats—from cloud architect one day to an edge AI developer the next. This is where I built my first real hardware-facing project (the Automated Attendance System) and discovered my passion for making software work in the real, messy world. I'm still proud to have been named 'Excellent Technical Player of the Year' here.",
+                    projects: [
+                        {
+                            title: "Automated Attendance System",
+                            imagePlaceholderText: "Edge AI - Face Recognition",
+                            imageURL: "automated_attendance.png", // <-- Add your generated image URL here
+                            descriptionPoints: [
+                                "Engineered a C++/Python edge application on Nvidia Jetson for multi-camera video processing & on-device face recognition.",
+                                "Implemented robust multi-threading for cameras and fail-safe communication (MQTT with SQS backup)."
+                            ],
+                            skills: ["Edge AI", "C++", "Python", "OpenCV", "Nvidia Jetson", "Multithreading"]
+                        },
+                        {
+                            title: "Foundry - IoT Platform",
+                            imagePlaceholderText: "IoT Cloud Platform Dashboard",
+                            imageURL: "foundry.png", // <-- Add your generated image URL here
+                            descriptionPoints: [
+                                "Developed a multi-tenant, auto-scaling IoT platform using microservices that cut client application dev time by 80%.",
+                                "Utilized AWS Lambda, SQS, and DynamoDB."
+                            ],
+                            skills: ["IoT", "AWS Serverless", "Microservices", "Node.js", "Python"]
+                        },
+                        {
+                            title: "OCR APIs for Document Processing",
+                            imagePlaceholderText: "AI Document Scanning (OCR)",
+                            imageURL: "OCR.png", // <-- Add your generated image URL here
+                            descriptionPoints: [
+                                "Orchestrated serverless APIs for document detection & auto-form filling via OCR (AWS Textract, Google OCR).",
+                                "Trained & deployed a TensorFlow model on Lambda for Stamp/Signature detection."
+                            ],
+                            skills: ["ML", "TensorFlow", "AWS Lambda", "OCR", "API Design"]
+                        }
+                    ]
+                }
+            ];
+
+            const educationData = [
+                { university: "University at Buffalo", location: "Buffalo, NY", degree: "Master of Science in Robotics", graduation: "Dec 2025", courses: ["Machine Learning", "Computer Vision", "Robotics Algorithms", "GPU Programming"] },
+                { university: "Poornima University", location: "Jaipur, India", degree: "Bachelor of Technology in Computer Engineering", graduation: "May 2018" }
+            ];
+            const contactData = {
+                email: "torabshaikh5@gmail.com",
+                linkedin: "https://linkedin.com/in/torabshaikh",
+                github: "https://github.com/torabshaikh",
+                blog: "https://cloudnode.tech",
+                address: "Buffalo, NY"
+            };
+            const resumeLink = "#";
+
+            // ===========================================
+            // 2. HTML GENERATION FUNCTIONS
+            // ===========================================
+
+            function generateAboutMeHTML() {
+                const container = document.getElementById('about-text-container');
+                if (container) {
+                    container.innerHTML = `<p>${aboutMeText}</p>`;
+                }
             }
-        ];
 
-        const educationData = [ 
-            { university: "University at Buffalo", location: "Buffalo, NY", degree: "Master of Science in Robotics", graduation: "Dec 2025", courses: ["Machine Learning", "Computer Vision", "Robotics Algorithms", "GPU Programming"] }, 
-            { university: "Poornima University", location: "Jaipur, India", degree: "Bachelor of Technology in Computer Engineering", graduation: "May 2018" } 
-        ];
-        const contactData = { 
-            email: "torabshaikh5@gmail.com", 
-            linkedin: "https://linkedin.com/in/torabshaikh", 
-            github: "https://github.com/torabshaikh", 
-            blog: "https://cloudnode.tech", 
-            address: "Buffalo, NY" 
-        };
-        const resumeLink = "#"; 
+            function generateJourneyHTML(data) {
+                const container = document.getElementById('journey-timeline');
+                if (!container) return;
+                let html = '';
+                data.forEach((entry, index) => {
+                    const animation = (index % 2 === 0) ? 'fade-right' : 'fade-left';
+                    let projectsHTML = '';
 
-        // ===========================================
-        // 2. HTML GENERATION FUNCTIONS
-        // ===========================================
+                    if (entry.projects && entry.projects.length > 0) {
+                        projectsHTML += '<h4 class="projects-header">Key Projects:</h4>';
+                        entry.projects.forEach(project => {
+                            const skillsHTML = (project.skills || []).map(skill => `<span class="badge">${skill}</span>`).join(' ');
+                            const pointsHTML = (project.descriptionPoints || []).map(p => `<li>${p}</li>`).join('');
 
-        function generateAboutMeHTML() {
-            const container = document.getElementById('about-text-container');
-            if (container) {
-                container.innerHTML = `<p>${aboutMeText}</p>`;
-            }
-        }
+                            // --- UPDATED: Image logic ---
+                            const bgImage = project.imageURL ? `style="background-image: url('${project.imageURL}')"` : '';
+                            const placeholderText = !project.imageURL ? (project.imagePlaceholderText || '') : '';
+                            const imageHTML = `<div class="project-image" ${bgImage}>${placeholderText}</div>`;
 
-        function generateJourneyHTML(data) {
-            const container = document.getElementById('journey-timeline');
-            if (!container) return;
-            let html = '';
-            data.forEach((entry, index) => {
-                const animation = (index % 2 === 0) ? 'fade-right' : 'fade-left';
-                let projectsHTML = '';
-                
-                if (entry.projects && entry.projects.length > 0) {
-                    projectsHTML += '<h4 class="projects-header">Key Projects:</h4>';
-                    entry.projects.forEach(project => {
-                        const skillsHTML = (project.skills || []).map(skill => `<span class="badge">${skill}</span>`).join(' ');
-                        const pointsHTML = (project.descriptionPoints || []).map(p => `<li>${p}</li>`).join('');
-                        
-                        // --- UPDATED: Image logic ---
-                        const bgImage = project.imageURL ? `style="background-image: url('${project.imageURL}')"` : '';
-                        const placeholderText = !project.imageURL ? (project.imagePlaceholderText || '') : '';
-                        const imageHTML = `<div class="project-image" ${bgImage}>${placeholderText}</div>`;
-
-                        projectsHTML += `
+                            projectsHTML += `
                             <div class="project-card">
                                 <div class="project-card-header">${project.title}</div>
                                 <div class="project-card-body">
@@ -291,10 +800,10 @@
                                 </div> 
                             </div>
                         `;
-                    });
-                }
+                        });
+                    }
 
-                html += `
+                    html += `
                     <div class="timeline-entry" data-aos="${animation}" data-aos-duration="600">
                         <h3>${entry.role}</h3>
                         <p class="role-info"><strong>${entry.organization}</strong> | ${entry.duration}</p>
@@ -302,85 +811,86 @@
                         ${projectsHTML}
                     </div>
                 `;
-            });
-            container.innerHTML = html;
-        }
-        
-        function generateEducationHTML(data) { 
-            const container = document.getElementById('education-content'); 
-            if (!container) return; 
-            let html = ''; 
-            data.forEach(edu => { 
-                html += `<div class="education-entry"><h3>${edu.degree}</h3><p><strong>University:</strong> ${edu.university} | ${edu.location}</p><p><strong>Graduation:</strong> ${edu.graduation}</p>${edu.courses && edu.courses.length > 0 ? `<p class="courses"><strong>Relevant Courses:</strong> ${edu.courses.join(', ')}</p>` : ''}</div>`; 
-            }); 
-            container.innerHTML = html; 
-        }
-        
-        function generateResumeLinksHTML(link) { 
-            const container = document.getElementById('resume-links-container'); 
-            if (container) {
-                container.innerHTML = `<a href="${link}" target="_blank" rel="noopener noreferrer">Download Resume</a>`; 
+                });
+                container.innerHTML = html;
             }
-        }
 
-        function generateContactHTML(data) { 
-            const container = document.getElementById('contact-content'); 
-            if (!container) return; 
-            container.innerHTML = `<div class="contact-grid">
+            function generateEducationHTML(data) {
+                const container = document.getElementById('education-content');
+                if (!container) return;
+                let html = '';
+                data.forEach(edu => {
+                    html += `<div class="education-entry"><h3>${edu.degree}</h3><p><strong>University:</strong> ${edu.university} | ${edu.location}</p><p><strong>Graduation:</strong> ${edu.graduation}</p>${edu.courses && edu.courses.length > 0 ? `<p class="courses"><strong>Relevant Courses:</strong> ${edu.courses.join(', ')}</p>` : ''}</div>`;
+                });
+                container.innerHTML = html;
+            }
+
+            function generateResumeLinksHTML(link) {
+                const container = document.getElementById('resume-links-container');
+                if (container) {
+                    container.innerHTML = `<a href="${link}" target="_blank" rel="noopener noreferrer">Download Resume</a>`;
+                }
+            }
+
+            function generateContactHTML(data) {
+                const container = document.getElementById('contact-content');
+                if (!container) return;
+                container.innerHTML = `<div class="contact-grid">
                 ${data.email ? `<div class="contact-item"><i class="fas fa-envelope contact-icon"></i><div class="contact-details"><strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a></div></div>` : ''}
                 ${data.linkedin ? `<div class="contact-item"><i class="fab fa-linkedin contact-icon"></i><div class="contact-details"><strong>LinkedIn:</strong> <a href="${data.linkedin}" target="_blank" rel="noopener noreferrer">linkedin.com/in/torabshaikh</a></div></div>` : ''}
                 ${data.github ? `<div class="contact-item"><i class="fab fa-github contact-icon"></i><div class="contact-details"><strong>GitHub:</strong> <a href="${data.github}" target="_blank" rel="noopener noreferrer">github.com/torabshaikh</a></div></div>` : ''}
                 ${data.blog ? `<div class="contact-item"><i class="fas fa-rss contact-icon"></i><div class="contact-details"><strong>Blog:</strong> <a href="${data.blog}" target="_blank" rel="noopener noreferrer">CloudNode.tech</a></div></div>` : ''}
                 ${data.address ? `<div class="contact-item"><i class="fas fa-map-marker-alt contact-icon"></i><div class="contact-details"><strong>Location:</strong> <span>${data.address}</span></div></div>` : ''}
-            </div>`; 
-        }
-        
-        // ===========================================
-        // 3. MAIN SCRIPT LOGIC (SIMPLIFIED)
-        // ===========================================
-        
-        generateAboutMeHTML();
-        generateJourneyHTML(journeyData);
-        generateEducationHTML(educationData);
-        generateContactHTML(contactData);
-        generateResumeLinksHTML(resumeLink);
+            </div>`;
+            }
 
-        AOS.init({ duration: 600, easing: 'ease-in-out', once: true, offset: 50 });
-        
-        const navLinks = document.querySelectorAll('nav a.nav-link');
-        const sections = document.querySelectorAll('section[id]');
+            // ===========================================
+            // 3. MAIN SCRIPT LOGIC (SIMPLIFIED)
+            // ===========================================
 
-        function updateActiveNavLink() { 
-            let currentId = 'about'; 
-            const navHeight = 70; 
-            sections.forEach(section => { 
-                const rect = section.getBoundingClientRect(); 
-                if (rect.top <= navHeight + 20) { 
-                    currentId = section.id; 
-                }
-            }); 
-            navLinks.forEach(link => { 
-                link.classList.remove('active'); 
-                if (link.getAttribute('href') === `#${currentId}`) { 
-                    link.classList.add('active'); 
-                }
-            }); 
-        }
-        window.addEventListener('scroll', updateActiveNavLink);
-        
-        navLinks.forEach(anchor => { 
-            anchor.addEventListener('click', function (e) { 
-                e.preventDefault(); 
-                const targetId = this.getAttribute('href'); 
-                const targetEl = document.querySelector(targetId); 
-                if(targetEl) { 
-                    const navHeight = document.querySelector('nav').offsetHeight; 
-                    const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 20; 
-                    window.scrollTo({ top: targetPos, behavior: 'smooth' }); 
-                } 
-            }); 
+            generateAboutMeHTML();
+            generateJourneyHTML(journeyData);
+            generateEducationHTML(educationData);
+            generateContactHTML(contactData);
+            generateResumeLinksHTML(resumeLink);
+
+            AOS.init({ duration: 600, easing: 'ease-in-out', once: true, offset: 50 });
+
+            const navLinks = document.querySelectorAll('nav a.nav-link');
+            const sections = document.querySelectorAll('section[id]');
+
+            function updateActiveNavLink() {
+                let currentId = 'about';
+                const navHeight = 70;
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= navHeight + 20) {
+                        currentId = section.id;
+                    }
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            window.addEventListener('scroll', updateActiveNavLink);
+
+            navLinks.forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        const navHeight = document.querySelector('nav').offsetHeight;
+                        const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                    }
+                });
+            });
         });
-    });
     </script>
 </body>
+
 </html>
