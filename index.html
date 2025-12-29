@@ -93,11 +93,13 @@
             width: 100%;
             background-color: rgba(26, 26, 30, 0.85);
             backdrop-filter: blur(10px);
-            padding: 1rem 2rem; /* Added side padding */
+            padding: 1rem 2rem;
+            /* Added side padding */
             z-index: 1000;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             display: flex;
-            justify-content: space-between; /* Changed from center */
+            justify-content: space-between;
+            /* Changed from center */
             align-items: center;
             border-bottom: 1px solid var(--border-color);
             box-sizing: border-box;
@@ -136,18 +138,20 @@
             color: white;
             box-shadow: 0 0 10px var(--accent-glow);
         }
-        
+
         /* NEW: Hamburger Button */
         .nav-toggle {
-            display: none; /* Hidden on desktop */
+            display: none;
+            /* Hidden on desktop */
             background: none;
             border: none;
             color: var(--foreground);
             font-size: 1.5rem;
             cursor: pointer;
         }
+
         /* (Rest of desktop styles are unchanged) */
-        
+
         section {
             max-width: 1000px;
             margin: 4rem auto;
@@ -544,23 +548,26 @@
         }
 
         /* ========== UPDATED MOBILE STYLES (@media) ========== */
-       @media (max-width: 768px) {
+        @media (max-width: 768px) {
             body {
                 padding-top: 60px;
             }
-            
+
             /* --- HAMBURGER NAV STYLES --- */
             nav {
                 padding: 0.8rem 1.5rem;
-                flex-wrap: wrap; /* Allows menu to stack */
+                flex-wrap: wrap;
+                /* Allows menu to stack */
             }
 
             .nav-toggle {
-                display: block; /* Show hamburger */
+                display: block;
+                /* Show hamburger */
             }
 
             .nav-links {
-                display: none; /* Hide menu by default */
+                display: none;
+                /* Hide menu by default */
                 flex-direction: column;
                 width: 100%;
                 gap: 0.5rem;
@@ -569,15 +576,17 @@
             }
 
             .nav-links.active {
-                display: flex; /* Show menu when active */
+                display: flex;
+                /* Show menu when active */
             }
-            
+
             /* Make links full-width for easier tapping */
             nav .nav-links a {
                 width: 100%;
                 padding: 0.8rem 1rem;
                 box-sizing: border-box;
             }
+
             /* --- END HAMBURGER NAV STYLES --- */
 
             h1 {
@@ -608,23 +617,27 @@
                 height: 150px;
                 margin-bottom: 1.5rem;
             }
-            
+
             /* --- PROGRESSIVE TIMELINE FIX --- */
             .timeline {
                 overflow: hidden;
             }
 
             .timeline::after {
-                display: none; /* Hide the center line */
+                display: none;
+                /* Hide the center line */
             }
 
             .timeline-entry {
-                width: 100% !important; /* Make entries full-width */
+                width: 100% !important;
+                /* Make entries full-width */
                 float: none !important;
-                margin: 0 0 1.5rem 0; /* Remove side margins, add bottom margin */
+                margin: 0 0 1.5rem 0;
+                /* Remove side margins, add bottom margin */
                 border-left: 4px solid var(--accent);
                 border-right: none;
-                box-sizing: border-box; /* Ensures padding is included in width */
+                box-sizing: border-box;
+                /* Ensures padding is included in width */
             }
 
             .timeline .timeline-entry:nth-child(odd),
@@ -636,8 +649,10 @@
 
             .timeline .timeline-entry:nth-child(odd)::before,
             .timeline .timeline-entry:nth-child(even)::before {
-                display: none; /* Hide the dots */
+                display: none;
+                /* Hide the dots */
             }
+
             /* --- END PROGRESSIVE TIMELINE FIX --- */
 
             .contact-grid {
@@ -660,7 +675,7 @@
 <body>
     <nav>
         <a href="#about" class="nav-brand">Torab Shaikh</a>
-        
+
         <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
@@ -680,7 +695,7 @@
     </header>
 
     <section id="about" data-aos="fade-up" data-aos-duration="800">
-        <img class="profile-image-placeholder" src="./profile_picture.webp"  alt="Profile Picture">
+        <img class="profile-image-placeholder" src="./profile_picture.webp" alt="Profile Picture">
         <div class="about-content">
             <h2 id="about-title">My Journey</h2>
             <div id="about-text-container">
@@ -725,19 +740,22 @@ I have just finished my Master's in robotics from UB where I focused on getting 
             const journeyData = [
                 {
                     role: "Graduate Research Assistant",
-                    organization: "AEMN Lab, University at Buffalo",
+                    organization: "Advanced Materials and Devices Lab for Future Human-Machine Interaction, University at Buffalo",
                     duration: "Jan 2025 - Present",
                     narrative: "This is where I'm getting my hands dirty with pure robotics. It's a fascinating challenge, very different from production software. I'm deep in C++ and ROS2, learning the rigor of academic research as I work on a core problem in robotics: giving machines a sense of touch.",
                     projects: [
                         {
-                            title: "Robotic & Tactile Sensor Integration",
+                            title: "Tactile Sensor driver development and use the sensor to do material classification using ML",
                             imagePlaceholderText: "Robotic Arm with Tactile Sensor",
                             imageURL: "./tactile_sensor.png",
                             descriptionPoints: [
-                                "Developing a multi-language package (Python, C++) to integrate a Universal Robots arm and novel tactile sensors using the ROS2 framework.",
-                                "Focusing on creating reliable, real-time communication and data processing pipelines for advanced robotic manipulation."
+                                "Developing a multi-language package (Python, C++) to use the tactile sensor.",
+                                "Calibrated 20x8 FSR sensor to predict force upto 20N with only ± 0.2N error margin using regression techniques.",
+                                "Integrated the tactile sensor to a 3D printed finger and developed application to use it collect data for material classification.",
+                                "Designed and 3D printed various components needed for the project.",
+                                "Developing Machine Learning models to classify materials based on tactile data collected using the sensor."
                             ],
-                            skills: ["Robotics", "ROS2", "C++", "Python", "Sensor Integration", "CMake"]
+                            skills: ["Robotics", "ROS2", "C++", "Python", "Machine Learning", "scipy", "Sensor calibration", "Signal processing", "Sensor Integration", "CMake"]
                         }
                     ]
                 },
@@ -745,19 +763,24 @@ I have just finished my Master's in robotics from UB where I focused on getting 
                     role: "Tech Lead",
                     organization: "Talent Litmus, Mumbai",
                     duration: "Jul 2021 - Jul 2024",
-                    narrative: "This was a huge growth period for me. I transitioned from just writing code to leading a team of six. I learned the hard lessons of balancing product deadlines with technical debt and the importance of good mentorship. Scaling our platform to 40,000 concurrent users was a trial by fire in resilient system design, and it taught me lessons I use every day.",
+                    narrative: `This was a huge growth period for me.
+                    I transitioned from just owning a piece of software to owning the entire infrastructure and to leading a team of six in a dynamic fast paced start up environment where I needed to take decisions that decided the technical direction of the entire organization.
+                    I learned the hard lessons of balancing product deadlines, firefighting issues on production and helping teammates.
+                    Scaling our platform to 40,000 concurrent users was a trial by fire in resilient system design, and it taught me lessons I use every day.
+                    The number of clients were doubled during the period I was working here.
+                    `,
                     projects: [
                         {
-                            title: "Role-Playing Assessment Platform",
+                            title: "Game based Assessment and training platform",
                             imagePlaceholderText: "AI Assessment Dashboard",
                             imageURL: "games.png",
                             descriptionPoints: [
-                                "Led development of web-based assessment games evaluating psychometric attributes.",
-                                "Managed deployment on AWS, scaling to support 40k concurrent users.",
-                                "Integrated OpenAI/StabilityAI APIs to create dynamic scenarios.",
-                                "Implemented CI/CD pipelines (Bitbucket) & Docker Swarm for orchestration."
+                                "Led development of various web-based and mobile based games that companies uses for hiring and training employees.",
+                                "Managed infrastructure on AWS, scaling to support 40k users.",
+                                "Integrated OpenAI/StabilityAI APIs to speed up content generation that led to quicker delivery.",
+                                "Implemented CI/CD pipelines (Bitbucket) abd bash & Docker Swarm for orchestration."
                             ],
-                            skills: ["Tech Lead", "React", "Node.js", "AWS", "Docker Swarm", "CI/CD", "OpenAI"]
+                            skills: ["Tech Lead", "Python", "Bash", "nginx", "Docker", "MongoDB", "System Architecture", "Node.js", "AWS", "React", "Angular", "CI/CD", "LLM integration"]
                         }
                     ]
                 },
@@ -956,7 +979,7 @@ I have just finished my Master's in robotics from UB where I focused on getting 
                     const targetEl = document.querySelector(targetId);
                     if (targetEl) {
                         const navHeight = document.querySelector('nav').offsetHeight;
-                        const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                        const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight;
                         window.scrollTo({ top: targetPos, behavior: 'smooth' });
                     }
                 });
