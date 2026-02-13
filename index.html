@@ -7,7 +7,7 @@
     <title>Torab Shaikh | Portfolio</title>
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -23,15 +23,17 @@
     </script>
     <style>
         :root {
-            --background: #111115;
-            --foreground: #e8e8e8;
-            --accent: #8b5cf6;
-            --accent-light: #a78bfa;
-            --accent-glow: rgba(139, 92, 246, 0.5);
-            --muted: #888888;
-            --card-bg: #1f1f23;
-            --nav-bg: #1a1a1e;
-            --border-color: #333337;
+            --primary: #4051b5;
+            --primary-light: #5c6bc0;
+            --primary-dark: #303f9f;
+            --accent: #526cfe;
+            --background: #ffffff;
+            --surface: #f5f5f6;
+            --foreground: rgba(0, 0, 0, 0.87);
+            --foreground-light: rgba(0, 0, 0, 0.54);
+            --muted: #757575;
+            --border-color: #e0e0e0;
+            --card-bg: #ffffff;
         }
 
         ::selection {
@@ -42,135 +44,139 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Inter', sans-serif;
-            background: var(--background);
+            font-family: 'Roboto', sans-serif;
+            background: var(--surface);
             color: var(--foreground);
-            padding-top: 70px;
+            padding-top: 64px;
             overflow-x: hidden;
-        }
-
-        header {
-            text-align: center;
-            padding: 4rem 1rem 3rem 1rem;
-            background: linear-gradient(145deg, #1a1a1e, var(--background));
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border-color);
+            font-weight: 400;
+            line-height: 1.6;
         }
 
         h1 {
             color: var(--foreground);
-            font-size: 2.8rem;
-            font-weight: 700;
+            font-size: 2.4rem;
+            font-weight: 300;
             margin-bottom: 0.5rem;
-            text-shadow: 0 0 15px var(--accent-glow);
+            letter-spacing: -0.5px;
         }
 
         h2 {
-            color: var(--accent-light);
+            color: var(--foreground);
             margin-bottom: 0.5rem;
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: 400;
         }
 
         h3 {
-            color: var(--accent-light);
-            font-weight: 600;
+            color: var(--foreground);
+            font-weight: 500;
             margin-top: 0;
             margin-bottom: 0.8rem;
         }
 
-        header p {
-            color: var(--muted);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.5;
-        }
-
-        /* --- UPDATED NAV STYLES --- */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(26, 26, 30, 0.85);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            /* Added side padding */
+            background-color: var(--primary);
+            padding: 0 2rem;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14), 0 3px 4px rgba(0, 0, 0, 0.12);
             display: flex;
             justify-content: space-between;
-            /* Changed from center */
             align-items: center;
-            border-bottom: 1px solid var(--border-color);
             box-sizing: border-box;
+            height: 64px;
         }
 
         .nav-brand {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--foreground);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
             text-decoration: none;
+            color: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .nav-brand-img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: 70%;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .nav-brand-name {
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-brand-tagline {
+            font-weight: 300;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.7);
+            display: block;
+            letter-spacing: 0.3px;
+            line-height: 1.2;
         }
 
         .nav-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 0.25rem;
         }
 
         nav a {
-            color: var(--foreground);
+            color: rgba(255, 255, 255, 0.85);
             text-decoration: none;
-            padding: 0.6rem 1.3rem;
-            border-radius: 20px;
-            font-weight: 600;
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 400;
+            font-size: 0.875rem;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
 
         nav a:hover {
-            background-color: var(--accent);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 0 10px var(--accent-glow);
+            background-color: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
         }
 
         nav a.active {
-            background-color: var(--accent);
-            color: white;
-            box-shadow: 0 0 10px var(--accent-glow);
+            background-color: rgba(255, 255, 255, 0.18);
+            color: #ffffff;
         }
 
-        /* NEW: Hamburger Button */
         .nav-toggle {
             display: none;
-            /* Hidden on desktop */
             background: none;
             border: none;
-            color: var(--foreground);
+            color: #ffffff;
             font-size: 1.5rem;
             cursor: pointer;
         }
 
-        /* (Rest of desktop styles are unchanged) */
-
         section {
-            max-width: 1000px;
-            margin: 4rem auto;
-            padding: 2.5rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem 2.5rem;
             background: var(--card-bg);
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
             border: 1px solid var(--border-color);
         }
 
         section h2 {
-            border-bottom: 3px solid var(--accent);
+            border-bottom: 2px solid var(--primary);
             display: inline-block;
-            padding-bottom: 0.7rem;
-            margin-bottom: 2.5rem;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
             text-align: center;
             width: 100%;
+            font-weight: 400;
         }
 
         #about {
@@ -185,46 +191,57 @@
 
         .about-content p {
             line-height: 1.7;
-            font-size: 1.05rem;
+            font-size: 1rem;
+            color: var(--foreground);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--surface);
+            color: var(--muted);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
         }
 
         .profile-image-placeholder {
-            width: 180px;
-            height: 180px;
-            background-color: #333;
+            width: 170px;
+            height: 170px;
+            background-color: var(--surface);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             color: var(--muted);
             font-size: 1rem;
-            font-weight: bold;
+            font-weight: 500;
             flex-shrink: 0;
-            border: 3px solid var(--accent-light);
-            box-shadow: 0 0 15px var(--accent-glow);
-            text-align: center;
-            animation: pulse-border 2s infinite ease-in-out;
+            border: 3px solid var(--border-color);
             object-fit: cover;
             object-position: 70%;
         }
 
-        @keyframes pulse-border {
-            0% {
-                box-shadow: 0 0 15px var(--accent-glow);
-            }
-
-            50% {
-                box-shadow: 0 0 25px rgba(167, 139, 250, 0.7);
-            }
-
-            100% {
-                box-shadow: 0 0 15px var(--accent-glow);
-            }
-        }
-
         .timeline {
             position: relative;
-            margin: 3rem 0;
+            margin: 2rem 0;
             padding: 1rem 0;
             overflow: auto;
         }
@@ -232,8 +249,9 @@
         .timeline::after {
             content: '';
             position: absolute;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--accent-light), var(--accent), var(--background));
+            width: 3px;
+            background: var(--primary);
+            opacity: 0.3;
             top: 0;
             bottom: 0;
             left: 50%;
@@ -244,186 +262,198 @@
 
         .timeline-entry {
             background: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 4px;
             width: calc(50% - 50px);
             position: relative;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             border: 1px solid var(--border-color);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
             z-index: 1;
-            padding: 1.5rem 2rem;
+            padding: 1.5rem 1.8rem;
         }
 
         .timeline .timeline-entry:nth-child(odd) {
             float: left;
             clear: both;
             margin-left: 10px;
-            border-left: 4px solid var(--accent);
+            border-left: 3px solid var(--primary);
         }
 
         .timeline .timeline-entry:nth-child(even) {
             float: right;
             clear: both;
             margin-right: 10px;
-            border-right: 4px solid var(--accent);
+            border-right: 3px solid var(--primary);
         }
 
         .timeline-entry::before {
             content: '';
             position: absolute;
             top: 25px;
-            width: 20px;
-            height: 20px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            background: var(--accent-light);
-            border: 4px solid var(--background);
+            background: var(--primary);
+            border: 3px solid var(--background);
             z-index: 11;
-            box-shadow: 0 0 10px var(--accent-glow);
-            animation: pulse-dot 2s infinite ease-in-out;
-        }
-
-        @keyframes pulse-dot {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.1);
-            }
-
-            100% {
-                transform: scale(1);
-            }
         }
 
         .timeline .timeline-entry:nth-child(odd)::before {
-            right: -32px;
+            right: -30px;
             transform: translateX(50%);
         }
 
         .timeline .timeline-entry:nth-child(even)::before {
-            left: -32px;
+            left: -30px;
             transform: translateX(-50%);
         }
 
         .timeline-entry h3 {
             margin-top: 0;
+            font-weight: 500;
+            cursor: pointer;
         }
 
         .timeline-entry .role-info {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--muted);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        .timeline-entry .entry-details {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s ease, opacity 0.4s ease, margin 0.3s ease;
+            margin-top: 0;
+        }
+
+        .timeline-entry:hover .entry-details,
+        .timeline-entry.expanded .entry-details {
+            max-height: 3000px;
+            opacity: 1;
+            margin-top: 1.2rem;
+        }
+
+        .timeline-entry .expand-hint {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 0.5rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .timeline-entry:hover .expand-hint,
+        .timeline-entry.expanded .expand-hint {
+            opacity: 0;
         }
 
         .timeline-entry .narrative-text {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.6;
-            color: var(--foreground);
+            color: var(--foreground-light);
             font-style: italic;
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--surface);
             padding: 1rem;
-            border-radius: 8px;
-            border-left: 3px solid var(--accent);
+            border-radius: 4px;
+            border-left: 3px solid var(--primary);
             margin-bottom: 1.5rem;
         }
 
         .projects-header {
-            color: var(--accent-light);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-top: 2rem;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 1rem;
+            margin-top: 1.5rem;
             margin-bottom: 1rem;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 0.5rem;
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
+            background: var(--surface);
+            border-radius: 4px;
             margin-bottom: 1.5rem;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            transition: box-shadow 0.3s ease;
+            transition: box-shadow 0.2s ease;
         }
 
         .project-card:hover {
-            box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .project-card-header {
-            padding: 1rem 1.2rem;
-            font-weight: 600;
-            font-size: 1.05rem;
-            background-color: rgba(139, 92, 246, 0.1);
+            padding: 0.8rem 1.2rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            background-color: rgba(64, 81, 181, 0.08);
+            color: var(--primary-dark);
         }
 
         .project-card-body {
             padding: 1.2rem;
         }
 
-        /* --- Project Image Placeholder Style --- */
         .project-image {
             width: 100%;
             aspect-ratio: 16 / 9;
-            background-color: #333;
-            /* A dark placeholder */
-            border-radius: 6px;
-            margin-bottom: 1.2rem;
+            background-color: var(--surface);
+            border-radius: 4px;
+            margin-bottom: 1rem;
             background-size: cover;
             background-position: center;
             border: 1px solid var(--border-color);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--muted);
         }
 
         .project-card-body ul {
             padding-left: 20px;
             margin: 0 0 1rem 0;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.875rem;
+            line-height: 1.7;
         }
 
         .project-card-body li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .skill-badges-condensed {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.4rem;
             padding-top: 0.5rem;
         }
 
         .badge {
-            background-color: rgba(139, 92, 246, 0.2);
-            color: var(--accent-light);
-            border: 1px solid var(--accent);
-            padding: 0.4rem 0.9rem;
-            border-radius: 16px;
-            font-size: 0.85rem;
-            font-weight: 500;
+            background-color: rgba(64, 81, 181, 0.08);
+            color: var(--primary);
+            border: 1px solid rgba(64, 81, 181, 0.25);
+            padding: 0.3rem 0.75rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: 400;
         }
 
-        /* (Education, Contact, Resume styles are unchanged) */
         #education .education-entry {
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--surface);
             padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--accent);
+            border-radius: 4px;
+            margin-bottom: 1.2rem;
+            border-left: 3px solid var(--primary);
         }
 
         #education .education-entry h3 {
             margin-bottom: 0.5rem;
+            font-weight: 500;
         }
 
         #education .education-entry p {
             margin: 0.3rem 0;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.5;
         }
 
@@ -432,7 +462,7 @@
         }
 
         #education .education-entry .courses {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--muted);
             margin-top: 0.8rem;
             line-height: 1.4;
@@ -449,7 +479,7 @@
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
             text-align: left;
             margin-top: 1rem;
         }
@@ -458,21 +488,20 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--surface);
             padding: 1rem 1.5rem;
-            border-radius: 10px;
+            border-radius: 4px;
             border: 1px solid var(--border-color);
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.2s ease;
         }
 
         .contact-item:hover {
-            background-color: rgba(255, 255, 255, 0.08);
-            transform: translateY(-3px);
+            background-color: rgba(64, 81, 181, 0.04);
         }
 
         .contact-icon {
-            font-size: 1.8rem;
-            color: var(--accent-light);
+            font-size: 1.5rem;
+            color: var(--primary);
             width: 30px;
             text-align: center;
             flex-shrink: 0;
@@ -485,21 +514,24 @@
         .contact-details strong {
             display: block;
             color: var(--muted);
-            font-size: 0.9rem;
-            margin-bottom: 0.2rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.15rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
         }
 
         .contact-details span,
         .contact-details a {
             color: var(--foreground);
             text-decoration: none;
-            font-size: 1rem;
-            word-break: break-word;
+            font-size: 0.95rem;
+            white-space: nowrap;
         }
 
         .contact-details a {
-            color: var(--accent-light);
-            transition: color 0.3s ease;
+            color: var(--primary);
+            transition: color 0.2s ease;
         }
 
         .contact-details a:hover {
@@ -509,20 +541,20 @@
 
         #resume {
             clear: both;
-            margin-top: 4rem;
+            margin-top: 2rem;
             padding-bottom: 1rem;
         }
 
         #resume h3 {
-            color: var(--accent-light);
-            border-bottom: 3px solid var(--accent);
+            color: var(--foreground);
+            border-bottom: 2px solid var(--primary);
             display: inline-block;
-            padding-bottom: 0.7rem;
+            padding-bottom: 0.5rem;
             margin-bottom: 2rem;
             text-align: center;
             width: 100%;
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: 400;
         }
 
         .resume-links {
@@ -530,83 +562,77 @@
         }
 
         .resume-links a {
-            color: var(--accent-light);
+            color: var(--primary);
             margin: 0.5rem 1rem;
             text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease, text-shadow 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease;
             display: inline-block;
-            padding: 0.7rem 1.5rem;
-            border: 1px solid var(--accent);
-            border-radius: 20px;
-            font-size: 1.1rem;
+            padding: 0.6rem 1.5rem;
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            font-size: 0.95rem;
         }
 
         .resume-links a:hover {
-            color: white;
-            background-color: var(--accent);
-            text-shadow: 0 0 8px var(--accent-glow);
-            box-shadow: 0 0 10px var(--accent-glow);
+            color: #ffffff;
+            background-color: var(--primary);
         }
 
-        /* ========== UPDATED MOBILE STYLES (@media) ========== */
         @media (max-width: 768px) {
             body {
-                padding-top: 60px;
+                padding-top: 56px;
             }
 
-            /* --- HAMBURGER NAV STYLES --- */
             nav {
-                padding: 0.8rem 1.5rem;
+                padding: 0 1rem;
                 flex-wrap: wrap;
-                /* Allows menu to stack */
+                height: 56px;
+            }
+
+            .nav-brand-tagline {
+                display: none;
+            }
+
+            .nav-brand-img {
+                width: 30px;
+                height: 30px;
             }
 
             .nav-toggle {
                 display: block;
-                /* Show hamburger */
             }
 
             .nav-links {
                 display: none;
-                /* Hide menu by default */
                 flex-direction: column;
                 width: 100%;
-                gap: 0.5rem;
-                padding-top: 1rem;
+                gap: 0;
+                padding: 0.5rem 0;
                 text-align: center;
+                background: var(--primary-dark);
             }
 
             .nav-links.active {
                 display: flex;
-                /* Show menu when active */
             }
 
-            /* Make links full-width for easier tapping */
             nav .nav-links a {
                 width: 100%;
                 padding: 0.8rem 1rem;
                 box-sizing: border-box;
-            }
-
-            /* --- END HAMBURGER NAV STYLES --- */
-
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            header p {
-                font-size: 1rem;
+                border-radius: 0;
             }
 
             section {
                 padding: 1.5rem;
-                margin: 2rem auto;
+                margin: 1rem 0.5rem;
+                border-radius: 4px;
             }
 
             section h2,
             #resume h3 {
-                font-size: 1.6rem;
+                font-size: 1.3rem;
             }
 
             #about {
@@ -614,32 +640,31 @@
                 text-align: center;
             }
 
-            .profile-image-placeholder {
-                width: 150px;
-                height: 150px;
-                margin-bottom: 1.5rem;
+            .social-icons {
+                justify-content: center;
             }
 
-            /* --- PROGRESSIVE TIMELINE FIX --- */
+            .profile-image-placeholder {
+                width: 140px;
+                height: 140px;
+                margin-bottom: 1rem;
+            }
+
             .timeline {
                 overflow: hidden;
             }
 
             .timeline::after {
                 display: none;
-                /* Hide the center line */
             }
 
             .timeline-entry {
                 width: 100% !important;
-                /* Make entries full-width */
                 float: none !important;
-                margin: 0 0 1.5rem 0;
-                /* Remove side margins, add bottom margin */
-                border-left: 4px solid var(--accent);
+                margin: 0 0 1.2rem 0;
+                border-left: 3px solid var(--primary);
                 border-right: none;
                 box-sizing: border-box;
-                /* Ensures padding is included in width */
             }
 
             .timeline .timeline-entry:nth-child(odd),
@@ -652,10 +677,8 @@
             .timeline .timeline-entry:nth-child(odd)::before,
             .timeline .timeline-entry:nth-child(even)::before {
                 display: none;
-                /* Hide the dots */
             }
 
-            /* --- END PROGRESSIVE TIMELINE FIX --- */
 
             .contact-grid {
                 grid-template-columns: 1fr;
@@ -668,7 +691,7 @@
             }
 
             .contact-icon {
-                margin-bottom: 0.5rem;
+                margin-bottom: 0.3rem;
             }
         }
     </style>
@@ -676,7 +699,13 @@
 
 <body>
     <nav>
-        <a href="#about" class="nav-brand">Torab Shaikh</a>
+        <a href="#about" class="nav-brand">
+            <img class="nav-brand-img" src="./nav_profile.jpg" alt="Torab Shaikh">
+            <div>
+                <span class="nav-brand-name">Torab Shaikh</span>
+                <span class="nav-brand-tagline">Senior Software Engineer (6+ YOE) | Edge AI, Computer Vision, CUDA & Distributed Systems</span>
+            </div>
+        </a>
 
         <button class="nav-toggle" id="nav-toggle-btn" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
@@ -691,40 +720,40 @@
         </div>
     </nav>
 
-    <header data-aos="fade-down" data-aos-duration="800">
-        <h1>Torab Shaikh</h1>
-        <p id="header-subtitle">Senior Software Engineer (6+ YOE) | Edge AI, Computer Vision, CUDA & Distributed Systems
-            | Ex-Tech Lead</p>
-    </header>
-
-    <section id="about" data-aos="fade-up" data-aos-duration="800">
+    <section id="about">
         <img class="profile-image-placeholder" src="./profile_picture.webp" alt="Profile Picture">
         <div class="about-content">
             <h2 id="about-title">My Journey</h2>
             <div id="about-text-container">
             </div>
+            <div class="social-icons">
+                <a href="mailto:hello@torabshaikh.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://blog.torabshaikh.com/" target="_blank" rel="noopener noreferrer" title="Blog"><i class="fas fa-pen-nib"></i></a>
+                <a href="https://linkedin.com/in/torabshaikh" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/torabshaikh" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
         </div>
     </section>
 
-    <section id="journey" data-aos="fade-up" data-aos-duration="800">
+    <section id="journey">
         <h2>My Journey & Key Projects</h2>
         <div class="timeline" id="journey-timeline">
         </div>
     </section>
 
-    <section id="education" data-aos="fade-up" data-aos-duration="800">
+    <section id="education">
         <h2>Education</h2>
         <div id="education-content">
         </div>
     </section>
 
-    <section id="resume" data-aos="fade-up" data-aos-duration="800">
+    <section id="resume">
         <h3>Resume</h3>
         <div id="resume-links-container" class="resume-links">
         </div>
     </section>
 
-    <section id="contact" data-aos="fade-up" data-aos-duration="800">
+    <section id="contact">
         <h2>Get In Touch</h2>
         <div id="contact-content">
         </div>
@@ -757,9 +786,10 @@ My current focus is designing fast, efficient systems on resource-constrained ha
                                 "Calibrated 20x8 FSR sensor to predict force upto 20N with only ± 0.2N error margin using regression techniques.",
                                 "Integrated the tactile sensor to a 3D printed finger and developed application to use it collect data for material classification.",
                                 "Designed and 3D printed various components needed for the project.",
-                                "Developing Machine Learning models to classify materials based on tactile data collected using the sensor."
+                                "Developing Machine Learning models to classify materials based on tactile data collected using the sensor.",
+                                "Built a low latency publish-subscribe communication library in C++ using shared memory for inter-process communication."
                             ],
-                            skills: ["Robotics", "ROS2", "C++", "Python", "Machine Learning", "scipy", "Sensor calibration", "Signal processing", "Sensor Integration", "CMake"]
+                            skills: ["Robotics", "ROS2", "C++", "Python", "Machine Learning", "scipy", "Sensor calibration", "Signal processing", "Sensor Integration", "CMake", "Shared Memory", "IPC"]
                         }
                     ]
                 },
@@ -833,11 +863,11 @@ My current focus is designing fast, efficient systems on resource-constrained ha
             ];
 
             const educationData = [
-                { university: "University at Buffalo", location: "Buffalo, NY", degree: "Master of Science in Robotics", graduation: "Dec 2025", courses: ["Machine Learning", "Computer Vision", "Robotics Algorithms", "GPU Programming"] },
+                { university: "University at Buffalo", location: "Buffalo, NY", degree: "Master of Science in Robotics and AI", graduation: "Jan 2026", courses: ["Machine Learning", "Deep Learning", "Reinforcement Learning", "Robotics Algorithms", "Computer Vision and Image Processing", "GPU Programming using CUDA", "Probability for Robotics"] },
                 { university: "Poornima University", location: "Jaipur, India", degree: "Bachelor of Technology in Computer Engineering", graduation: "May 2018" }
             ];
             const contactData = {
-                email: "contact@torabshaikh.com",
+                email: "hello@torabshaikh.com",
                 linkedin: "https://linkedin.com/in/torabshaikh",
                 github: "https://github.com/torabshaikh",
                 blog: "https://blog.torabshaikh.com/",
@@ -890,8 +920,11 @@ My current focus is designing fast, efficient systems on resource-constrained ha
                     <div class="timeline-entry" data-aos="${animation}" data-aos-duration="600">
                         <h3>${entry.role}</h3>
                         <p class="role-info"><strong>${entry.organization}</strong> | ${entry.duration}</p>
-                        <p class="narrative-text">${entry.narrative}</p>
-                        ${projectsHTML}
+                        <p class="expand-hint">Hover to expand</p>
+                        <div class="entry-details">
+                            <p class="narrative-text">${entry.narrative}</p>
+                            ${projectsHTML}
+                        </div>
                     </div>
                 `;
                 });
@@ -903,7 +936,7 @@ My current focus is designing fast, efficient systems on resource-constrained ha
                 if (!container) return;
                 let html = '';
                 data.forEach(edu => {
-                    html += `<div class="education-entry"><h3>${edu.degree}</h3><p><strong>University:</strong> ${edu.university} | ${edu.location}</p><p><strong>Graduation:</strong> ${edu.graduation}</p>${edu.courses && edu.courses.length > 0 ? `<p class="courses"><strong>Relevant Courses:</strong> ${edu.courses.join(', ')}</p>` : ''}</div>`;
+                    html += `<div class="education-entry"><h3>${edu.degree}</h3><p><strong>University:</strong> ${edu.university} | ${edu.location}</p><p><strong>Graduation:</strong> ${edu.graduation}</p>${edu.courses && edu.courses.length > 0 ? `<p class="courses"><strong>Courses:</strong> ${edu.courses.join(', ')}</p>` : ''}</div>`;
                 });
                 container.innerHTML = html;
             }
@@ -941,7 +974,27 @@ My current focus is designing fast, efficient systems on resource-constrained ha
             // --- Initialize AOS (Animations) ---
             AOS.init({ duration: 600, easing: 'ease-in-out', once: true, offset: 50 });
 
-            // --- NEW: Hamburger Menu Logic ---
+            // --- Timeline expand logic ---
+            const timelineEntries = document.querySelectorAll('.timeline-entry');
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            e.target.classList.add('expanded');
+                            observer.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+                timelineEntries.forEach(entry => observer.observe(entry));
+            } else {
+                timelineEntries.forEach(entry => {
+                    entry.addEventListener('mouseenter', () => {
+                        entry.classList.add('expanded');
+                    });
+                });
+            }
+
+            // --- Hamburger Menu Logic ---
             const navToggle = document.getElementById('nav-toggle-btn');
             const navLinksContainer = document.getElementById('nav-links-container');
 
