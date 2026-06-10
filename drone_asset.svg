@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#0a1018"/>
+      <stop offset="60%" stop-color="#05080c"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <linearGradient id="armGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3a4a60"/>
+      <stop offset="100%" stop-color="#161e2c"/>
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2c3a4e"/>
+      <stop offset="100%" stop-color="#141c28"/>
+    </linearGradient>
+    <radialGradient id="motorGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#00e5ff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00e5ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="targetGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#00e5ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blurSoft" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <filter id="blurTight" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#00e5ff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#bgGrad)"/>
+  <rect width="1024" height="1024" fill="url(#grid)"/>
+
+  <!-- Horizon glow -->
+  <ellipse cx="512" cy="430" rx="480" ry="220" fill="url(#motorGlow)" opacity="0.18" filter="url(#blurSoft)"/>
+
+  <!-- Pick-and-place target zone -->
+  <ellipse cx="512" cy="840" rx="220" ry="60" fill="url(#targetGlow)" filter="url(#blurSoft)"/>
+  <g stroke="#00e5ff" stroke-width="2.5" fill="none" opacity="0.75">
+    <rect x="452" y="800" width="120" height="80" rx="6"/>
+    <line x1="452" y1="785" x2="452" y2="800"/>
+    <line x1="572" y1="785" x2="572" y2="800"/>
+    <line x1="452" y1="880" x2="452" y2="895"/>
+    <line x1="572" y1="880" x2="572" y2="895"/>
+  </g>
+  <line x1="512" y1="430" x2="512" y2="800" stroke="#00e5ff" stroke-width="2" stroke-dasharray="6 10" opacity="0.5"/>
+
+  <!-- Drone arms (X configuration) -->
+  <g stroke="#00e5ff" stroke-width="26" stroke-linecap="round" opacity="0.3">
+    <line x1="512" y1="430" x2="320" y2="290"/>
+    <line x1="512" y1="430" x2="704" y2="290"/>
+    <line x1="512" y1="430" x2="320" y2="570"/>
+    <line x1="512" y1="430" x2="704" y2="570"/>
+  </g>
+  <g stroke="url(#armGrad)" stroke-width="22" stroke-linecap="round">
+    <line x1="512" y1="430" x2="320" y2="290"/>
+    <line x1="512" y1="430" x2="704" y2="290"/>
+    <line x1="512" y1="430" x2="320" y2="570"/>
+    <line x1="512" y1="430" x2="704" y2="570"/>
+  </g>
+
+  <!-- Motor glows -->
+  <g>
+    <circle cx="320" cy="290" r="60" fill="url(#motorGlow)"/>
+    <circle cx="704" cy="290" r="60" fill="url(#motorGlow)"/>
+    <circle cx="320" cy="570" r="60" fill="url(#motorGlow)"/>
+    <circle cx="704" cy="570" r="60" fill="url(#motorGlow)"/>
+  </g>
+
+  <!-- Propeller rings -->
+  <g fill="none" stroke="#00e5ff" stroke-width="3" opacity="0.85">
+    <circle cx="320" cy="290" r="46"/>
+    <circle cx="704" cy="290" r="46"/>
+    <circle cx="320" cy="570" r="46"/>
+    <circle cx="704" cy="570" r="46"/>
+  </g>
+  <g fill="none" stroke="#00e5ff" stroke-width="1.5" opacity="0.4">
+    <circle cx="320" cy="290" r="58"/>
+    <circle cx="704" cy="290" r="58"/>
+    <circle cx="320" cy="570" r="58"/>
+    <circle cx="704" cy="570" r="58"/>
+  </g>
+
+  <!-- Motor hubs -->
+  <g fill="#0c121c" stroke="#00e5ff" stroke-width="2">
+    <circle cx="320" cy="290" r="14"/>
+    <circle cx="704" cy="290" r="14"/>
+    <circle cx="320" cy="570" r="14"/>
+    <circle cx="704" cy="570" r="14"/>
+  </g>
+
+  <!-- Central body -->
+  <g>
+    <circle cx="512" cy="430" r="100" fill="url(#motorGlow)" opacity="0.5" filter="url(#blurSoft)"/>
+    <rect x="442" y="370" width="140" height="120" rx="18" fill="url(#bodyGrad)" stroke="#00e5ff" stroke-width="2.5"/>
+    <rect x="468" y="396" width="88" height="68" rx="10" fill="#05121a" stroke="#00e5ff" stroke-width="1.5" opacity="0.9"/>
+    <circle cx="512" cy="430" r="20" fill="#00e5ff" opacity="0.85" filter="url(#blurTight)"/>
+    <circle cx="512" cy="430" r="9" fill="#bff7ff"/>
+  </g>
+
+  <!-- Landing legs -->
+  <g stroke="#3a4a60" stroke-width="10" stroke-linecap="round">
+    <line x1="470" y1="490" x2="450" y2="540"/>
+    <line x1="554" y1="490" x2="574" y2="540"/>
+  </g>
+
+  <!-- HUD corner brackets -->
+  <g stroke="#00e5ff" stroke-width="3" fill="none" opacity="0.55">
+    <path d="M 80 80 L 80 150 M 80 80 L 150 80"/>
+    <path d="M 944 80 L 944 150 M 944 80 L 874 80"/>
+    <path d="M 80 944 L 80 874 M 80 944 L 150 944"/>
+    <path d="M 944 944 L 944 874 M 944 944 L 874 944"/>
+  </g>
+
+  <!-- HUD telemetry text -->
+  <g font-family="'Courier New', monospace" fill="#00e5ff" opacity="0.8">
+    <text x="100" y="120" font-size="22" letter-spacing="2">PX4 // SITL</text>
+    <text x="100" y="150" font-size="16" opacity="0.6">GPS LOCK · 14 SAT</text>
+    <text x="690" y="120" font-size="22" letter-spacing="2" text-anchor="end">JETSON ORIN NANO</text>
+    <text x="690" y="150" font-size="16" opacity="0.6" text-anchor="end">ROS2 JAZZY</text>
+    <text x="924" y="120" font-size="22" letter-spacing="2" text-anchor="end">●REC</text>
+  </g>
+  <g font-family="'Courier New', monospace" fill="#00e5ff" opacity="0.6">
+    <text x="430" y="930" font-size="16" letter-spacing="3" text-anchor="middle">PICK &amp; PLACE TARGET</text>
+  </g>
+</svg>

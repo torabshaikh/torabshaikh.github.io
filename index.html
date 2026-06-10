@@ -380,8 +380,8 @@
             position: absolute;
             bottom: 30px;
             left: 50%;
-            transform: translateX(-50%) rotate(-90deg);
-            transform-origin: center center;
+            transform: rotate(-90deg);
+            transform-origin: left center;
             white-space: nowrap;
             font-family: var(--font-head);
             font-weight: 800;
@@ -827,6 +827,12 @@
                 under strict hardware constraints, combining robotics data structures (ROS2, ONNX Runtime) with high
                 concurrency backends serving enterprise traffic.
             </p>
+            <p class="about-text">
+                More recently I've been building autonomous flight and manipulation systems &mdash; PX4 Autopilot,
+                Gazebo SITL, and ROS2 Jazzy for drone navigation, plus reinforcement learning (TD3+BC, SAC+HER) for
+                robotic arm control &mdash; all deployed on NVIDIA Jetson hardware with CUDA/TensorRT for low-latency,
+                real-time inference at the edge.
+            </p>
             <div class="hero-buttons">
                 <a href="./Torab_Resume.pdf" target="_blank" class="btn-primary">View Full Resume</a>
                 <div class="social-links">
@@ -956,6 +962,42 @@
                         "Engineered a <strong>Redis-backed persistent memory driver</strong> allowing LLM autonomous agents to accurately retrieve context."
                     ],
                     skills: ["Python", "Redis", "Agentic AI", "Open Source"]
+                },
+                {
+                    title: "Autonomous Drone System",
+                    desc: "An autonomous quadcopter built on a custom S500 airframe for vision-guided pick-and-place missions.",
+                    imageURL: "drone_asset.svg",
+                    repoLink: null,
+                    liveLink: null,
+                    points: [
+                        "Built on a custom <strong>S500 airframe</strong> with Pixhawk 6C, M10 GPS, GEPRC 3110 motors, and an NVIDIA Jetson Orin Nano companion computer running ROS2 Jazzy for state estimation and navigation.",
+                        "Validated flight modes, custom mappings, and kill-switch protocols in <strong>SITL</strong> using Gazebo Sim, PX4 Autopilot, and MAVLink telemetry, with monocular SLAM for onboard visual odometry."
+                    ],
+                    skills: ["ROS2", "PX4 Autopilot", "Gazebo Sim", "SLAM", "Pixhawk 6C", "Jetson Orin Nano"]
+                },
+                {
+                    title: "Pick-and-Stack RL",
+                    desc: "Reinforcement learning policies for a 7-DOF Franka Panda arm performing pick-and-stack manipulation.",
+                    imageURL: "franka_rl_asset.svg",
+                    repoLink: null,
+                    liveLink: null,
+                    points: [
+                        "Implemented <strong>TD3+BC</strong> and <strong>SAC+HER</strong> on FetchPickAndPlace-v3, with a 7-stage scripted expert controller for demo generation and HER replay buffer injection.",
+                        "Designed a custom 5-stage stacking reward wrapper with vectorized environments and VecNormalize, achieving non-zero pick success from a zero baseline across <strong>50M+ timesteps</strong>."
+                    ],
+                    skills: ["PyTorch", "Reinforcement Learning", "TD3+BC", "SAC+HER"]
+                },
+                {
+                    title: "Argus AI",
+                    desc: "A multimodal surveillance system on Jetson Orin Nano for real-time security event detection.",
+                    imageURL: "argus_asset.svg",
+                    repoLink: null,
+                    liveLink: null,
+                    points: [
+                        "Ingests live <strong>RTSP</strong> streams on a Jetson Orin Nano, generating VLM captions and SigCLIP embeddings published via MQTT to a central server backed by Qdrant.",
+                        "Queries a local Gemma model via Ollama against the embedding store for real-time security event detection."
+                    ],
+                    skills: ["Jetson Orin Nano", "RTSP", "VLM", "MQTT", "Qdrant"]
                 }
             ];
 
