@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
   <defs>
-    <radialGradient id="bgGrad2" cx="50%" cy="40%" r="80%">
-      <stop offset="0%" stop-color="#0c0a18"/>
-      <stop offset="60%" stop-color="#05080c"/>
+    <radialGradient id="bgGrad2" cx="55%" cy="45%" r="85%">
+      <stop offset="0%" stop-color="#0c1620"/>
+      <stop offset="55%" stop-color="#05080c"/>
       <stop offset="100%" stop-color="#000000"/>
     </radialGradient>
     <linearGradient id="armGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -19,6 +19,11 @@
       <stop offset="60%" stop-color="#00e5ff" stop-opacity="0.2"/>
       <stop offset="100%" stop-color="#00e5ff" stop-opacity="0"/>
     </radialGradient>
+    <radialGradient id="centerGlow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.45"/>
+      <stop offset="50%" stop-color="#00e5ff" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#00e5ff" stop-opacity="0"/>
+    </radialGradient>
     <linearGradient id="cubeFace" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#142436"/>
       <stop offset="100%" stop-color="#0a1018"/>
@@ -30,101 +35,184 @@
     <filter id="blurSoft2" x="-100%" y="-100%" width="300%" height="300%">
       <feGaussianBlur stdDeviation="14"/>
     </filter>
+    <filter id="blurWide2" x="-100%" y="-100%" width="400%" height="400%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
     <filter id="blurTight2" x="-100%" y="-100%" width="300%" height="300%">
       <feGaussianBlur stdDeviation="3"/>
     </filter>
     <pattern id="grid2" width="48" height="48" patternUnits="userSpaceOnUse">
       <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#00e5ff" stroke-opacity="0.05" stroke-width="1"/>
     </pattern>
+    <pattern id="circuit2" width="160" height="160" patternUnits="userSpaceOnUse">
+      <path d="M0 40 H60 V90 H160" stroke="#00e5ff" stroke-width="1" fill="none" opacity="0.10"/>
+      <path d="M90 0 V50 H140 V160" stroke="#00e5ff" stroke-width="1" fill="none" opacity="0.10"/>
+      <path d="M0 120 H40 V160" stroke="#00e5ff" stroke-width="1" fill="none" opacity="0.08"/>
+      <circle cx="60" cy="40" r="3" fill="#00e5ff" opacity="0.22"/>
+      <circle cx="90" cy="50" r="3" fill="#00e5ff" opacity="0.22"/>
+      <circle cx="140" cy="90" r="3" fill="#00e5ff" opacity="0.22"/>
+      <rect x="100" y="100" width="22" height="22" fill="none" stroke="#00e5ff" stroke-width="1" opacity="0.12"/>
+    </pattern>
   </defs>
 
   <rect width="1024" height="1024" fill="url(#bgGrad2)"/>
+  <rect width="1024" height="1024" fill="url(#circuit2)"/>
   <rect width="1024" height="1024" fill="url(#grid2)"/>
 
+  <!-- Ambient glow behind arm/cubes -->
+  <ellipse cx="620" cy="500" rx="520" ry="420" fill="url(#centerGlow2)" filter="url(#blurWide2)"/>
+
+  <!-- Background ghost arm (parallel training envs) -->
+  <g stroke="#1a2638" stroke-width="14" stroke-linecap="round" opacity="0.5" fill="none">
+    <path d="M180 980 L180 860 L340 800 L340 700 L470 670"/>
+  </g>
+  <g fill="#1a2638" opacity="0.5">
+    <circle cx="180" cy="860" r="14"/>
+    <circle cx="340" cy="800" r="12"/>
+    <circle cx="340" cy="700" r="11"/>
+    <circle cx="470" cy="670" r="9"/>
+  </g>
+
   <!-- Floor plane -->
-  <line x1="60" y1="860" x2="964" y2="860" stroke="#00e5ff" stroke-opacity="0.25" stroke-width="2"/>
-  <ellipse cx="700" cy="860" rx="240" ry="30" fill="url(#cyanGlow2)" opacity="0.4" filter="url(#blurSoft2)"/>
-  <ellipse cx="280" cy="870" rx="200" ry="36" fill="url(#jointGlow)" opacity="0.3" filter="url(#blurSoft2)"/>
+  <line x1="60" y1="980" x2="1010" y2="980" stroke="#00e5ff" stroke-opacity="0.25" stroke-width="2"/>
+  <g stroke="#00e5ff" stroke-opacity="0.08" stroke-width="1">
+    <line x1="200" y1="980" x2="120" y2="1024"/>
+    <line x1="400" y1="980" x2="380" y2="1024"/>
+    <line x1="600" y1="980" x2="640" y2="1024"/>
+    <line x1="800" y1="980" x2="900" y2="1024"/>
+  </g>
+  <ellipse cx="800" cy="980" rx="280" ry="34" fill="url(#cyanGlow2)" opacity="0.4" filter="url(#blurSoft2)"/>
+  <ellipse cx="280" cy="990" rx="220" ry="40" fill="url(#jointGlow)" opacity="0.3" filter="url(#blurSoft2)"/>
 
+  <!-- Pickup zone marker (source bin) -->
+  <g stroke="#00e5ff" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5 8">
+    <rect x="90" y="850" width="190" height="120" rx="8"/>
+  </g>
+  <g font-family="'Courier New', monospace" fill="#00e5ff" opacity="0.6">
+    <text x="100" y="838" font-size="14" letter-spacing="2">PICK ZONE</text>
+  </g>
+
+  <!-- Loose cubes in pickup zone -->
+  <g opacity="0.85">
+    <rect x="110" y="900" width="74" height="60" fill="url(#cubeFace)" stroke="#00e5ff" stroke-width="2"/>
+    <polygon points="110,900 136,880 210,880 184,900" fill="url(#cubeTop)" opacity="0.85"/>
+    <polygon points="184,900 210,880 210,940 184,960" fill="#0a1822" opacity="0.85"/>
+  </g>
+  <g opacity="0.7">
+    <rect x="200" y="918" width="58" height="46" fill="url(#cubeFace)" stroke="#00e5ff" stroke-width="2"/>
+    <polygon points="200,918 222,902 280,902 258,918" fill="url(#cubeTop)" opacity="0.8"/>
+    <polygon points="258,918 280,902 280,948 258,964" fill="#0a1822" opacity="0.8"/>
+  </g>
+
+  <!-- Trajectory arc: pickup zone -> stack -->
+  <path d="M 200 880 C 380 560, 680 480, 845 580" fill="none" stroke="#00e5ff" stroke-width="2.5" stroke-dasharray="4 12" opacity="0.45"/>
+  <g fill="#00e5ff" opacity="0.5">
+    <circle cx="320" cy="660" r="4"/>
+    <circle cx="470" cy="560" r="4"/>
+    <circle cx="630" cy="500" r="4"/>
+    <circle cx="760" cy="520" r="4"/>
+  </g>
+
+  <!-- Stack target zone -->
+  <g stroke="#00e5ff" stroke-width="2" fill="none" opacity="0.3" stroke-dasharray="5 8">
+    <rect x="730" y="660" width="220" height="320" rx="8"/>
+  </g>
+  <g font-family="'Courier New', monospace" fill="#00e5ff" opacity="0.6">
+    <text x="740" y="650" font-size="14" letter-spacing="2">STACK TARGET</text>
+  </g>
+
+  <!-- Stacked cubes already placed -->
+  <g>
+    <!-- bottom cube -->
+    <g>
+      <rect x="760" y="850" width="150" height="112" fill="url(#cubeFace)" stroke="#00e5ff" stroke-width="2.5"/>
+      <polygon points="760,850 810,812 1010,812 960,850" fill="url(#cubeTop)" opacity="0.9"/>
+      <polygon points="960,850 1010,812 1010,924 960,962" fill="#0a1822" opacity="0.9"/>
+    </g>
+    <!-- middle cube -->
+    <g>
+      <rect x="782" y="740" width="116" height="100" fill="url(#cubeFace)" stroke="#00e5ff" stroke-width="2.5"/>
+      <polygon points="782,740 822,710 962,710 922,740" fill="url(#cubeTop)" opacity="0.9"/>
+      <polygon points="922,740 962,710 962,810 922,840" fill="#0a1822" opacity="0.9"/>
+    </g>
+  </g>
+
+  <!-- 7-DOF arm chain (base -> shoulder -> elbow -> wrist -> gripper), carrying cube to top of stack -->
   <!-- Base -->
-  <rect x="200" y="850" width="160" height="46" rx="8" fill="url(#armGrad2)" stroke="#00e5ff" stroke-width="2"/>
-  <rect x="240" y="810" width="80" height="44" rx="8" fill="url(#armGrad2)" stroke="#00e5ff" stroke-width="2"/>
+  <rect x="190" y="960" width="190" height="54" rx="10" fill="url(#armGrad2)" stroke="#00e5ff" stroke-width="2.5"/>
+  <rect x="236" y="912" width="98" height="52" rx="10" fill="url(#armGrad2)" stroke="#00e5ff" stroke-width="2.5"/>
 
-  <!-- 7-DOF arm chain (base -> shoulder -> elbow -> wrist -> gripper) -->
   <g stroke-linecap="round">
-    <line x1="280" y1="810" x2="280" y2="690" stroke="url(#armGrad2)" stroke-width="34"/>
-    <line x1="280" y1="690" x2="470" y2="600" stroke="url(#armGrad2)" stroke-width="30"/>
-    <line x1="470" y1="600" x2="470" y2="470" stroke="url(#armGrad2)" stroke-width="26"/>
-    <line x1="470" y1="470" x2="640" y2="430" stroke="url(#armGrad2)" stroke-width="22"/>
-    <line x1="640" y1="430" x2="700" y2="540" stroke="url(#armGrad2)" stroke-width="18"/>
-    <line x1="700" y1="540" x2="722" y2="600" stroke="url(#armGrad2)" stroke-width="14"/>
+    <line x1="285" y1="912" x2="285" y2="760" stroke="url(#armGrad2)" stroke-width="40"/>
+    <line x1="285" y1="760" x2="500" y2="640" stroke="url(#armGrad2)" stroke-width="36"/>
+    <line x1="500" y1="640" x2="540" y2="500" stroke="url(#armGrad2)" stroke-width="30"/>
+    <line x1="540" y1="500" x2="730" y2="450" stroke="url(#armGrad2)" stroke-width="26"/>
+    <line x1="730" y1="450" x2="828" y2="540" stroke="url(#armGrad2)" stroke-width="20"/>
+    <line x1="828" y1="540" x2="855" y2="610" stroke="url(#armGrad2)" stroke-width="16"/>
   </g>
 
   <!-- Joint glows + hubs -->
   <g>
-    <circle cx="280" cy="810" r="34" fill="url(#jointGlow)"/>
-    <circle cx="280" cy="690" r="30" fill="url(#jointGlow)"/>
-    <circle cx="470" cy="600" r="28" fill="url(#jointGlow)"/>
-    <circle cx="470" cy="470" r="26" fill="url(#jointGlow)"/>
-    <circle cx="640" cy="430" r="22" fill="url(#jointGlow)"/>
-    <circle cx="700" cy="540" r="18" fill="url(#jointGlow)"/>
+    <circle cx="285" cy="912" r="40" fill="url(#jointGlow)"/>
+    <circle cx="285" cy="760" r="36" fill="url(#jointGlow)"/>
+    <circle cx="500" cy="640" r="32" fill="url(#jointGlow)"/>
+    <circle cx="540" cy="500" r="30" fill="url(#jointGlow)"/>
+    <circle cx="730" cy="450" r="26" fill="url(#jointGlow)"/>
+    <circle cx="828" cy="540" r="20" fill="url(#jointGlow)"/>
   </g>
-  <g fill="#0c121c" stroke="#00e5ff" stroke-width="2">
-    <circle cx="280" cy="810" r="17"/>
-    <circle cx="280" cy="690" r="15"/>
-    <circle cx="470" cy="600" r="14"/>
-    <circle cx="470" cy="470" r="13"/>
-    <circle cx="640" cy="430" r="11"/>
-    <circle cx="700" cy="540" r="9"/>
+  <g fill="#0c121c" stroke="#00e5ff" stroke-width="2.5">
+    <circle cx="285" cy="912" r="20"/>
+    <circle cx="285" cy="760" r="18"/>
+    <circle cx="500" cy="640" r="16"/>
+    <circle cx="540" cy="500" r="15"/>
+    <circle cx="730" cy="450" r="13"/>
+    <circle cx="828" cy="540" r="11"/>
   </g>
 
-  <!-- Gripper -->
-  <g stroke="#bff7ff" stroke-width="6" stroke-linecap="round" fill="none">
-    <path d="M 722 600 L 700 640 L 712 660"/>
-    <path d="M 722 600 L 748 636 L 738 658"/>
-  </g>
-  <circle cx="722" cy="600" r="10" fill="#00e5ff" filter="url(#blurTight2)"/>
-
-  <!-- Stacked cubes (pick and stack) -->
+  <!-- Cube being carried by gripper, positioned above stack -->
   <g>
-    <!-- bottom cube -->
-    <g>
-      <rect x="650" y="752" width="120" height="90" fill="url(#cubeFace)" stroke="#00e5ff" stroke-width="2"/>
-      <polygon points="650,752 690,722 810,722 770,752" fill="url(#cubeTop)" opacity="0.9"/>
-      <polygon points="770,752 810,722 810,812 770,842" fill="#0a1822" opacity="0.9"/>
-    </g>
-    <!-- middle cube -->
-    <g>
-      <rect x="664" y="672" width="92" height="80" fill="url(#cubeFace)" stroke="#00e5ff" stroke-width="2"/>
-      <polygon points="664,672 696,648 788,648 756,672" fill="url(#cubeTop)" opacity="0.9"/>
-      <polygon points="756,672 788,648 788,728 756,752" fill="#0a1822" opacity="0.9"/>
-    </g>
-    <!-- top cube being placed -->
-    <g opacity="0.95">
-      <rect x="676" y="606" width="70" height="62" fill="url(#cubeFace)" stroke="#00e5ff" stroke-width="2.5"/>
-      <polygon points="676,606 702,586 772,586 746,606" fill="url(#cubeTop)"/>
-      <polygon points="746,606 772,586 772,648 746,668" fill="#0a1822"/>
-    </g>
+    <rect x="800" y="612" width="92" height="80" fill="url(#cubeFace)" stroke="#00e5ff" stroke-width="3"/>
+    <polygon points="800,612 834,586 926,586 892,612" fill="url(#cubeTop)"/>
+    <polygon points="892,612 926,586 926,666 892,692" fill="#0a1822"/>
+  </g>
+
+  <!-- Gripper fingers closed around carried cube -->
+  <g stroke="#bff7ff" stroke-width="8" stroke-linecap="round" fill="none">
+    <path d="M 855 610 L 812 600 L 806 636"/>
+    <path d="M 855 610 L 898 600 L 904 636"/>
+  </g>
+  <circle cx="855" cy="610" r="13" fill="#00e5ff" filter="url(#blurTight2)"/>
+
+  <!-- Down-arrow indicating placement motion -->
+  <g stroke="#00e5ff" stroke-width="3" opacity="0.6" fill="none">
+    <line x1="846" y1="700" x2="846" y2="745"/>
+    <path d="M 832 730 L 846 750 L 860 730"/>
+  </g>
+
+  <!-- HUD telemetry panels -->
+  <g font-family="'Courier New', monospace">
+    <rect x="64" y="120" width="270" height="150" rx="8" fill="#060a10" stroke="#00e5ff" stroke-width="1.5" opacity="0.85"/>
+    <text x="84" y="155" font-size="22" fill="#00e5ff" letter-spacing="2">FRANKA PANDA · 7-DOF</text>
+    <text x="84" y="182" font-size="16" fill="#00e5ff" opacity="0.7">FetchPickAndPlace-v3</text>
+    <text x="84" y="208" font-size="16" fill="#00e5ff" opacity="0.7">PICK → STACK ROUTINE</text>
+    <text x="84" y="234" font-size="16" fill="#00e5ff" opacity="0.85">EXPERT DEMOS · HER BUFFER</text>
+    <rect x="84" y="246" width="220" height="6" fill="#0e2a33"/>
+    <rect x="84" y="246" width="190" height="6" fill="#00e5ff" opacity="0.7"/>
+
+    <rect x="690" y="120" width="270" height="150" rx="8" fill="#060a10" stroke="#00e5ff" stroke-width="1.5" opacity="0.85"/>
+    <text x="710" y="155" font-size="22" fill="#00e5ff" letter-spacing="2">TD3+BC / SAC+HER</text>
+    <text x="710" y="182" font-size="16" fill="#00e5ff" opacity="0.7">TIMESTEPS  50.2M</text>
+    <text x="710" y="208" font-size="16" fill="#00e5ff">REWARD  +1.00</text>
+    <text x="710" y="234" font-size="16" fill="#00e5ff" opacity="0.85">STACK  3/3 BLOCKS</text>
+    <rect x="710" y="246" width="230" height="6" fill="#0e2a33"/>
+    <rect x="710" y="246" width="210" height="6" fill="#00e5ff" opacity="0.8"/>
   </g>
 
   <!-- HUD corner brackets -->
   <g stroke="#00e5ff" stroke-width="3" fill="none" opacity="0.55">
-    <path d="M 80 80 L 80 150 M 80 80 L 150 80"/>
-    <path d="M 944 80 L 944 150 M 944 80 L 874 80"/>
-    <path d="M 80 944 L 80 874 M 80 944 L 150 944"/>
-    <path d="M 944 944 L 944 874 M 944 944 L 874 944"/>
-  </g>
-
-  <!-- HUD telemetry text -->
-  <g font-family="'Courier New', monospace" fill="#00e5ff" opacity="0.8">
-    <text x="100" y="120" font-size="22" letter-spacing="2">FRANKA PANDA · 7-DOF</text>
-    <text x="100" y="150" font-size="16" opacity="0.6">FetchPickAndPlace-v3</text>
-    <text x="924" y="120" font-size="22" letter-spacing="2" text-anchor="end">TD3+BC / SAC+HER</text>
-    <text x="924" y="150" font-size="16" opacity="0.6" text-anchor="end">50M+ TIMESTEPS</text>
-  </g>
-  <g font-family="'Courier New', monospace" fill="#00e5ff" opacity="0.85">
-    <rect x="780" y="200" width="160" height="56" rx="6" fill="#060a10" stroke="#00e5ff" stroke-width="1.5" opacity="0.85"/>
-    <text x="800" y="224" font-size="16">REWARD: +1.00</text>
-    <text x="800" y="246" font-size="14" opacity="0.7">STACK: 3/3</text>
+    <path d="M 40 40 L 40 110 M 40 40 L 110 40"/>
+    <path d="M 984 40 L 984 110 M 984 40 L 914 40"/>
+    <path d="M 40 984 L 40 914 M 40 984 L 110 984"/>
+    <path d="M 984 984 L 984 914 M 984 984 L 914 984"/>
   </g>
 </svg>
